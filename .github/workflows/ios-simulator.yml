@@ -45,7 +45,7 @@ jobs:
             -configuration Debug \
             -destination "id=${{ steps.sim.outputs.udid }}" \
             -derivedDataPath build \
-            CODE_SIGNING_ALLOWED=NO | tail -60
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Instalar, arrancar e tirar screenshot
         run: |
@@ -72,7 +72,7 @@ jobs:
             -destination "id=$UDID" \
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
-            -resultBundlePath artifacts/testes.xcresult | tail -120
+            -resultBundlePath artifacts/testes.xcresult
           RC=$?
           set -e
           kill -INT $REC 2>/dev/null || true
@@ -100,7 +100,7 @@ jobs:
             -sdk iphonesimulator \
             -derivedDataPath build-app \
             ARCHS="arm64 x86_64" ONLY_ACTIVE_ARCH=NO \
-            CODE_SIGNING_ALLOWED=NO | tail -15 || true
+            CODE_SIGNING_ALLOWED=NO || true
           APP=$(find build-app/Build/Products -maxdepth 3 -name "GymRank.app" | head -1)
           if [ -z "$APP" ]; then
             APP=$(find build/Build/Products -maxdepth 3 -name "GymRank.app" | head -1)
