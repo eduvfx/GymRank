@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt"><head><meta charset="utf-8"><title>GymRank — Mockups</title>
+<style>
+:root{
+  --bg:#0B0E14; --card:#161B26; --card2:#1D2432; --line:#2A3345; --txt:#F2F5FA; --mut:#93A0B5;
+  --bronze:#CD7F32; --prata:#BFC7CE; --ouro:#F5C518; --platina:#8FE3E8; --diamante:#7FD1FF;
+  --campeao:#A46BFF; --tita:#FF6B4A; --olympia:#FFD84D; --accent:#4C8DFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E9EDF3;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--txt);padding:26px}
+h1.page{color:#111827;font-size:20px;margin:0 0 4px 2px;font-weight:700}
+p.page{color:#4B5563;font-size:13px;margin:0 0 20px 2px}
+.grid{display:grid;grid-template-columns:repeat(4,340px);gap:26px;justify-content:center}
+.tela{width:340px;height:736px;border-radius:38px;background:var(--bg);border:9px solid #0d1117;
+  box-shadow:0 14px 30px rgba(15,23,42,.28);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:96px;height:20px;background:#0d1117;border-radius:12px;z-index:5}
+.status{display:flex;justify-content:space-between;padding:12px 20px 4px;font-size:10px;color:var(--mut);letter-spacing:.3px}
+.nav{padding:2px 16px 10px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
+.nav .t{font-size:15px;font-weight:700}
+.nav .back{color:var(--accent);font-size:13px}
+.body{flex:1;overflow:hidden;padding:14px 14px 0}
+.tabbar{margin-top:auto;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:9px 6px 16px;font-size:9px;color:var(--mut)}
+.tabbar b{display:block;font-size:15px;text-align:center;margin-bottom:2px}
+.tabbar .on{color:var(--accent)}
+.cap{width:340px;margin:8px auto 0;text-align:center;font-size:12px;color:#374151;font-weight:600}
+.cell{margin-bottom:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.lbl{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--mut);margin-bottom:6px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase}
+.bronze{background:rgba(205,127,50,.16);color:var(--bronze);border:1px solid rgba(205,127,50,.45)}
+.prata{background:rgba(191,199,206,.14);color:var(--prata);border:1px solid rgba(191,199,206,.4)}
+.ouro{background:rgba(245,197,24,.14);color:var(--ouro);border:1px solid rgba(245,197,24,.42)}
+.platina{background:rgba(143,227,232,.14);color:var(--platina);border:1px solid rgba(143,227,232,.42)}
+.diamante{background:rgba(127,209,255,.14);color:var(--diamante);border:1px solid rgba(127,209,255,.42)}
+.campeao{background:rgba(164,107,255,.16);color:var(--campeao);border:1px solid rgba(164,107,255,.45)}
+.tita{background:rgba(255,107,74,.16);color:var(--tita);border:1px solid rgba(255,107,74,.45)}
+.olympia{background:rgba(255,216,77,.18);color:var(--olympia);border:1px solid rgba(255,216,77,.5);box-shadow:0 0 12px rgba(255,216,77,.25)}
+.rankbig{font-size:30px;font-weight:900;letter-spacing:-.5px;line-height:1}
+.hero{text-align:center;padding:16px 0 10px}
+.ring{width:132px;height:132px;border-radius:50%;margin:6px auto 10px;display:grid;place-items:center;
+  background:conic-gradient(var(--platina) 0 62%, #232C3D 62% 100%);position:relative}
+.ring:after{content:'';position:absolute;inset:11px;border-radius:50%;background:var(--bg)}
+.ring .in{position:relative;z-index:2;text-align:center}
+.ring .in b{font-size:21px;display:block}
+.ring .in span{font-size:9px;color:var(--mut)}
+.part{display:flex;align-items:center;justify-content:space-between;padding:9px 10px;background:var(--card);border:1px solid var(--line);border-radius:11px;margin-bottom:7px}
+.part .nm{font-size:12.5px;font-weight:600}
+.part .sub{font-size:9.5px;color:var(--mut)}
+.bar{height:7px;border-radius:99px;background:#232C3D;overflow:hidden;margin-top:5px}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--ouro),var(--platina))}
+.btn{margin:12px 14px 18px;background:var(--accent);border-radius:13px;text-align:center;padding:13px;font-weight:700;font-size:13.5px}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--txt)}
+.field{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:11px 12px;margin-bottom:9px}
+.field .k{font-size:9.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.7px}
+.field .v{font-size:15px;font-weight:700;margin-top:2px}
+.stepper{display:flex;align-items:center;gap:10px;margin-top:4px}
+.stepper span{width:26px;height:26px;border-radius:8px;background:var(--card2);display:grid;place-items:center;font-weight:800;color:var(--accent)}
+.seg{display:flex;gap:6px;margin-top:5px}
+.seg i{flex:1;text-align:center;font-size:11px;padding:6px;border-radius:9px;background:var(--card2);font-style:normal;color:var(--mut)}
+.seg i.on{background:rgba(76,141,255,.18);color:var(--accent);border:1px solid rgba(76,141,255,.5);font-weight:700}
+.ex{display:flex;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid var(--line)}
+.ex:last-child{border-bottom:none}
+.ex .l{font-size:12.5px;font-weight:600}
+.ex .d{font-size:9.5px;color:var(--mut)}
+.ladder{display:flex;flex-direction:column;gap:5px}
+.step{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:10px;background:var(--card);border:1px solid var(--line);font-size:11px}
+.step .dot{width:9px;height:9px;border-radius:50%}
+.step.on{border-color:rgba(127,209,255,.55);background:rgba(127,209,255,.08)}
+.chart{display:flex;align-items:flex-end;gap:7px;height:104px;padding:8px 4px 0}
+.chart i{flex:1;background:linear-gradient(180deg,var(--diamante),rgba(127,209,255,.25));border-radius:5px 5px 0 0}
+.chart i span{display:block;font-size:8px;color:var(--mut);text-align:center;margin-top:-13px}
+.legend{font-size:9.5px;color:var(--mut);margin-top:8px;line-height:1.5}
+.flow{margin:34px auto 0;width:1290px;background:#fff;border-radius:16px;padding:22px;box-shadow:0 10px 24px rgba(15,23,42,.1)}
+.flow h2{color:#111827;font-size:15px;margin-bottom:14px}
+.flow svg{width:100%;height:auto;display:block}
+</style></head><body>
+<h1 class="page">GymRank — mockups da interface (8 ecrãs)</h1>
+<p class="page">Protótipos de alta fidelidade do fluxo principal: perfil (idade e peso) → painel de ranks → exercício → registo de treino → progresso.</p>
+
+<div class="grid">
+
+  <!-- 1. Onboarding -->
+  <div class="cell">
+    <div class="tela"><div class="notch"></div><div class="status"><span>9:41</span><span>▲ ▮▮ 100%</span></div>
+      <div class="body hero" style="padding-top:60px">
+        <div style="font-size:52px;line-height:1">🏋️</div>
+        <div style="font-size:27px;font-weight:900;letter-spacing:-.8px;margin-top:12px">GymRank</div>
+        <div style="font-size:12.5px;color:var(--mut);margin-top:8px;line-height:1.55">Regista os teus treinos e sobe de rank.<br>Do Bronze ao Olympia — como num videojogo.</div>
+        <div style="margin-top:26px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap">
+          <span class="badge bronze">Bronze</span><span class="badge prata">Prata</span><span class="badge ouro">Ouro</span>
+          <span class="badge platina">Platina</span><span class="badge diamante">Diamante</span><span class="badge campeao">Campeão</span>
+          <span class="badge tita">Titã</span><span class="badge olympia">Olympia</span>
+        </div>
+      </div>
+      <div class="btn">Começar — criar perfil</div>
+    </div>
+    <div class="cap">1 · Boas-vindas</div>
+  </div>
+
+  <!-- 2. Perfil -->
+  <div class="cell">
+    <div class="tela"><div class="notch"></div><div class="status"><span>9:41</span><span>▲ ▮▮ 100%</span></div>
+      <div class="nav"><span class="back">‹</span><span class="t">O teu perfil</span></div>
+      <div class="body">
+        <div class="lbl">Dados obrigatórios para o cálculo do rank</div>
+        <div class="field"><div class="k">Idade</div>
+          <div class="stepper"><span>−</span><div class="v" style="margin:0;flex:1">24 anos</div><span>+</span></div></div>
+        <div class="field"><div class="k">Peso corporal</div>
+          <div class="stepper"><span>−</span><div class="v" style="margin:0;flex:1">80 kg</div><span>+</span></div></div>
+        <div class="field"><div class="k">Altura</div><div class="v">178 cm</div></div>
+        <div class="field"><div class="k">Sexo (muda as tabelas de referência)</div>
+          <div class="seg"><i class="on">Masculino</i><i>Feminino</i></div></div>
+        <div class="legend">A idade e o peso definem contra que população te comparas: os limites de cada rank são relativos ao teu peso corporal e corrigidos pela faixa de idade.</div>
+      </div>
+      <div class="btn">Guardar perfil</div>
+    </div>
+    <div class="cap">2 · Perfil (idade + peso)</div>
+  </div>
+
+  <!-- 3. Painel -->
+  <div class="cell">
+    <div class="tela"><div class="notch"></div><div class="status"><span>9:41</span><span>▲ ▮▮ 100%</span></div>
+      <div class="nav"><span class="t">Olá, Eduardo</span></div>
+      <div class="body">
+        <div class="hero" style="padding:4px 0 12px">
+          <div class="ring"><div class="in"><b>Platina</b><span>rank geral do corpo</span></div></div>
+          <div class="legend" style="text-align:center">Faltam <b style="color:var(--platina)">18 kg</b> no supino para Diamante</div>
+        </div>
+        <div class="lbl">Rank por parte do corpo</div>
+        <div class="part"><div><div class="nm">Peito</div><div class="sub">5 exercícios</div></div><span class="badge diamante">Diamante</span></div>
+        <div class="part"><div><div class="nm">Costas</div><div class="sub">6 exercícios</div></div><span class="badge ouro">Ouro</span></div>
+        <div class="part"><div><div class="nm">Pernas</div><div class="sub">7 exercícios</div></div><span class="badge platina">Platina</span></div>
+        <div class="part"><div><div class="nm">Ombros</div><div class="sub">3 exercícios</div></div><span class="badge ouro">Ouro</span></div>
+      </div>
+      <div class="btn">＋ Registar treino</div>
+      <div class="tabbar"><div class="on"><b>◎</b>Painel</div><div><b>🏋</b>Treinos</div><div><b>📈</b>Progresso</div><div><b>⚙</b>Perfil</div></div>
+    </div>
+    <div class="cap">3 · Painel (rank geral + partes)</div>
+  </div>
+
+  <!-- 4. Lista de exercicios -->
+  <div class="cell">
+    <div class="tela"><div class="notch"></div><div class="status"><span>9:41</span><span>▲ ▮▮ 100%</span></div>
+      <div class="nav"><span class="back">‹ Painel</span><span class="t">Peito</span><span style="margin-left:auto" class="badge diamante">Diamante</span></div>
+      <div class="body">
+        <div class="card" style="margin-bottom:12px">
+          <div class="lbl">Rank da parte do corpo</div>
+          <div class="row"><div class="rankbig" style="color:var(--diamante)">Diamante</div><div style="text-align:right"><div class="sub" style="font-size:9.5px;color:var(--mut)">média de 5 exercícios</div><div style="font-size:12px;font-weight:700">82% para Campeão</div></div></div>
+          <div class="bar"><i style="width:82%"></i></div>
+        </div>
+        <div class="lbl">Exercícios (catálogo wger)</div>
+        <div class="card" style="padding:0 0 0 0">
+          <div class="ex"><div><div class="l">Bench Press</div><div class="d">Ultimo: 100 kg · 5×5 · ha 2 dias</div></div><span class="badge diamante">Diamante</span></div>
+          <div class="ex"><div><div class="l">Incline Bench Press</div><div class="d">Ultimo: 70 kg · 3×8</div></div><span class="badge ouro">Ouro</span></div>
+          <div class="ex"><div><div class="l">Dumbbell Bench Press</div><div class="d">Ultimo: 30 kg · 3×10</div></div><span class="badge platina">Platina</span></div>
+          <div class="ex"><div><div class="l">Dips</div><div class="d">peso corporal · 12 reps</div></div><span class="badge prata">Prata</span></div>
+          <div class="ex"><div><div class="l">Push Ups</div><div class="d">peso corporal · 30 reps</div></div><span class="badge ouro">Ouro</span></div>
+        </div>
+      </div>
+      <div class="btn ghost">＋ Adicionar exercício ao catálogo</div>
+    </div>
+    <div class="cap">4 · Parte do corpo → exercícios</div>
+  </div>
+
+  <!-- 5. Detalhe do exercicio -->
+  <div class="cell">
+    <div class="tela"><div class="notch"></div><div class="status"><span>9:41</span><span>▲ ▮▮ 100%</span></div>
+      <div class="nav"><span class="back">‹ Peito</span><span class="t">Bench Press</span></div>
+      <div class="body">
+        <div class="card" style="text-align:center">
+          <div class="lbl">O teu rank neste exercício</div>
+          <div class="rankbig" style="color:var(--diamante)">Diamante</div>
+          <div class="sub" style="font-size:10px;color:var(--mut);margin-top:6px">1RM estimado 112 kg · 1,40× o teu peso corporal</div>
+          <div class="bar" style="margin-top:10px"><i style="width:68%"></i></div>
+          <div class="sub" style="font-size:9.5px;color:var(--mut);margin-top:6px">Faltam 18 kg para Campeão (130 kg)</div>
+        </div>
+        <div class="lbl" style="margin-top:12px">Escada de ranks (limites ao teu peso: 80 kg)</div>
+        <div class="ladder">
+          <div class="step"><span class="dot" style="background:var(--bronze)"></span>Bronze <span style="margin-left:auto;color:var(--mut)">&lt; 50 kg</span></div>
+          <div class="step"><span class="dot" style="background:var(--prata)"></span>Prata <span style="margin-left:auto;color:var(--mut)">50 kg</span></div>
+          <div class="step"><span class="dot" style="background:var(--ouro)"></span>Ouro <span style="margin-left:auto;color:var(--mut)">72 kg</span></div>
+          <div class="step"><span class="dot" style="background:var(--platina)"></span>Platina <span style="margin-left:auto;color:var(--mut)">85 kg</span></div>
+          <div class="step on"><span class="dot" style="background:var(--diamante)"></span><b>Diamante</b> <span style="margin-left:auto;color:var(--diamante)">98 kg ← estás aqui</span></div>
+          <div class="step"><span class="dot" style="background:var(--campeao)"></span>Campeão <span style="margin-left:auto;color:var(--mut)">114 kg</span></div>
+          <div class="step"><span class="dot" style="background:var(--tita)"></span>Titã <span style="margin-left:auto;color:var(--mut)">130 kg</span></div>
+          <div class="step"><span class="dot" style="background:var(--olympia)"></span>Olympia <span style="margin-left:auto;color:var(--mut)">164 kg</span></div>
+        </div>
+      </div>
+      <div class="btn">Registar série</div>
+    </div>
+    <div class="cap">5 · Detalhe + escada de ranks</div>
+  </div>
+
+  <!-- 6. Registar treino -->
+  <div class="cell">
+    <div class="tela"><div class="notch"></div><div class="status"><span>9:41</span><span>▲ ▮▮ 100%</span></div>
+      <div class="nav"><span class="back">Cancelar</span><span class="t">Registar treino</span><span class="back" style="margin-left:auto">Guardar</span></div>
+      <div class="body">
+        <div class="field"><div class="k">Exercício</div><div class="v">Bench Press</div></div>
+        <div class="field"><div class="k">Peso</div><div class="stepper"><span>−</span><div class="v" style="margin:0;flex:1">100 kg</div><span>+</span></div></div>
+        <div class="field"><div class="k">Repetições</div><div class="stepper"><span>−</span><div class="v" style="margin:0;flex:1">5</div><span>+</span></div></div>
+        <div class="field"><div class="k">Séries</div><div class="stepper"><span>−</span><div class="v" style="margin:0;flex:1">5</div><span>+</span></div></div>
+        <div class="card" style="border-color:rgba(127,209,255,.5)">
+          <div class="lbl" style="color:var(--diamante)">1RM estimado (Epley) — ao vivo</div>
+          <div class="row"><div class="rankbig" style="font-size:26px">113 kg</div><span class="badge diamante">Diamante</span></div>
+          <div class="legend">1RM = peso × (1 + reps/30). Guardar actualiza o rank do exercício, da parte do corpo e o rank geral.</div>
+        </div>
+        <div class="lbl" style="margin-top:12px">Histórico deste exercício</div>
+        <div class="card" style="padding:10px">
+          <div class="legend">12/10 · 95 kg × 6 · Ouro<br>08/10 · 90 kg × 6 · Ouro<br>02/10 · 87,5 kg × 5 · Prata</div>
+        </div>
+      </div>
+    </div>
+    <div class="cap">6 · Registar treino (1RM ao vivo)</div>
+  </div>
+
+  <!-- 7. Progresso -->
+  <div class="cell">
+    <div class="tela"><div class="notch"></div><div class="status"><span>9:41</span><span>▲ ▮▮ 100%</span></div>
+      <div class="nav"><span class="t">Progresso</span></div>
+      <div class="body">
+        <div class="card">
+          <div class="lbl">1RM estimado no Bench Press (12 semanas)</div>
+          <div class="chart">
+            <i style="height:38%"><span>86</span></i><i style="height:46%"><span>90</span></i><i style="height:52%"><span>94</span></i>
+            <i style="height:61%"><span>99</span></i><i style="height:66%"><span>102</span></i><i style="height:74%"><span>107</span></i>
+            <i style="height:81%"><span>112</span></i><i style="height:88%"><span>117</span></i>
+          </div>
+          <div class="legend">+31 kg em 12 semanas · de Ouro a Diamante</div>
+        </div>
+        <div class="lbl" style="margin-top:12px">Evolução por parte do corpo</div>
+        <div class="part"><div><div class="nm">Peito</div><div class="bar" style="width:150px"><i style="width:82%"></i></div></div><span class="badge diamante">Diamante</span></div>
+        <div class="part"><div><div class="nm">Costas</div><div class="bar" style="width:150px"><i style="width:64%"></i></div></div><span class="badge ouro">Ouro</span></div>
+        <div class="part"><div><div class="nm">Pernas</div><div class="bar" style="width:150px"><i style="width:57%"></i></div></div><span class="badge platina">Platina</span></div>
+        <div class="part"><div><div class="nm">Core</div><div class="bar" style="width:150px"><i style="width:35%"></i></div></div><span class="badge prata">Prata</span></div>
+        <div class="legend">Rank geral do corpo: média ponderada de todas as partes — <b style="color:var(--platina)">Platina</b>.</div>
+      </div>
+      <div class="tabbar"><div><b>◎</b>Painel</div><div><b>🏋</b>Treinos</div><div class="on"><b>📈</b>Progresso</div><div><b>⚙</b>Perfil</div></div>
+    </div>
+    <div class="cap">7 · Progresso e evolução</div>
+  </div>
+
+  <!-- 8. Escada completa -->
+  <div class="cell">
+    <div class="tela"><div class="notch"></div><div class="status"><span>9:41</span><span>▲ ▮▮ 100%</span></div>
+      <div class="nav"><span class="back">‹ Perfil</span><span class="t">Ranks e conquistas</span></div>
+      <div class="body">
+        <div class="lbl">Os oito ranks</div>
+        <div class="ladder">
+          <div class="step"><span class="dot" style="background:var(--bronze)"></span><b>Bronze</b><span style="margin-left:auto;color:var(--mut)">mais forte que 5%</span></div>
+          <div class="step"><span class="dot" style="background:var(--prata)"></span><b>Prata</b><span style="margin-left:auto;color:var(--mut)">que 5%</span></div>
+          <div class="step"><span class="dot" style="background:var(--ouro)"></span><b>Ouro</b><span style="margin-left:auto;color:var(--mut)">que 20%</span></div>
+          <div class="step"><span class="dot" style="background:var(--platina)"></span><b>Platina</b><span style="margin-left:auto;color:var(--mut)">que 35% (médio)</span></div>
+          <div class="step"><span class="dot" style="background:var(--diamante)"></span><b>Diamante</b><span style="margin-left:auto;color:var(--mut)">que 50%</span></div>
+          <div class="step"><span class="dot" style="background:var(--campeao)"></span><b>Campeão</b><span style="margin-left:auto;color:var(--mut)">que 35% (médio)</span></div>
+          <div class="step"><span class="dot" style="background:var(--tita)"></span><b>Titã</b><span style="margin-left:auto;color:var(--mut)">que 80%</span></div>
+          <div class="step"><span class="dot" style="background:var(--olympia)"></span><b>Olympia</b><span style="margin-left:auto;color:var(--mut)">que 95% (Elite)</span></div>
+        </div>
+        <div class="legend" style="margin-top:10px">Cada exercício, cada parte do corpo e o corpo inteiro têm o seu próprio rank. Os limites vêm dos standards de força por peso corporal do Strength Level; as três posições intermédias (Platina, Campeão) são os pontos médios entre limiares publicados.</div>
+      </div>
+    </div>
+    <div class="cap">8 · Ranks e conquistas</div>
+  </div>
+</div>
+
+</body></html>
