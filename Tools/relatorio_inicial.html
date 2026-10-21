@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt"><head><meta charset="utf-8"><title>GymRank — Relatório Inicial (Projecto Individual)</title>
+<style>
+@page { size: A4; margin: 14mm 15mm 16mm 15mm; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #14213D; font-size: 10.4pt; line-height: 1.48; margin: 0; }
+h1 { font-size: 21pt; line-height: 1.15; margin: 0 0 4px; letter-spacing: -.4px; }
+h2 { font-size: 13.5pt; margin: 22px 0 7px; padding-bottom: 4px; border-bottom: 2px solid #14213D; }
+h3 { font-size: 11.2pt; margin: 14px 0 5px; color: #1D3557; }
+h4 { font-size: 10.4pt; margin: 11px 0 4px; color: #2B4570; }
+p { margin: 0 0 7px; text-align: justify; }
+ul, ol { margin: 0 0 8px 18px; padding: 0; }
+li { margin-bottom: 3px; }
+code, .mono { font-family: 'Cascadia Mono', Consolas, monospace; font-size: 9.2pt; background: #EEF2F7; padding: 1px 4px; border-radius: 3px; }
+table { width: 100%; border-collapse: collapse; margin: 8px 0 12px; font-size: 9.4pt; }
+th, td { border: 1px solid #C9D3E0; padding: 5px 7px; text-align: left; vertical-align: top; }
+th { background: #14213D; color: #fff; font-weight: 600; }
+tbody tr:nth-child(even) { background: #F6F8FB; }
+.capa { border: 1px solid #C9D3E0; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; background: #F8FAFC; }
+.capa .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 18px; font-size: 9.6pt; margin-top: 10px; }
+.capa .meta b { color: #1D3557; }
+.tag { display: inline-block; font-size: 8.6pt; letter-spacing: .7px; text-transform: uppercase; background: #14213D; color: #fff; padding: 2px 8px; border-radius: 99px; margin-bottom: 8px; }
+figure { margin: 12px 0 14px; page-break-inside: avoid; }
+figure img, figure svg { width: 100%; height: auto; display: block; border: 1px solid #C9D3E0; border-radius: 8px; }
+figcaption { font-size: 8.8pt; color: #475569; margin-top: 5px; text-align: left; }
+figcaption b { color: #14213D; }
+.nota { border-left: 3px solid #2563EB; background: #EFF6FF; padding: 8px 11px; margin: 9px 0 12px; font-size: 9.6pt; }
+.nota.honesta { border-color: #D97706; background: #FFFBEB; }
+.rank { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 8.8pt; font-weight: 700; border: 1px solid; }
+.bronze{color:#8A5A22;border-color:#CD7F32;background:#FBF1E6}
+.prata{color:#5B6672;border-color:#BFC7CE;background:#F4F6F8}
+.ouro{color:#8A6D0B;border-color:#F5C518;background:#FEFBEA}
+.platina{color:#1F6E73;border-color:#8FE3E8;background:#EDFBFC}
+.diamante{color:#0B6389;border-color:#7FD1FF;background:#EDF8FF}
+.campeao{color:#5A34A8;border-color:#A46BFF;background:#F3EEFF}
+.tita{color:#A33721;border-color:#FF6B4A;background:#FFF0EC}
+.olympia{color:#8A6A00;border-color:#FFD84D;background:#FFFBEA}
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 10px 0 12px; }
+.kpi div { border: 1px solid #C9D3E0; border-radius: 8px; padding: 7px 9px; background: #F8FAFC; }
+.kpi b { display: block; font-size: 14pt; color: #14213D; line-height: 1.1; }
+.kpi span { font-size: 8.6pt; color: #475569; }
+.pb { page-break-before: always; }
+.avoid { page-break-inside: avoid; }
+footer { margin-top: 18px; border-top: 1px solid #C9D3E0; padding-top: 7px; font-size: 8.6pt; color: #475569; }
+</style></head><body>
+
+<div class="capa">
+  <span class="tag">Projecto individual · 1.º período de avaliação</span>
+  <h1>GymRank — registo de treinos de ginásio<br>com ranks ao estilo de videojogo</h1>
+  <p style="margin-top:6px"><b>Relatório inicial</b> — descrição do tema, abordagem de desenvolvimento, mockups e fluxo de navegação, funcionalidades a desenvolver e serviços externos a integrar.</p>
+  <div class="meta">
+    <div><b>Unidade curricular:</b> Desenvolvimento para Dispositivos Móveis</div>
+    <div><b>Curso:</b> MEI — Mestrado em Engenharia Informática</div>
+    <div><b>Instituição:</b> ESTG — Instituto Politécnico de Leiria</div>
+    <div><b>Ano lectivo:</b> 2026/2027</div>
+    <div><b>Autor:</b> Eduardo Gomes</div>
+    <div><b>N.º de estudante:</b> 2026165029</div>
+    <div><b>Data:</b> 21 de Outubro de 2026</div>
+    <div><b>Plataforma:</b> iOS nativo — Swift / SwiftUI</div>
+    <div><b>Entrega:</b> Relatório inicial (limite 22/Out) · Deliverables 10/Dez</div>
+  </div>
+</div>
+
+<h2>1. Tema e descrição da aplicação</h2>
+<p>A <b>GymRank</b> é uma aplicação iOS para registar treinos de ginásio que transforma a evolução da força num sistema de <b>ranks de videojogo</b>. Em vez de mostrar apenas números, cada levantamento dá ao utilizador uma posição clara — <span class="rank bronze">Bronze</span> <span class="rank prata">Prata</span> <span class="rank ouro">Ouro</span> <span class="rank platina">Platina</span> <span class="rank diamante">Diamante</span> <span class="rank campeao">Campeão</span> <span class="rank tita">Titã</span> <span class="rank olympia">Olympia</span> — e diz-lhe exactamente quanto falta para subir.</p>
+<p>O problema que motiva a aplicação é a <b>perda de aderência</b> ao treino de força: as apps de registo actuais devolvem tabelas de números sem significado imediato para quem não é atleta, e o progresso de meses fica invisível. A GymRank resolve isto com três decisões: (i) um rank por <b>exercício</b>, por <b>parte do corpo</b> e um <b>rank geral</b>, sempre relativo ao peso corporal do utilizador (um praticante de 60 kg não é comparado com um de 110 kg); (ii) um <b>1RM estimado ao vivo</b> a partir de cada série registada; (iii) uma <b>escada de progressão</b> que mostra o próximo objectivo concreto em quilogramas.</p>
+<p>A aplicação <b>pede obrigatoriamente a idade e o peso</b> do utilizador no primeiro arranque. O peso define contra que população o utilizador é comparado (os limites de cada rank são expressos em função do peso corporal) e a idade ajusta esses limites à faixa etária, uma vez que a força máxima de um praticante de 45 anos não deve ser medida com a régua de um de 25.</p>
+
+<h2>2. Abordagem de desenvolvimento</h2>
+<p><b>Desenvolvimento nativo em iOS, com Swift e SwiftUI.</b> O enunciado do projecto individual impõe que a plataforma escolhida seja diferente da usada no projecto de grupo. O projecto de grupo (ErgoTwin) tem como cliente móvel uma <b>aplicação Android nativa em Kotlin com Jetpack Compose</b>; a escolha de <b>iOS nativo</b> cumpre, portanto, a regra e acrescenta competências novas em vez de repetir as do grupo.</p>
+<div class="two">
+<div>
+<h4>Porque SwiftUI (e não Storyboard)</h4>
+<ul>
+<li>A UI é declarativa e o estado da aplicação (perfil, ranks, séries) mapeia directamente em <code>@State</code>/<code>@Observable</code>, que é o modelo natural para ecrãs que reagem a dados.</li>
+<li>Gráficos de progresso, escada de ranks e barras de progresso compõem-se com <code>Shape</code>/<code>Canvas</code>/<code>Chart</code>, sem ficheiros de storyboard a manter.</li>
+<li>Acessibilidade e tema claro/escuro saem quase de graça (Dynamic Type, contraste, <code>preferredColorScheme</code>).</li>
+<li>O acervo aprendido nas fichas anteriores (Storyboard/UIKit) fica como referência para quem preferir o caminho imperativo.</li>
+</ul>
+</div>
+<div>
+<h4>Persistência e arquitectura</h4>
+<ul>
+<li><b>SwiftData</b> para o modelo local (perfil, exercícios, séries, histórico de ranks), com migração versionada.</li>
+<li><b>MVVM</b> leve: <code>RankEngine</code> (puro, testável) separado das vistas.</li>
+<li>Cliente <code>WgerClient</code> com <code>async/await</code>, cache local e modo offline.</li>
+<li><b>Testes</b>: XCTest para o motor de ranks (fixtures com os valores reais dos standards) e XCUITest para os fluxos principais.</li>
+</ul>
+</div>
+</div>
+<div class="nota"><b>Verificação num Mac alugado por CI.</b> O ambiente de desenvolvimento é Windows, pelo que a compilação, os testes e a execução em simulador de iPhone são feitos num <i>runner</i> macOS do GitHub Actions — o mesmo procedimento já usado e demonstrado na ficha 3 (EmojiDictionary), com build, simulador, XCUITest, vídeo e artefactos publicados.</div>
+
+<h2>3. Fluxo de navegação</h2>
+<p>A aplicação organiza-se num <code>TabView</code> com quatro separadores — <b>Painel</b>, <b>Treinos</b>, <b>Progresso</b> e <b>Perfil</b> — e em <code>NavigationStack</code> dentro de cada separador. O registo de treino é apresentado como <i>sheet</i> modal, para não perder o contexto do ecrã onde foi aberto. A figura 1 mostra o fluxo completo.</p>
+
+<figure>
+<svg viewBox="0 0 1240 430" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Arial" font-size="12">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#64748B"/></marker></defs>
+  <g fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5">
+    <rect x="20" y="26" width="180" height="62" rx="12"/>
+    <rect x="240" y="26" width="200" height="62" rx="12"/>
+    <rect x="480" y="26" width="200" height="62" rx="12"/>
+    <rect x="720" y="26" width="200" height="62" rx="12"/>
+    <rect x="960" y="26" width="180" height="62" rx="12"/>
+  </g>
+  <g fill="#0F172A" text-anchor="middle" font-weight="600">
+    <text x="110" y="54">1 · Boas-vindas</text><text x="110" y="72" font-weight="400" font-size="10.5" fill="#475569">primeira abertura</text>
+    <text x="340" y="54">2 · Perfil</text><text x="340" y="72" font-weight="400" font-size="10.5" fill="#475569">idade · peso · altura · sexo</text>
+    <text x="580" y="54">3 · Painel</text><text x="580" y="72" font-weight="400" font-size="10.5" fill="#475569">rank geral + 8 partes</text>
+    <text x="820" y="54">4 · Peito (parte)</text><text x="820" y="72" font-weight="400" font-size="10.5" fill="#475569">lista de exercícios</text>
+    <text x="1050" y="54">5 · Exercício</text><text x="1050" y="72" font-weight="400" font-size="10.5" fill="#475569">detalhe + escada de ranks</text>
+  </g>
+  <g stroke="#64748B" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+    <line x1="200" y1="57" x2="236" y2="57"/><line x1="440" y1="57" x2="476" y2="57"/>
+    <line x1="680" y1="57" x2="716" y2="57"/><line x1="920" y1="57" x2="956" y2="57"/>
+  </g>
+  <g fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.5"><rect x="240" y="196" width="200" height="62" rx="12"/><rect x="720" y="196" width="200" height="62" rx="12"/></g>
+  <g fill="#0F172A" text-anchor="middle" font-weight="600">
+    <text x="340" y="224">6 · Registar treino</text><text x="340" y="242" font-weight="400" font-size="10.5" fill="#475569">peso · reps · séries → 1RM</text>
+    <text x="820" y="224">7 · Progresso</text><text x="820" y="242" font-weight="400" font-size="10.5" fill="#475569">gráficos + evolução de rank</text>
+  </g>
+  <g stroke="#64748B" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+    <path d="M1050 88 L1050 140 L420 140 L420 192"/>
+    <path d="M340 258 L340 320 L580 320 L580 92"/>
+    <path d="M720 226 L660 226"/>
+    <path d="M580 88 L580 140 L820 140 L820 192" stroke-dasharray="4 4"/>
+  </g>
+  <g fill="#475569" font-size="10.5" text-anchor="middle" font-weight="400">
+    <text x="580" y="288">guardar actualiza os ranks e volta ao painel</text>
+    <text x="890" y="132">separador Progresso</text>
+  </g>
+  <g fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"><rect x="240" y="336" width="200" height="52" rx="12"/><rect x="700" y="336" width="240" height="52" rx="12"/></g>
+  <g fill="#0F172A" text-anchor="middle" font-weight="600">
+    <text x="340" y="367">8 · Ranks e conquistas</text><text x="820" y="367">API wger — catálogo de exercícios</text>
+  </g>
+  <g stroke="#64748B" stroke-width="1.4" fill="none" marker-end="url(#ar)">
+    <path d="M340 258 L340 332" stroke-dasharray="4 4"/>
+    <path d="M700 362 L660 362 L660 250 L716 226" stroke-dasharray="4 4"/>
+  </g>
+  <g fill="#475569" font-size="10.5" text-anchor="start"><text x="890" y="404">860 exercícios · 8 categorias · 15 músculos (cache local)</text></g>
+</svg>
+<figcaption><b>Figura 1.</b> Fluxo de navegação. Passos 1 e 2 são obrigatórios no primeiro arranque (sem idade e peso não há cálculo de rank); os passos 3 a 5 são o percurso de consulta; o passo 6 escreve os dados e recalcula a cadeia exercício → parte do corpo → rank geral; 7 e 8 são de acompanhamento.</figcaption>
+</figure>
+
+<h3>Descrição das transições</h3>
+<table>
+<thead><tr><th style="width:30%">Transição</th><th>Tipo</th><th>O que acontece</th></tr></thead>
+<tbody>
+<tr><td>1 → 2</td><td>Push (primeiro arranque)</td><td>O utilizador cria o perfil. Idade e peso são obrigatórios; sem eles o Painel mostra um estado vazio com um convite para completar o perfil.</td></tr>
+<tr><td>2 → 3</td><td>Substituição da raiz</td><td>Guardar o perfil grava em SwiftData e entra no <code>TabView</code>; os limiares de rank são recalculados para o peso e a idade indicados.</td></tr>
+<tr><td>3 → 4</td><td>Push</td><td>Tocar numa parte do corpo abre a lista dos seus exercícios com o rank individual de cada um.</td></tr>
+<tr><td>4 → 5</td><td>Push</td><td>Tocar num exercício abre o detalhe: rank actual, 1RM estimado, escada dos oito ranks com os limites em kg para o peso do utilizador e histórico.</td></tr>
+<tr><td>5 → 6 / 3 → 6</td><td>Sheet modal</td><td>Registar uma série (peso, repetições, número de séries). O 1RM estimado é calculado enquanto o utilizador escreve.</td></tr>
+<tr><td>6 → 3</td><td>Dismiss + recálculo</td><td>Guardar escreve a série, recalcula o rank do exercício, o rank da parte do corpo e o rank geral, e volta ao Painel com a alteração já visível.</td></tr>
+<tr><td>3 → 7 / 4 → 7</td><td>Separador / Push</td><td>O separador Progresso mostra séries temporais de 1RM por exercício e a evolução de rank por parte do corpo.</td></tr>
+<tr><td>Perfil → 8</td><td>Push</td><td>Ranks e conquistas explica a escada completa, os percentis e o que falta para cada objectivo.</td></tr>
+</tbody>
+</table>
+
+<div class="pb"></div>
+<h2>4. Mockups da interface</h2>
+<p>Os oito ecrãs abaixo são protótipos de alta fidelidade do percurso principal, já com a linguagem visual da aplicação: fundo escuro, cor por rank e um elemento gráfico dominante por ecrã (anel de progresso, escada de ranks, gráfico de evolução).</p>
+
+<figure>
+<img src="figuras/mockups.png" alt="Oito mockups da aplicação GymRank">
+<figcaption><b>Figura 2.</b> Mockups dos oito ecrãs principais. <b>1</b> boas-vindas com a escada de ranks; <b>2</b> perfil, onde a idade e o peso são pedidos obrigatoriamente; <b>3</b> painel com o rank geral do corpo e o rank de cada parte; <b>4</b> exercícios de uma parte do corpo, cada um com o seu rank; <b>5</b> detalhe do exercício com a escada dos oito ranks e os limites em kg para o peso do utilizador; <b>6</b> registo de treino com 1RM estimado ao vivo; <b>7</b> progresso e evolução por parte do corpo; <b>8</b> ecrã explicativo dos ranks e conquistas.</figcaption>
+</figure>
+
+<h3>Ecras e objectivo</h3>
+<table>
+<thead><tr><th style="width:4%">#</th><th style="width:22%">Ecrã</th><th>Objectivo e elementos principais</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Boas-vindas</td><td>Comunicar a proposta em três segundos: identidade, promessa ("regista e sobe de rank") e a escada completa visível.</td></tr>
+<tr><td>2</td><td>Perfil (idade e peso)</td><td>Recolher os dados obrigatórios do cálculo: idade, peso, altura e sexo. <i>Steppers</i> numéricos em vez de teclado para evitar erros de unidade.</td></tr>
+<tr><td>3</td><td>Painel</td><td>Rank geral do corpo em anel de progresso, lista das oito partes com o respectivo rank e o objectivo mais próximo ("faltam 18 kg no supino para Diamante").</td></tr>
+<tr><td>4</td><td>Parte do corpo</td><td>Rank agregado da parte, barra de progresso para o rank seguinte e lista de exercícios do catálogo wger com o rank individual e o último registo.</td></tr>
+<tr><td>5</td><td>Detalhe do exercício</td><td>Rank actual, 1RM estimado, factor relativo ao peso corporal (ex.: 1,40×) e a escada dos oito ranks com o valor em kg de cada limite e a marca "estás aqui".</td></tr>
+<tr><td>6</td><td>Registar treino</td><td>Peso, repetições e séries com o 1RM estimado em tempo real e o rank resultante antes de guardar — a decisão de guardar é informada.</td></tr>
+<tr><td>7</td><td>Progresso</td><td>Série temporal do 1RM estimado (12 semanas) e evolução do rank por parte do corpo, com o rank geral no fim.</td></tr>
+<tr><td>8</td><td>Ranks e conquistas</td><td>Explicação dos oito ranks e dos percentis, para que o utilizador saiba o que cada rank significa e não apenas a cor.</td></tr>
+</tbody>
+</table>
+
+<div class="pb"></div>
+<h2>5. Funcionalidades a desenvolver</h2>
+<p>A coluna <b>Prioridade</b> indica o que faz parte do núcleo avaliado em Dezembro (P0), o que acrescenta valor (P1) e o que fica como extensão (P2). As linhas marcadas com ● são exigências explícitas do enunciado do projecto individual.</p>
+<table>
+<thead><tr><th style="width:5%">Id</th><th style="width:28%">Funcionalidade</th><th>Descrição</th><th style="width:9%">Prior.</th><th style="width:6%">Exig.</th></tr></thead>
+<tbody>
+<tr><td>F1</td><td>Perfil do utilizador</td><td>Nome, <b>idade</b>, <b>peso</b>, altura e sexo. Idade e peso são obrigatórios e alimentam o motor de ranks; alterar o peso recalcula todos os ranks.</td><td>P0</td><td>●</td></tr>
+<tr><td>F2</td><td>Catálogo de exercícios (wger)</td><td>Sincronização do catálogo externo com nome, categoria, músculos, equipamento e imagem; cache local para uso offline.</td><td>P0</td><td>●</td></tr>
+<tr><td>F3</td><td>Navegação por parte do corpo</td><td>Oito partes (Peito, Costas, Ombros, Bíceps, Tríceps, Pernas, Gémeos, Core) com os exercícios que lhes pertencem.</td><td>P0</td><td>●</td></tr>
+<tr><td>F4</td><td>Registar treino</td><td>Séries, repetições e peso por exercício, com data; 1RM estimado por Epley. Operações completas de dados: adicionar, listar, ver, editar e remover.</td><td>P0</td><td>●</td></tr>
+<tr><td>F5</td><td>Rank por exercício</td><td>Um dos oito ranks por exercício, com a escada visual e a distância em kg para o rank seguinte.</td><td>P0</td><td>—</td></tr>
+<tr><td>F6</td><td>Rank por parte do corpo</td><td>Agregação dos ranks dos exercícios dessa parte, com barra de progresso para o rank seguinte.</td><td>P0</td><td>—</td></tr>
+<tr><td>F7</td><td>Rank geral do corpo</td><td>Rank único que resume a evolução global, em anel de progresso no Painel.</td><td>P0</td><td>—</td></tr>
+<tr><td>F8</td><td>Histórico de treinos</td><td>Lista cronológica por exercício e por dia, com edição e remoção de registos.</td><td>P0</td><td>●</td></tr>
+<tr><td>F9</td><td>Gráficos de progresso</td><td>Séries temporais de 1RM, volume por sessão e evolução de rank por parte do corpo.</td><td>P1</td><td>—</td></tr>
+<tr><td>F10</td><td>Percentil do utilizador</td><td>"Mais forte que X% dos praticantes do teu sexo, peso e idade", calculado a partir dos limiares publicados.</td><td>P1</td><td>—</td></tr>
+<tr><td>F11</td><td>Conquistas e sequências</td><td>Objectivos desbloqueáveis (primeira subida de rank, 4 semanas seguidas, primeira série no Olympia).</td><td>P1</td><td>—</td></tr>
+<tr><td>F12</td><td>Acessibilidade e tema</td><td>Dynamic Type, VoiceOver nos badges de rank, contraste verificado e tema claro/escuro.</td><td>P1</td><td>—</td></tr>
+<tr><td>F13</td><td>Exportação de dados</td><td>Exportar histórico em CSV/JSON e partilhar um cartão de rank.</td><td>P2</td><td>—</td></tr>
+<tr><td>F14</td><td>Lembretes de treino</td><td>Notificações locais configuráveis por parte do corpo.</td><td>P2</td><td>—</td></tr>
+</tbody>
+</table>
+
+<h2>6. Fontes externas, serviços e APIs</h2>
+<table>
+<thead><tr><th style="width:20%">Fonte</th><th style="width:26%">Uso na aplicação</th><th>Detalhes técnicos</th></tr></thead>
+<tbody>
+<tr>
+<td><b>wger</b><br>REST API v2<br><code>wger.de/api/v2</code></td>
+<td>Catálogo de exercícios: nomes, categoria, músculos principal/secundários, equipamento e imagens dos músculos.</td>
+<td>API pública sem chave de autenticação, paginada, JSON. Endpoints previstos: <code>/exerciseinfo/?language=2</code> (catálogo), <code>/exercisecategory/</code> (8 categorias: Abs, Arms, Back, Calves, Cardio, Chest, Legs, Shoulders), <code>/muscle/</code> (15 músculos com <code>name_en</code>), <code>/equipment/</code>. Consulta real já efectuada: <b>860 exercícios</b> e <b>15 músculos</b>. Licença <b>CC-BY-SA 4.0</b>: a aplicação mostra a atribuição e a fonte de cada exercício.</td>
+</tr>
+<tr>
+<td><b>Strength Level</b><br><code>strengthlevel.com</code></td>
+<td>Referência dos limites de rank: standards de força por exercício, sexo e peso corporal. É a fonte dos valores do calculador, conforme indicado no enunciado.</td>
+<td>Não existe API pública: os standards são usados como <b>dados de referência publicados</b>, convertidos para um conjunto de limiares empacotado com a aplicação e atribuído na secção "Sobre". Edição de 2026 dos standards: <b>287 exercícios</b>, <b>195 513 376 levantamentos</b> de <b>27 893 268</b> utilizadores (dados de 2014–2026). A extracção já efectuada cobre 27 exercícios em kg, com tabelas por sexo e por peso corporal.</td>
+</tr>
+<tr>
+<td><b>SwiftData</b> + <b>FileManager</b></td>
+<td>Persistência local: perfil, exercícios em cache, séries registadas e histórico de ranks.</td>
+<td>Base local versionada e funcional offline; o catálogo é sincronizado quando há rede e servido da cache quando não há. Nenhum dado pessoal sai do dispositivo.</td>
+</tr>
+</tbody>
+</table>
+<div class="nota"><b>Reprodutibilidade da recolha.</b> Os dados de referência são obtidos por um script (<code>Tools/fetch_standards.py</code>) que guarda o resultado em <code>Tools/standards.json</code>; o relatório e a aplicação consomem esse mesmo ficheiro, pelo que os números apresentados na secção 7 podem ser reconferidos a qualquer momento.</div>
+
+<div class="pb"></div>
+<h2>7. Modelo de rank: dados e algoritmo</h2>
+<p>Esta secção é o núcleo técnico da proposta: como se transforma um levantamento em rank. Todos os números abaixo foram extraídos da fonte e podem ser reconferidos a partir de <code>standards.json</code>.</p>
+
+<h3>7.1 Dos cinco níveis publicados para os oito ranks</h3>
+<p>O Strength Level publica, por exercício e por sexo, cinco limiares em kg (Beginner, Novice, Intermediate, Advanced, Elite) que correspondem a "mais forte que 5%, 20%, 50%, 80% e 95%" dos praticantes. A GymRank usa esses cinco valores como âncoras e acrescenta três posições intermédias para obter os oito ranks pedidos:</p>
+<table>
+<thead><tr><th style="width:22%">Rank</th><th style="width:34%">Limite (kg) para o exercício</th><th>Origem do limite</th></tr></thead>
+<tbody>
+<tr><td><span class="rank bronze">Bronze</span></td><td>abaixo do 1.º limite</td><td>—</td></tr>
+<tr><td><span class="rank prata">Prata</span></td><td>≥ Beginner</td><td>limiar publicado (mais forte que 5%)</td></tr>
+<tr><td><span class="rank ouro">Ouro</span></td><td>≥ Novice</td><td>limiar publicado (mais forte que 20%)</td></tr>
+<tr><td><span class="rank platina">Platina</span></td><td>≥ (Novice + Intermediate) / 2</td><td>ponto médio (35%)</td></tr>
+<tr><td><span class="rank diamante">Diamante</span></td><td>≥ Intermediate</td><td>limiar publicado (mais forte que 50%)</td></tr>
+<tr><td><span class="rank campeao">Campeão</span></td><td>≥ (Intermediate + Advanced) / 2</td><td>ponto médio (65%)</td></tr>
+<tr><td><span class="rank tita">Titã</span></td><td>≥ Advanced</td><td>limiar publicado (mais forte que 80%)</td></tr>
+<tr><td><span class="rank olympia">Olympia</span></td><td>≥ Elite</td><td>limiar publicado (mais forte que 95%)</td></tr>
+</tbody>
+</table>
+
+<h3>7.2 Ajuste ao peso corporal</h3>
+<p>Os limiares publicados são valores de referência; o que decide o rank de um utilizador é o limiar <b>para o peso dele</b>. A aplicação guarda, por exercício, o ajuste obtido por regressão em escala logarítmica sobre as tabelas de peso corporal publicadas: <code>limiar(BW) = limiar_ref × (BW / BW_ref)^b</code>. Os valores de <code>b</code> e os dois pesos de referência (72 kg para homens e 68 kg para mulheres, calibrados contra a saída do calculador) fazem parte do pacote de dados.</p>
+<table>
+<thead><tr><th>Exercício</th><th>Parte</th><th>b</th><th>Exemplo: cortes para homem de 80 kg (kg)</th></tr></thead>
+<tbody>
+<tr><td>Bench Press</td><td>Peito</td><td>0,22</td><td>Prata 50 · Ouro 72 · Platina 85 · Diamante 98 · Campeão 114 · Titã 130 · Olympia 164</td></tr>
+<tr><td>Squat</td><td>Pernas</td><td>0,22</td><td>68 · 97 · 116 · 134 · 156 · 177 · 224</td></tr>
+<tr><td>Deadlift</td><td>Costas</td><td>0,92</td><td>88 · 124 · 147 · 170 · 196 · 222 · 279</td></tr>
+<tr><td>Bent Over Row</td><td>Costas</td><td>0,99</td><td>48 · 69 · 83 · 97 · 113 · 129 · 163</td></tr>
+<tr><td>Shoulder Press</td><td>Ombros</td><td>0,22</td><td>30 · 45 · 54 · 63 · 75 · 86 · 110</td></tr>
+<tr><td>Barbell Curl</td><td>Bíceps</td><td>0,20</td><td>19 · 31 · 38 · 46 · 55 · 63 · 84</td></tr>
+<tr><td>Hip Thrust</td><td>Pernas</td><td>0,28</td><td>46 · 88 · 116 · 144 · 179 · 214 · 295</td></tr>
+<tr><td>Machine Calf Raise</td><td>Gémeos</td><td>0,21</td><td>44 · 84 · 112 · 140 · 175 · 210 · 290</td></tr>
+<tr><td>Leg Extension</td><td>Pernas</td><td>0,60*</td><td>21 · 36 · 46 · 57 · 69 · 82 · 110 <i>(mulher, 60 kg)</i></td></tr>
+</tbody>
+</table>
+
+<p style="font-size:9pt;color:#475569">* Exercício sem tabela de peso corporal suficiente na extracção: usa-se o expoente por omissão (0,60). Os expoentes foram ajustados por regressão em log-log sobre as tabelas publicadas; os cortes em kg de cada linha são calculados com o expoente dessa mesma linha.</p>
+<h3>7.3 Do exercício ao corpo inteiro</h3>
+<ul>
+<li><b>Valor de referência:</b> cada série é convertida num 1RM estimado pela fórmula de Epley, <code>1RM = peso × (1 + reps/30)</code>, aplicada apenas a séries com 1 a 12 repetições; acima disso o valor é marcado como indicativo.</li>
+<li><b>Rank do exercício:</b> o melhor 1RM registado no exercício é comparado com os sete cortes calculados para o peso e a idade do utilizador.</li>
+<li><b>Rank da parte do corpo:</b> média contínua dos ranks dos seus exercícios. Cada rank é convertido numa pontuação de 0 (Bronze) a 8 (Olympia), com a fracção dentro do nível; a média é reconvertida em rank. Exercícios sem registos não contam para a média (nem penalizam), mas as partes sem qualquer registo aparecem como "sem dados".</li>
+<li><b>Rank geral do corpo:</b> média das oito partes com peso igual, sobre as partes com dados.</li>
+<li><b>Idade:</b> os cortes são multiplicados por um coeficiente por faixa etária (18–24: 0,95 · 25–34: 1,00 · 35–44: 0,95 · 45–54: 0,88 · 55–64: 0,78 · 65+: 0,65). É um modelo da aplicação, declarado como tal, para não comparar um praticante de 50 anos com a régua de um de 25.</li>
+</ul>
+
+<h4>Exemplo verificado</h4>
+<p>Homem, 80 kg, 24 anos, supino com 105 kg: os cortes são 50 · 72 · 85 · 98 · 114 · 130 · 164 kg; com o coeficiente de idade 0,95 aplicam-se 48 · 68 · 81 · 93 · 108 · 124 · 156, pelo que 105 kg cai no intervalo de <b>Diamante</b> (93–108 kg). Faltam-lhe 3 kg de 1RM para <b>Campeão</b>.</p>
+
+<div class="nota honesta"><b>Limite honesto desta versão do modelo.</b> As tabelas por peso corporal e por faixa de idade da fonte são geradas dinamicamente na página e não estão no HTML servido: a extracção directa só devolveu a tabela feminina por peso. Por isso o ajuste masculino por peso usa o mesmo expoente ajustado na tabela disponível, ancorado nos valores de comunidade masculinos. A verificação contra o calculador de referência (homem, supino, 72 kg) dá, nos cinco limiares publicados, 49 · 70 · 96 · 127 · 160 kg contra 48 · 66 · 88 · 112 · 138 kg do calculador — <b>desvio médio de 10,5 kg</b>, com boa concordância nos limiares baixos e a divergir nos mais altos. Na fase de implementação esta lacuna fecha-se capturando as tabelas completas por sexo, peso e idade; até lá o valor-modelo está documentado e é reprodutível.</p>
+
+<div class="pb"></div>
+<h2>8. Plano de desenvolvimento e verificação</h2>
+<table>
+<thead><tr><th style="width:16%">Período</th><th style="width:38%">Marco</th><th>Entrega verificável</th></tr></thead>
+<tbody>
+<tr><td>22–31 Out</td><td>Projecto SwiftUI, modelo SwiftData e perfil (idade/peso)</td><td>App corre no simulador com perfil persistido; testes unitários do modelo a passar em CI.</td></tr>
+<tr><td>1–14 Nov</td><td>Cliente wger + catálogo offline e navegação por partes do corpo</td><td>Catálogo sincronizado e servido da cache; navegação Painel → parte → exercício coberta por XCUITest.</td></tr>
+<tr><td>15–30 Nov</td><td>Motor de ranks (exercício, parte, geral) e registo de treino</td><td>Bateria de testes com fixtures reais dos standards; 1RM ao vivo; CRUD completo do histórico.</td></tr>
+<tr><td>1–8 Dez</td><td>Progresso gráfico, conquistas, acessibilidade e polimento</td><td>Gráficos, tema claro/escuro, Dynamic Type, VoiceOver; relatório de qualidade de código.</td></tr>
+<tr><td>9–10 Dez</td><td>Submissão</td><td>Código-fonte, README, slides, vídeo de demonstração de 2–3 minutos.</td></tr>
+</tbody>
+</table>
+<h3>Como cada peça é verificada</h3>
+<ul>
+<li><b>Motor de ranks (XCTest):</b> casos com valores-limite exactos (49, 50, 72, 164 kg no supino) e com pesos corporais e idades diferentes, incluindo os pontos de viragem de rank.</li>
+<li><b>Interface (XCUITest):</b> fluxos de criar perfil, registar treino, subir de rank e apagar um registo, executados num simulador de iPhone — o mesmo pipeline já usado na ficha 3 (build + simulador + testes + vídeo em GitHub Actions).</li>
+<li><b>Integração (teste com rede e sem rede):</b> catálogo sincronizado com a API e arranque offline a servir da cache.</li>
+<li><b>Coerência dos dados:</b> um verificador confirma que todos os limiares estão ordenados e que os oito ranks são atingíveis em todos os exercícios com dados.</li>
+</ul>
+<h3>Riscos identificados</h3>
+<table>
+<thead><tr><th style="width:30%">Risco</th><th style="width:10%">Impacto</th><th>Mitigação</th></tr></thead>
+<tbody>
+<tr><td>Tabelas completas da fonte não acessíveis por extracção</td><td>Médio</td><td>Pacote de dados empacotado e versionado; captura das tabelas por peso/idade na fase de implementação; modelo alternativo documentado.</td></tr>
+<tr><td>Indisponibilidade da API wger</td><td>Médio</td><td>Cache local obrigatória e sincronização incremental; o catálogo mínimo de arranque fica embutido na aplicação.</td></tr>
+<tr><td>Sem Mac local para compilar</td><td>Médio</td><td>CI macOS (GitHub Actions), já provado nesta unidade curricular; verificação de compilação a cada push.</td></tr>
+<tr><td>Licença dos dados de referência</td><td>Baixo</td><td>Atribuição visível na aplicação e no README; uso não comercial e apenas dos limiares derivados.</td></tr>
+</tbody>
+</table>
+
+<h3>Mapeamento aos critérios de avaliação</h3>
+<table>
+<thead><tr><th style="width:26%">Critério</th><th style="width:8%">Peso</th><th>Como a proposta responde</th></tr></thead>
+<tbody>
+<tr><td>Funcionalidade</td><td>30%</td><td>CRUD do registo de treinos, três níveis de rank, persistência offline e integração com API externa (F1–F8).</td></tr>
+<tr><td>UI/UX</td><td>20%</td><td>Linguagem visual por rank, escada de progressão com objectivo em kg, painel com anel de progresso, tema escuro e acessibilidade (F12).</td></tr>
+<tr><td>Qualidade de código</td><td>20%</td><td>Motor de ranks isolado e testável, MVVM leve, cliente de rede com <code>async/await</code> e camada de cache, testes unitários e de interface.</td></tr>
+<tr><td>Inovação</td><td>15%</td><td>Gamificação da força em três níveis com comparação relativa a peso e idade, e cálculo do 1RM ao vivo durante o registo.</td></tr>
+<tr><td>Documentação</td><td>15%</td><td>Este relatório inicial, README com instruções de instalação e execução, e vídeo de demonstração.</td></tr>
+</tbody>
+</table>
+
+<h2>9. Referências</h2>
+<ol>
+<li>Strength Level, <i>Strength Standards (2026 edition) — Bench Press, Squat, Deadlift, Shoulder Press, Barbell Curl e outros</i>, strengthlevel.com/strength-standards (consultado a 21 de Outubro de 2026). Base: 195 513 376 levantamentos de 27 893 268 utilizadores; 287 exercícios.</li>
+<li>wger, <i>REST API v2 — exerciseinfo, exercisecategory, muscle, equipment</i>, wger.de/api/v2 (consultado a 21 de Outubro de 2026). Dados sob licença CC-BY-SA 4.0.</li>
+<li>Epley, B. (1985). <i>Poundage Chart</i>. Boyd Epley Workout. Fórmula de estimativa do 1RM usada na aplicação.</li>
+<li>Apple Inc. <i>SwiftUI, SwiftData e Human Interface Guidelines</i>, developer.apple.com/documentation (2026).</li>
+<li>Apple Inc. <i>Testing with XCTest e XCUITest</i>, developer.apple.com/documentation/xctest (2026).</li>
+<li>American College of Sports Medicine, <i>ACSM's Guidelines for Exercise Testing and Prescription</i> — referência para a variação da capacidade de força com a idade, usada como enquadramento do coeficiente por faixa etária.</li>
+</ol>
+
+<footer>
+GymRank — Relatório inicial do projecto individual · Desenvolvimento para Dispositivos Móveis · MEI, ESTG/IPLeiria · 21 de Outubro de 2026 · Autor: Eduardo Gomes. Dados de referência: Strength Level (2026); catálogo: wger (CC-BY-SA 4.0).
+</footer>
+</body></html>
