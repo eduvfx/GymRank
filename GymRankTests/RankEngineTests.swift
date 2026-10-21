@@ -57,6 +57,7 @@ final class RankEngineTests: XCTestCase {
         // limites de rank publicados (49, 70, 96, 127, 160 kg) escalados por peso e idade:
         // factor = (80/72)^0,222 × 0,95 ≈ 0,9725
         XCTAssertEqual(cuts[0], 0, accuracy: 0.01)
+        XCTAssertEqual(cuts.first ?? -1, 0, accuracy: 0.01)
         XCTAssertEqual(cuts[3], 47.7, accuracy: 0.6)     // Prata 1  (= Beginner)
         XCTAssertEqual(cuts[6], 68.1, accuracy: 0.6)     // Ouro 1   (= Novice)
         XCTAssertEqual(cuts[12], 93.4, accuracy: 0.6)    // Diamante 1 (= Intermediate)
@@ -95,15 +96,15 @@ final class RankEngineTests: XCTestCase {
         let p1 = t.olympiaPoints(forUMRM: entrada)
         let p2 = t.olympiaPoints(forUMRM: entrada * 2)
         let p3 = t.olympiaPoints(forUMRM: entrada * 4)
-        XCTAssertEqual(p1, 1000, accuracy: 60)
-        XCTAssertEqual(p2, 2000, accuracy: 60)
-        XCTAssertEqual(p3, 4000, accuracy: 60)
+        XCTAssertEqual(Double(p1), 1000, accuracy: 60)
+        XCTAssertEqual(Double(p2), 2000, accuracy: 60)
+        XCTAssertEqual(Double(p3), 4000, accuracy: 60)
         XCTAssertGreaterThan(p3, p2)
         XCTAssertGreaterThan(p2, p1)
         // a pontuação agregada cresce sem tecto
         XCTAssertGreaterThan(t.score(forUMRM: entrada * 4), t.score(forUMRM: entrada * 2))
         XCTAssertGreaterThan(t.score(forUMRM: entrada * 2), 21.0)
-        XCTAssertEqual(t.pontosParaProximoMarco(value: entrada), 1000, accuracy: 80)
+        XCTAssertEqual(t.pontosParaProximoMarco(value: entrada), 1000)
     }
 
     // MARK: - Epley, idade e sexo
