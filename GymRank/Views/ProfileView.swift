@@ -64,7 +64,7 @@ struct ProfileView: View {
                                 Task { await sincronizar() }
                             } label: {
                                 HStack {
-                                    if aSincronizar { ProgressView().tint(.white) }
+                                    if aSincronizar { SwiftUI.ProgressView().tint(.white) }
                                     Text(aSincronizar ? "A sincronizar…" : "Sincronizar com o wger")
                                         .font(.system(size: 14, weight: .semibold))
                                 }

@@ -61,7 +61,7 @@ struct MainTabView: View {
             .tabItem { Label("Treinos", systemImage: "dumbbell.fill") }
 
             NavigationStack {
-                ProgressView(profile: profile)
+                ProgressTabView(profile: profile)
             }
             .tabItem { Label("Progresso", systemImage: "chart.bar.fill") }
 

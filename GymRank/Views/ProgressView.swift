@@ -1,5 +1,5 @@
 //
-//  ProgressView.swift
+//  ProgressView.swift (ProgressTabView tem este nome para não colidir com a ProgressView da SwiftUI)
 //  GymRank
 //
 //  Progresso: evolução do 1RM por exercício e das partes do corpo.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct ProgressView: View {
+struct ProgressTabView: View {
     let profile: UserProfile
 
     @Query private var exercises: [Exercise]
