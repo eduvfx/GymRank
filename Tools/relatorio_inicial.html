@@ -63,7 +63,7 @@ footer { margin-top: 18px; border-top: 1px solid #C9D3E0; padding-top: 7px; font
 </div>
 
 <h2>1. Tema e descrição da aplicação</h2>
-<p>A <b>GymRank</b> é uma aplicação iOS para registar treinos de ginásio que transforma a evolução da força num sistema de <b>ranks de videojogo</b>. Em vez de mostrar apenas números, cada levantamento dá ao utilizador uma posição clara — <span class="rank bronze">Bronze</span> <span class="rank prata">Prata</span> <span class="rank ouro">Ouro</span> <span class="rank platina">Platina</span> <span class="rank diamante">Diamante</span> <span class="rank campeao">Campeão</span> <span class="rank tita">Titã</span> <span class="rank olympia">Olympia</span> — e diz-lhe exactamente quanto falta para subir.</p>
+<p>A <b>GymRank</b> é uma aplicação iOS para registar treinos de ginásio que transforma a evolução da força num sistema de <b>ranks de videojogo</b> com <b>22 níveis</b>: sete ranks com três divisões cada (Bronze 1 a 3, …, Titã 1 a 3) e o <b>Olympia</b> como nível único, com pontuação infinita. Em vez de mostrar apenas números, cada levantamento dá ao utilizador uma posição clara — <span class="rank bronze">Bronze</span> <span class="rank prata">Prata</span> <span class="rank ouro">Ouro</span> <span class="rank platina">Platina</span> <span class="rank diamante">Diamante</span> <span class="rank campeao">Campeão</span> <span class="rank tita">Titã</span> <span class="rank olympia">Olympia</span> — e diz-lhe exactamente quanto falta para subir.</p>
 <p>O problema que motiva a aplicação é a <b>perda de aderência</b> ao treino de força: as apps de registo actuais devolvem tabelas de números sem significado imediato para quem não é atleta, e o progresso de meses fica invisível. A GymRank resolve isto com três decisões: (i) um rank por <b>exercício</b>, por <b>parte do corpo</b> e um <b>rank geral</b>, sempre relativo ao peso corporal do utilizador (um praticante de 60 kg não é comparado com um de 110 kg); (ii) um <b>1RM estimado ao vivo</b> a partir de cada série registada; (iii) uma <b>escada de progressão</b> que mostra o próximo objectivo concreto em quilogramas.</p>
 <p>A aplicação <b>pede obrigatoriamente a idade e o peso</b> do utilizador no primeiro arranque. O peso define contra que população o utilizador é comparado (os limites de cada rank são expressos em função do peso corporal) e a idade ajusta esses limites à faixa etária, uma vez que a força máxima de um praticante de 45 anos não deve ser medida com a régua de um de 25.</p>
 
@@ -150,7 +150,7 @@ footer { margin-top: 18px; border-top: 1px solid #C9D3E0; padding-top: 7px; font
 <tr><td>1 → 2</td><td>Push (primeiro arranque)</td><td>O utilizador cria o perfil. Idade e peso são obrigatórios; sem eles o Painel mostra um estado vazio com um convite para completar o perfil.</td></tr>
 <tr><td>2 → 3</td><td>Substituição da raiz</td><td>Guardar o perfil grava em SwiftData e entra no <code>TabView</code>; os limiares de rank são recalculados para o peso e a idade indicados.</td></tr>
 <tr><td>3 → 4</td><td>Push</td><td>Tocar numa parte do corpo abre a lista dos seus exercícios com o rank individual de cada um.</td></tr>
-<tr><td>4 → 5</td><td>Push</td><td>Tocar num exercício abre o detalhe: rank actual, 1RM estimado, escada dos oito ranks com os limites em kg para o peso do utilizador e histórico.</td></tr>
+<tr><td>4 → 5</td><td>Push</td><td>Tocar num exercício abre o detalhe: posição actual, 1RM estimado e a escada dos 22 níveis com o limite em kg de cada divisão para o peso do utilizador, mais o histórico.</td></tr>
 <tr><td>5 → 6 / 3 → 6</td><td>Sheet modal</td><td>Registar uma série (peso, repetições, número de séries). O 1RM estimado é calculado enquanto o utilizador escreve.</td></tr>
 <tr><td>6 → 3</td><td>Dismiss + recálculo</td><td>Guardar escreve a série, recalcula o rank do exercício, o rank da parte do corpo e o rank geral, e volta ao Painel com a alteração já visível.</td></tr>
 <tr><td>3 → 7 / 4 → 7</td><td>Separador / Push</td><td>O separador Progresso mostra séries temporais de 1RM por exercício e a evolução de rank por parte do corpo.</td></tr>
@@ -164,7 +164,7 @@ footer { margin-top: 18px; border-top: 1px solid #C9D3E0; padding-top: 7px; font
 
 <figure>
 <img src="figuras/mockups.png" alt="Oito mockups da aplicação GymRank">
-<figcaption><b>Figura 2.</b> Mockups dos oito ecrãs principais. <b>1</b> boas-vindas com a escada de ranks; <b>2</b> perfil, onde a idade e o peso são pedidos obrigatoriamente; <b>3</b> painel com o rank geral do corpo e o rank de cada parte; <b>4</b> exercícios de uma parte do corpo, cada um com o seu rank; <b>5</b> detalhe do exercício com a escada dos oito ranks e os limites em kg para o peso do utilizador; <b>6</b> registo de treino com 1RM estimado ao vivo; <b>7</b> progresso e evolução por parte do corpo; <b>8</b> ecrã explicativo dos ranks e conquistas.</figcaption>
+<figcaption><b>Figura 2.</b> Mockups dos oito ecrãs principais. <b>1</b> boas-vindas com a escada de ranks; <b>2</b> perfil, onde a idade e o peso são pedidos obrigatoriamente; <b>3</b> painel com o rank geral do corpo e o rank de cada parte; <b>4</b> exercícios de uma parte do corpo, cada um com o seu rank; <b>5</b> detalhe do exercício com a escada dos 22 níveis (sete ranks × três divisões + Olympia) e os limites em kg para o peso do utilizador; <b>6</b> registo de treino com 1RM estimado ao vivo; <b>7</b> progresso e evolução por parte do corpo; <b>8</b> ecrã explicativo dos ranks e conquistas.</figcaption>
 </figure>
 
 <h3>Ecras e objectivo</h3>
@@ -175,10 +175,10 @@ footer { margin-top: 18px; border-top: 1px solid #C9D3E0; padding-top: 7px; font
 <tr><td>2</td><td>Perfil (idade e peso)</td><td>Recolher os dados obrigatórios do cálculo: idade, peso, altura e sexo. <i>Steppers</i> numéricos em vez de teclado para evitar erros de unidade.</td></tr>
 <tr><td>3</td><td>Painel</td><td>Rank geral do corpo em anel de progresso, lista das oito partes com o respectivo rank e o objectivo mais próximo ("faltam 18 kg no supino para Diamante").</td></tr>
 <tr><td>4</td><td>Parte do corpo</td><td>Rank agregado da parte, barra de progresso para o rank seguinte e lista de exercícios do catálogo wger com o rank individual e o último registo.</td></tr>
-<tr><td>5</td><td>Detalhe do exercício</td><td>Rank actual, 1RM estimado, factor relativo ao peso corporal (ex.: 1,40×) e a escada dos oito ranks com o valor em kg de cada limite e a marca "estás aqui".</td></tr>
+<tr><td>5</td><td>Detalhe do exercício</td><td>Posição actual (ex.: "Diamante 3"), 1RM estimado, factor relativo ao peso corporal e a escada dos 22 níveis, com o valor em kg de cada divisão e a marca "estás aqui"; no Olympia mostra os pontos acumulados.</td></tr>
 <tr><td>6</td><td>Registar treino</td><td>Peso, repetições e séries com o 1RM estimado em tempo real e o rank resultante antes de guardar — a decisão de guardar é informada.</td></tr>
 <tr><td>7</td><td>Progresso</td><td>Série temporal do 1RM estimado (12 semanas) e evolução do rank por parte do corpo, com o rank geral no fim.</td></tr>
-<tr><td>8</td><td>Ranks e conquistas</td><td>Explicação dos oito ranks e dos percentis, para que o utilizador saiba o que cada rank significa e não apenas a cor.</td></tr>
+<tr><td>8</td><td>Ranks e conquistas</td><td>Explicação dos 22 níveis: sete ranks com três divisões, o Olympia com pontos infinitos e os percentis em que os limites se baseiam.</td></tr>
 </tbody>
 </table>
 
@@ -192,8 +192,8 @@ footer { margin-top: 18px; border-top: 1px solid #C9D3E0; padding-top: 7px; font
 <tr><td>F2</td><td>Catálogo de exercícios (wger)</td><td>Sincronização do catálogo externo com nome, categoria, músculos, equipamento e imagem; cache local para uso offline.</td><td>P0</td><td>●</td></tr>
 <tr><td>F3</td><td>Navegação por parte do corpo</td><td>Oito partes (Peito, Costas, Ombros, Bíceps, Tríceps, Pernas, Gémeos, Core) com os exercícios que lhes pertencem.</td><td>P0</td><td>●</td></tr>
 <tr><td>F4</td><td>Registar treino</td><td>Séries, repetições e peso por exercício, com data; 1RM estimado por Epley. Operações completas de dados: adicionar, listar, ver, editar e remover.</td><td>P0</td><td>●</td></tr>
-<tr><td>F5</td><td>Rank por exercício</td><td>Um dos oito ranks por exercício, com a escada visual e a distância em kg para o rank seguinte.</td><td>P0</td><td>—</td></tr>
-<tr><td>F6</td><td>Rank por parte do corpo</td><td>Agregação dos ranks dos exercícios dessa parte, com barra de progresso para o rank seguinte.</td><td>P0</td><td>—</td></tr>
+<tr><td>F5</td><td>Rank por exercício</td><td>Uma das 22 posições por exercício (ex.: "Diamante 3"), com a escada visual, a distância em kg para a divisão seguinte e, no Olympia, os pontos acumulados.</td><td>P0</td><td>—</td></tr>
+<tr><td>F6</td><td>Rank por parte do corpo</td><td>Agregação das posições dos exercícios dessa parte, com barra de progresso para a divisão seguinte.</td><td>P0</td><td>—</td></tr>
 <tr><td>F7</td><td>Rank geral do corpo</td><td>Rank único que resume a evolução global, em anel de progresso no Painel.</td><td>P0</td><td>—</td></tr>
 <tr><td>F8</td><td>Histórico de treinos</td><td>Lista cronológica por exercício e por dia, com edição e remoção de registos.</td><td>P0</td><td>●</td></tr>
 <tr><td>F9</td><td>Gráficos de progresso</td><td>Séries temporais de 1RM, volume por sessão e evolução de rank por parte do corpo.</td><td>P1</td><td>—</td></tr>
@@ -232,26 +232,28 @@ footer { margin-top: 18px; border-top: 1px solid #C9D3E0; padding-top: 7px; font
 <h2>7. Modelo de rank: dados e algoritmo</h2>
 <p>Esta secção é o núcleo técnico da proposta: como se transforma um levantamento em rank. Todos os números abaixo foram extraídos da fonte e podem ser reconferidos a partir de <code>standards.json</code>.</p>
 
-<h3>7.1 Dos cinco níveis publicados para os oito ranks</h3>
-<p>O Strength Level publica, por exercício e por sexo, cinco limiares em kg (Beginner, Novice, Intermediate, Advanced, Elite) que correspondem a "mais forte que 5%, 20%, 50%, 80% e 95%" dos praticantes. A GymRank usa esses cinco valores como âncoras e acrescenta três posições intermédias para obter os oito ranks pedidos:</p>
+<h3>7.1 Dos cinco limiares publicados para os 22 níveis</h3>
+<p>O Strength Level publica, por exercício e por sexo, cinco limiares em kg (Beginner, Novice, Intermediate, Advanced, Elite) que correspondem a "mais forte que 5%, 20%, 50%, 80% e 95%" dos praticantes. A GymRank usa esses cinco valores como âncoras, acrescenta as duas posições intermédias (Platina e Campeão) e divide cada um dos sete primeiros ranks em <b>três divisões iguais</b>, deixando o Olympia como nível único e pontuado:</p>
 <table>
-<thead><tr><th style="width:22%">Rank</th><th style="width:34%">Limite (kg) para o exercício</th><th>Origem do limite</th></tr></thead>
+<thead><tr><th style="width:24%">Nível</th><th style="width:30%">Limite (kg) no exercício</th><th>Origem do limite</th></tr></thead>
 <tbody>
-<tr><td><span class="rank bronze">Bronze</span></td><td>abaixo do 1.º limite</td><td>—</td></tr>
-<tr><td><span class="rank prata">Prata</span></td><td>≥ Beginner</td><td>limiar publicado (mais forte que 5%)</td></tr>
-<tr><td><span class="rank ouro">Ouro</span></td><td>≥ Novice</td><td>limiar publicado (mais forte que 20%)</td></tr>
-<tr><td><span class="rank platina">Platina</span></td><td>≥ (Novice + Intermediate) / 2</td><td>ponto médio (35%)</td></tr>
-<tr><td><span class="rank diamante">Diamante</span></td><td>≥ Intermediate</td><td>limiar publicado (mais forte que 50%)</td></tr>
-<tr><td><span class="rank campeao">Campeão</span></td><td>≥ (Intermediate + Advanced) / 2</td><td>ponto médio (65%)</td></tr>
-<tr><td><span class="rank tita">Titã</span></td><td>≥ Advanced</td><td>limiar publicado (mais forte que 80%)</td></tr>
-<tr><td><span class="rank olympia">Olympia</span></td><td>≥ Elite</td><td>limiar publicado (mais forte que 95%)</td></tr>
+<tr><td><span class="rank bronze">Bronze 1-3</span></td><td>abaixo do 1.º limiar</td><td>intervalo dividido em três partes iguais</td></tr>
+<tr><td><span class="rank prata">Prata 1-3</span></td><td>≥ Beginner</td><td>limiar publicado (mais forte que 5%), banda dividida em três</td></tr>
+<tr><td><span class="rank ouro">Ouro 1-3</span></td><td>≥ Novice</td><td>limiar publicado (mais forte que 20%)</td></tr>
+<tr><td><span class="rank platina">Platina 1-3</span></td><td>≥ (Novice + Intermediate) / 2</td><td>ponto médio (35%)</td></tr>
+<tr><td><span class="rank diamante">Diamante 1-3</span></td><td>≥ Intermediate</td><td>limiar publicado (mais forte que 50%)</td></tr>
+<tr><td><span class="rank campeao">Campeão 1-3</span></td><td>≥ (Intermediate + Advanced) / 2</td><td>ponto médio (65%)</td></tr>
+<tr><td><span class="rank tita">Titã 1-3</span></td><td>≥ Advanced</td><td>limiar publicado (mais forte que 80%)</td></tr>
+<tr><td><span class="rank olympia">Olympia</span></td><td>≥ Elite</td><td>limiar publicado (mais forte que 95%) — <b>nível único, com pontos infinitos</b></td></tr>
 </tbody>
 </table>
+
+<p><b>O Olympia não tem divisões.</b> A partir do limiar de Elite o atleta entra no Olympia com <b>1000 pontos</b> e ganha mais 1000 pontos por cada duplicação do 1RM em relação a esse limiar (<code>pontos = 1000 × 1RM / limiar_de_Elite</code>). Não existe tecto: o nível é único, mas a pontuação cresce sem limite — é o que permite distinguir dois atletas que já estão ambos no Olympia.</p>
 
 <h3>7.2 Ajuste ao peso corporal</h3>
 <p>Os limiares publicados são valores de referência; o que decide o rank de um utilizador é o limiar <b>para o peso dele</b>. A aplicação guarda, por exercício, o ajuste obtido por regressão em escala logarítmica sobre as tabelas de peso corporal publicadas: <code>limiar(BW) = limiar_ref × (BW / BW_ref)^b</code>. Os valores de <code>b</code> e os dois pesos de referência (72 kg para homens e 68 kg para mulheres, calibrados contra a saída do calculador) fazem parte do pacote de dados.</p>
 <table>
-<thead><tr><th>Exercício</th><th>Parte</th><th>b</th><th>Exemplo: cortes para homem de 80 kg (kg)</th></tr></thead>
+<thead><tr><th>Exercício</th><th>Parte</th><th>b</th><th>Início de cada rank a 80 kg (sem coeficiente de idade; cada banda vale três divisões)</th></tr></thead>
 <tbody>
 <tr><td>Bench Press</td><td>Peito</td><td>0,22</td><td>Prata 50 · Ouro 72 · Platina 85 · Diamante 98 · Campeão 114 · Titã 130 · Olympia 164</td></tr>
 <tr><td>Squat</td><td>Pernas</td><td>0,22</td><td>68 · 97 · 116 · 134 · 156 · 177 · 224</td></tr>
@@ -269,14 +271,15 @@ footer { margin-top: 18px; border-top: 1px solid #C9D3E0; padding-top: 7px; font
 <h3>7.3 Do exercício ao corpo inteiro</h3>
 <ul>
 <li><b>Valor de referência:</b> cada série é convertida num 1RM estimado pela fórmula de Epley, <code>1RM = peso × (1 + reps/30)</code>, aplicada apenas a séries com 1 a 12 repetições; acima disso o valor é marcado como indicativo.</li>
-<li><b>Rank do exercício:</b> o melhor 1RM registado no exercício é comparado com os sete cortes calculados para o peso e a idade do utilizador.</li>
-<li><b>Rank da parte do corpo:</b> média contínua dos ranks dos seus exercícios. Cada rank é convertido numa pontuação de 0 (Bronze) a 8 (Olympia), com a fracção dentro do nível; a média é reconvertida em rank. Exercícios sem registos não contam para a média (nem penalizam), mas as partes sem qualquer registo aparecem como "sem dados".</li>
+<li><b>Posição no exercício:</b> o melhor 1RM registado é comparado com os 21 cortes das divisões (mais o limiar de Elite, que abre o Olympia) calculados para o peso e a idade do utilizador.</li>
+<li><b>Rank da parte do corpo:</b> média contínua das posições dos seus exercícios. Cada posição vale uma pontuação de 0 (Bronze 1) a 21 (Olympia) mais a fracção dentro da divisão; no Olympia a pontuação cresce com os pontos. A média é reconvertida em posição. Exercícios sem registos não penalizam a média, mas as partes sem qualquer registo aparecem como "sem dados".</li>
 <li><b>Rank geral do corpo:</b> média das oito partes com peso igual, sobre as partes com dados.</li>
 <li><b>Idade:</b> os cortes são multiplicados por um coeficiente por faixa etária (18–24: 0,95 · 25–34: 1,00 · 35–44: 0,95 · 45–54: 0,88 · 55–64: 0,78 · 65+: 0,65). É um modelo da aplicação, declarado como tal, para não comparar um praticante de 50 anos com a régua de um de 25.</li>
 </ul>
 
 <h4>Exemplo verificado</h4>
-<p>Homem, 80 kg, 24 anos, supino com 105 kg: os cortes são 50 · 72 · 85 · 98 · 114 · 130 · 164 kg; com o coeficiente de idade 0,95 aplicam-se 48 · 68 · 81 · 93 · 108 · 124 · 156, pelo que 105 kg cai no intervalo de <b>Diamante</b> (93–108 kg). Faltam-lhe 3 kg de 1RM para <b>Campeão</b>.</p>
+<p>Homem, 80 kg, 24 anos, supino. Os sete limites de rank, já com o ajuste de peso e o coeficiente de idade, são <b>47,7 · 68,1 · 80,7 · 93,4 · 108,4 · 123,5 · 155,6 kg</b> (Prata 1, Ouro 1, Platina 1, Diamante 1, Campeão 1, Titã 1 e Olympia). Dividindo cada banda em três, os 21 cortes das divisões começam em 0 · 15,9 · 31,8 (Bronze) e terminam em 134,2 · 144,9 (Titã 2 e 3).</p>
+<p>Com <b>105 kg</b> o atleta está em <b>Diamante 3</b> (103,4–108,4 kg) e precisa de <b>3,4 kg</b> para entrar em <b>Campeão 1</b>. Com 122,5 kg já estaria em <b>Campeão 3</b> (118,5–123,5 kg); a partir de 155,6 kg entra no <b>Olympia</b> com 1000 pontos.</p>
 
 <div class="nota honesta"><b>Limite honesto desta versão do modelo.</b> As tabelas por peso corporal e por faixa de idade da fonte são geradas dinamicamente na página e não estão no HTML servido: a extracção directa só devolveu a tabela feminina por peso. Por isso o ajuste masculino por peso usa o mesmo expoente ajustado na tabela disponível, ancorado nos valores de comunidade masculinos. A verificação contra o calculador de referência (homem, supino, 72 kg) dá, nos cinco limiares publicados, 49 · 70 · 96 · 127 · 160 kg contra 48 · 66 · 88 · 112 · 138 kg do calculador — <b>desvio médio de 10,5 kg</b>, com boa concordância nos limiares baixos e a divergir nos mais altos. Na fase de implementação esta lacuna fecha-se capturando as tabelas completas por sexo, peso e idade; até lá o valor-modelo está documentado e é reprodutível.</p>
 

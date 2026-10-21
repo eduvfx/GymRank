@@ -167,13 +167,12 @@ w('/* Begin PBXGroup section */')
 w(f'\t\t{MAIN_GROUP} = {{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n\t\t\t\t{APP_GROUP} /* GymRank */,\n\t\t\t\t{TESTS_GROUP} /* GymRankTests */,\n\t\t\t\t{UITESTS_GROUP} /* GymRankUITests */,\n\t\t\t\t{PRODUCTS_GROUP} /* Products */,\n\t\t\t);\n\t\t\tsourceTree = "<group>";\n\t\t}};')
 w(f'\t\t{PRODUCTS_GROUP} /* Products */ = {{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n\t\t\t\t{app_product_ref} /* GymRank.app */,\n\t\t\t\t{unit_product_ref} /* GymRankTests.xctest */,\n\t\t\t\t{ui_product_ref} /* GymRankUITests.xctest */,\n\t\t\t);\n\t\t\tname = Products;\n\t\t\tsourceTree = "<group>";\n\t\t}};')
 
-# grupo da app com subgrupos
+# grupo da app: ficheiros da raiz + subgrupos (os ficheiros vivem SO nos subgrupos)
 children = []
-for folder in ['', 'Engine', 'Models', 'Networking', 'Views']:
-    for ref, name in groups[folder]:
-        children.append(f'\t\t\t\t{ref} /* {name} */,')
-    if folder:
-        children.append(f'\t\t\t\t{group_dirs[folder]} /* {folder} */,')
+for ref, name in groups['']:
+    children.append(f'\t\t\t\t{ref} /* {name} */,')
+for folder in ['Engine', 'Models', 'Networking', 'Views']:
+    children.append(f'\t\t\t\t{group_dirs[folder]} /* {folder} */,')
 children.append(f'\t\t\t\t{asset_ref} /* Assets.xcassets */,')
 w(f'\t\t{APP_GROUP} /* GymRank */ = {{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n' + '\n'.join(children) + '\n\t\t\t);\n\t\t\tpath = GymRank;\n\t\t\tsourceTree = "<group>";\n\t\t};')
 for folder in ['Engine', 'Models', 'Networking', 'Views']:
