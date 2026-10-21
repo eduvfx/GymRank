@@ -1,0 +1,178 @@
+[
+ {
+  "exercicio": "Bench Press",
+  "parte": "Chest",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.024,
+  "cortes": [
+   50,
+   72,
+   85,
+   98,
+   114,
+   130,
+   164
+  ]
+ },
+ {
+  "exercicio": "Squat",
+  "parte": "Legs",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.024,
+  "cortes": [
+   68,
+   97,
+   116,
+   134,
+   156,
+   177,
+   224
+  ]
+ },
+ {
+  "exercicio": "Deadlift",
+  "parte": "Back",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.101,
+  "cortes": [
+   88,
+   124,
+   147,
+   170,
+   196,
+   222,
+   279
+  ]
+ },
+ {
+  "exercicio": "Shoulder Press",
+  "parte": "Shoulders",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.024,
+  "cortes": [
+   30,
+   45,
+   54,
+   63,
+   75,
+   86,
+   110
+  ]
+ },
+ {
+  "exercicio": "Bent Over Row",
+  "parte": "Back",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.11,
+  "cortes": [
+   48,
+   69,
+   83,
+   97,
+   113,
+   129,
+   163
+  ]
+ },
+ {
+  "exercicio": "Lat Pulldown",
+  "parte": "Back",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.076,
+  "cortes": [
+   45,
+   65,
+   76,
+   88,
+   102,
+   115,
+   144
+  ]
+ },
+ {
+  "exercicio": "Barbell Curl",
+  "parte": "Biceps",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.022,
+  "cortes": [
+   19,
+   31,
+   38,
+   46,
+   55,
+   63,
+   84
+  ]
+ },
+ {
+  "exercicio": "Hip Thrust",
+  "parte": "Legs",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.03,
+  "cortes": [
+   46,
+   88,
+   116,
+   144,
+   179,
+   214,
+   295
+  ]
+ },
+ {
+  "exercicio": "Leg Extension",
+  "parte": "Legs",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.065,
+  "cortes": [
+   46,
+   72,
+   89,
+   105,
+   126,
+   146,
+   191
+  ]
+ },
+ {
+  "exercicio": "Leg Extension",
+  "parte": "Legs",
+  "sexo": "F",
+  "peso": 60,
+  "factor": 0.928,
+  "cortes": [
+   21,
+   36,
+   46,
+   57,
+   69,
+   82,
+   110
+  ]
+ },
+ {
+  "exercicio": "Machine Calf Raise",
+  "parte": "Calves",
+  "sexo": "M",
+  "peso": 80,
+  "factor": 1.022,
+  "cortes": [
+   44,
+   84,
+   112,
+   140,
+   175,
+   210,
+   290
+  ]
+ }
+]

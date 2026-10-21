@@ -1,0 +1,147 @@
+name: iOS Simulator (GymRank)
+
+# Compila a app, corre-a num simulador de iPhone, grava video, corre os testes
+# unitarios e de interface e publica o .app (tambem no Appetize.io, se existir token).
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    timeout-minutes: 40
+    env:
+      APPETIZE_API_TOKEN: ${{ secrets.APPETIZE_API_TOKEN }}
+      APPETIZE_PUBLIC_KEY: ${{ vars.APPETIZE_PUBLIC_KEY }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Versões (Xcode / simuladores)
+        run: |
+          xcodebuild -version
+          xcrun simctl list devices available | grep -i iphone | head -5
+
+      - name: Escolher simulador e arrancá-lo
+        id: sim
+        run: |
+          set -euo pipefail
+          UDID=$(xcrun simctl list devices available | sed -nE 's/^ *iPhone [^(]*\(([0-9A-Fa-f-]{36})\) \(Shutdown\).*/\1/p' | head -1)
+          if [ -z "$UDID" ]; then UDID=$(xcrun simctl list devices available | grep -m1 -oE '[0-9A-Fa-f-]{36}'); fi
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          echo "simulador: $UDID"
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
+
+      - name: Compilar (build)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project GymRank.xcodeproj \
+            -scheme GymRank \
+            -configuration Debug \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO | tail -60
+
+      - name: Instalar, arrancar e tirar screenshot
+        run: |
+          set -euo pipefail
+          UDID="${{ steps.sim.outputs.udid }}"
+          APP=$(find build/Build/Products -maxdepth 3 -name "GymRank.app" | head -1)
+          echo "app: $APP"
+          mkdir -p artifacts
+          xcrun simctl install "$UDID" "$APP"
+          xcrun simctl launch "$UDID" com.example.GymRank
+          sleep 8
+          xcrun simctl io "$UDID" screenshot artifacts/01-arranque.png
+
+      - name: Testes (unitarios + interface) no simulador, com video
+        run: |
+          set -o pipefail
+          UDID="${{ steps.sim.outputs.udid }}"
+          xcrun simctl io "$UDID" recordVideo --codec=h264 --force artifacts/app-em-uso.mp4 &
+          REC=$!
+          set +e
+          xcodebuild test \
+            -project GymRank.xcodeproj \
+            -scheme GymRank \
+            -destination "id=$UDID" \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            -resultBundlePath artifacts/testes.xcresult | tail -120
+          RC=$?
+          set -e
+          kill -INT $REC 2>/dev/null || true
+          sleep 5
+          echo "xcodebuild test rc=$RC"
+          exit $RC
+
+      - name: Extrair screenshots dos testes
+        if: always()
+        run: |
+          mkdir -p artifacts/screenshots
+          xcrun xcresulttool export attachments --path artifacts/testes.xcresult --output-path artifacts/screenshots 2>&1 | tail -5 || \
+          echo "(sem export de anexos nesta versão do Xcode)"
+          ls -la artifacts/screenshots | head -20
+
+      - name: Compilar app universal limpa e empacotar para o Appetize.io
+        if: always()
+        run: |
+          set -uo pipefail
+          mkdir -p artifacts
+          xcodebuild build \
+            -project GymRank.xcodeproj \
+            -scheme GymRank \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -derivedDataPath build-app \
+            ARCHS="arm64 x86_64" ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGNING_ALLOWED=NO | tail -15 || true
+          APP=$(find build-app/Build/Products -maxdepth 3 -name "GymRank.app" | head -1)
+          if [ -z "$APP" ]; then
+            APP=$(find build/Build/Products -maxdepth 3 -name "GymRank.app" | head -1)
+          fi
+          if [ -n "$APP" ]; then
+            lipo -info "$APP/GymRank" || true
+            ditto -c -k --keepParent "$APP" artifacts/GymRank-app.zip
+            ls -la artifacts/GymRank-app.zip
+          fi
+
+      - name: Publicar no Appetize.io (ecrã interactivo no browser)
+        if: always() && env.APPETIZE_API_TOKEN != ''
+        run: |
+          set -uo pipefail
+          ZIP=$(ls artifacts/GymRank-app.zip 2>/dev/null | head -1 || true)
+          if [ -z "$ZIP" ]; then echo "sem GymRank-app.zip"; exit 0; fi
+          extrair() { echo "$1" | python3 -c "import sys,json;print(json.load(sys.stdin).get('publicKey',''))" 2>/dev/null || true; }
+          KEY=""
+          if [ -n "$APPETIZE_PUBLIC_KEY" ]; then
+            RESP=$(curl -s --http1.1 --max-time 300 -X PATCH "https://api.appetize.io/v1/apps/$APPETIZE_PUBLIC_KEY" \
+                      -u "$APPETIZE_API_TOKEN:" -F "file=@$ZIP" -F "platform=ios" || true)
+            echo "resposta (update): $(echo "$RESP" | head -c 200)"
+            KEY=$(extrair "$RESP")
+          fi
+          if [ -z "$KEY" ]; then
+            RESP=$(curl -s --http1.1 --max-time 300 "https://api.appetize.io/v1/apps" \
+                      -u "$APPETIZE_API_TOKEN:" -F "file=@$ZIP" -F "platform=ios" || true)
+            echo "resposta (create): $(echo "$RESP" | head -c 300)"
+            KEY=$(extrair "$RESP")
+          fi
+          if [ -n "$KEY" ]; then
+            echo "### Ecrã interactivo: https://appetize.io/app/$KEY" >> "$GITHUB_STEP_SUMMARY"
+            echo "LINK INTERACTIVO: https://appetize.io/app/$KEY"
+          fi
+
+      - name: Publicar artefacto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-simulator
+          path: |
+            artifacts/
+            build/Logs/Test
+          if-no-files-found: warn

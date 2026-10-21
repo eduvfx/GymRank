@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BB0000000000000000000027 /* GymRankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000026 /* GymRankApp.swift */; };
+		BB0000000000000000000029 /* RankEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000028 /* RankEngine.swift */; };
+		BB000000000000000000002B /* RankComputation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000002A /* RankComputation.swift */; };
+		BB000000000000000000002D /* StandardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000002C /* StandardsData.swift */; };
+		BB000000000000000000002F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000002E /* Models.swift */; };
+		BB0000000000000000000031 /* WgerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000030 /* WgerClient.swift */; };
+		BB0000000000000000000033 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000032 /* Theme.swift */; };
+		BB0000000000000000000035 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000034 /* RootView.swift */; };
+		BB0000000000000000000037 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000036 /* OnboardingView.swift */; };
+		BB0000000000000000000039 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000038 /* DashboardView.swift */; };
+		BB000000000000000000003B /* BodyPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000003A /* BodyPartView.swift */; };
+		BB000000000000000000003D /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000003C /* ExerciseDetailView.swift */; };
+		BB000000000000000000003F /* LogWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000003E /* LogWorkoutView.swift */; };
+		BB0000000000000000000041 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000040 /* HistoryView.swift */; };
+		BB0000000000000000000043 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000042 /* ProgressView.swift */; };
+		BB0000000000000000000045 /* RanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000044 /* RanksView.swift */; };
+		BB0000000000000000000047 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000046 /* ProfileView.swift */; };
+		BB000000000000000000004B /* RankEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000004A /* RankEngineTests.swift */; };
+		BB000000000000000000004D /* GymRankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000004C /* GymRankUITests.swift */; };
+		BB0000000000000000000049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000048 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BB0000000000000000000026 /* GymRankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymRankApp.swift; sourceTree = "<group>"; };
+		BB0000000000000000000028 /* RankEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankEngine.swift; sourceTree = "<group>"; };
+		BB000000000000000000002A /* RankComputation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankComputation.swift; sourceTree = "<group>"; };
+		BB000000000000000000002C /* StandardsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardsData.swift; sourceTree = "<group>"; };
+		BB000000000000000000002E /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		BB0000000000000000000030 /* WgerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WgerClient.swift; sourceTree = "<group>"; };
+		BB0000000000000000000032 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		BB0000000000000000000034 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000036 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000038 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		BB000000000000000000003A /* BodyPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartView.swift; sourceTree = "<group>"; };
+		BB000000000000000000003C /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		BB000000000000000000003E /* LogWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWorkoutView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000040 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000042 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000044 /* RanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RanksView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000046 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000048 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB000000000000000000004A /* RankEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankEngineTests.swift; sourceTree = "<group>"; };
+		BB000000000000000000004C /* GymRankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymRankUITests.swift; sourceTree = "<group>"; };
+		BB0000000000000000000006 /* GymRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB000000000000000000004E /* GymRankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GymRankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB000000000000000000004F /* GymRankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GymRankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BB000000000000000000000E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000000000000000000017 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000000000000000000022 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BB0000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000004 /* GymRank */,
+				BB0000000000000000000010 /* GymRankTests */,
+				BB000000000000000000001B /* GymRankUITests */,
+				BB0000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000006 /* GymRank.app */,
+				BB000000000000000000004E /* GymRankTests.xctest */,
+				BB000000000000000000004F /* GymRankUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000004 /* GymRank */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000026 /* GymRankApp.swift */,
+				BB0000000000000000000028 /* RankEngine.swift */,
+				BB000000000000000000002A /* RankComputation.swift */,
+				BB000000000000000000002C /* StandardsData.swift */,
+				BB0000000000000000000051 /* Engine */,
+				BB000000000000000000002E /* Models.swift */,
+				BB0000000000000000000052 /* Models */,
+				BB0000000000000000000030 /* WgerClient.swift */,
+				BB0000000000000000000053 /* Networking */,
+				BB0000000000000000000032 /* Theme.swift */,
+				BB0000000000000000000034 /* RootView.swift */,
+				BB0000000000000000000036 /* OnboardingView.swift */,
+				BB0000000000000000000038 /* DashboardView.swift */,
+				BB000000000000000000003A /* BodyPartView.swift */,
+				BB000000000000000000003C /* ExerciseDetailView.swift */,
+				BB000000000000000000003E /* LogWorkoutView.swift */,
+				BB0000000000000000000040 /* HistoryView.swift */,
+				BB0000000000000000000042 /* ProgressView.swift */,
+				BB0000000000000000000044 /* RanksView.swift */,
+				BB0000000000000000000046 /* ProfileView.swift */,
+				BB0000000000000000000054 /* Views */,
+				BB0000000000000000000048 /* Assets.xcassets */,
+			);
+			path = GymRank;
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000051 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000028 /* RankEngine.swift */,
+				BB000000000000000000002A /* RankComputation.swift */,
+				BB000000000000000000002C /* StandardsData.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000052 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB000000000000000000002E /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000053 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000030 /* WgerClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000054 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000032 /* Theme.swift */,
+				BB0000000000000000000034 /* RootView.swift */,
+				BB0000000000000000000036 /* OnboardingView.swift */,
+				BB0000000000000000000038 /* DashboardView.swift */,
+				BB000000000000000000003A /* BodyPartView.swift */,
+				BB000000000000000000003C /* ExerciseDetailView.swift */,
+				BB000000000000000000003E /* LogWorkoutView.swift */,
+				BB0000000000000000000040 /* HistoryView.swift */,
+				BB0000000000000000000042 /* ProgressView.swift */,
+				BB0000000000000000000044 /* RanksView.swift */,
+				BB0000000000000000000046 /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000010 /* GymRankTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB000000000000000000004A /* RankEngineTests.swift */,
+			);
+			path = GymRankTests;
+			sourceTree = "<group>";
+		};
+		BB000000000000000000001B /* GymRankUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BB000000000000000000004C /* GymRankUITests.swift */,
+			);
+			path = GymRankUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BB0000000000000000000005 /* GymRank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB000000000000000000000A /* Build configuration list for PBXNativeTarget "GymRank" */;
+			buildPhases = (
+				BB000000000000000000000D /* Sources */,
+				BB000000000000000000000E /* Frameworks */,
+				BB000000000000000000000F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GymRank;
+			productName = GymRank;
+			productReference = BB0000000000000000000006 /* GymRank.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB0000000000000000000011 /* GymRankTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB0000000000000000000013 /* Build configuration list for PBXNativeTarget "GymRankTests" */;
+			buildPhases = (
+				BB0000000000000000000016 /* Sources */,
+				BB0000000000000000000017 /* Frameworks */,
+				BB0000000000000000000018 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB0000000000000000000019 /* PBXTargetDependency */,
+			);
+			name = GymRankTests;
+			productName = GymRankTests;
+			productReference = BB000000000000000000004E /* GymRankTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BB000000000000000000001C /* GymRankUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB000000000000000000001E /* Build configuration list for PBXNativeTarget "GymRankUITests" */;
+			buildPhases = (
+				BB0000000000000000000021 /* Sources */,
+				BB0000000000000000000022 /* Frameworks */,
+				BB0000000000000000000023 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB0000000000000000000024 /* PBXTargetDependency */,
+			);
+			name = GymRankUITests;
+			productName = GymRankUITests;
+			productReference = BB000000000000000000004F /* GymRankUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BB0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					BB0000000000000000000011 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = BB0000000000000000000005;
+					};
+					BB000000000000000000001C = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = BB0000000000000000000005;
+					};
+				};
+			};
+			buildConfigurationList = BB0000000000000000000007 /* Build configuration list for PBXProject "GymRank" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = pt;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				pt,
+				en,
+				Base,
+			);
+			mainGroup = BB0000000000000000000002;
+			productRefGroup = BB0000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BB0000000000000000000005 /* GymRank */,
+				BB0000000000000000000011 /* GymRankTests */,
+				BB000000000000000000001C /* GymRankUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BB000000000000000000000F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB0000000000000000000049 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000000000000000000018 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000000000000000000023 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BB000000000000000000000D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB0000000000000000000027 /* GymRankApp.swift in Sources */,
+				BB0000000000000000000029 /* RankEngine.swift in Sources */,
+				BB000000000000000000002B /* RankComputation.swift in Sources */,
+				BB000000000000000000002D /* StandardsData.swift in Sources */,
+				BB000000000000000000002F /* Models.swift in Sources */,
+				BB0000000000000000000031 /* WgerClient.swift in Sources */,
+				BB0000000000000000000033 /* Theme.swift in Sources */,
+				BB0000000000000000000035 /* RootView.swift in Sources */,
+				BB0000000000000000000037 /* OnboardingView.swift in Sources */,
+				BB0000000000000000000039 /* DashboardView.swift in Sources */,
+				BB000000000000000000003B /* BodyPartView.swift in Sources */,
+				BB000000000000000000003D /* ExerciseDetailView.swift in Sources */,
+				BB000000000000000000003F /* LogWorkoutView.swift in Sources */,
+				BB0000000000000000000041 /* HistoryView.swift in Sources */,
+				BB0000000000000000000043 /* ProgressView.swift in Sources */,
+				BB0000000000000000000045 /* RanksView.swift in Sources */,
+				BB0000000000000000000047 /* ProfileView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000000000000000000016 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB000000000000000000004B /* RankEngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000000000000000000021 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB000000000000000000004D /* GymRankUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB0000000000000000000019 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB0000000000000000000005 /* GymRank */;
+			targetProxy = BB000000000000000000001A /* PBXContainerItemProxy */;
+		};
+		BB0000000000000000000024 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB0000000000000000000005 /* GymRank */;
+			targetProxy = BB0000000000000000000025 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXContainerItemProxy section */
+		BB000000000000000000001A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB0000000000000000000005;
+			remoteInfo = GymRank;
+		};
+		BB0000000000000000000025 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB0000000000000000000005;
+			remoteInfo = GymRank;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin XCBuildConfiguration section */
+		BB0000000000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_COMPILATION_MODE = singlefile;
+			};
+			name = Debug;
+		};
+		BB0000000000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BB000000000000000000000B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GymRank;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.GymRank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BB000000000000000000000C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GymRank;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.GymRank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BB0000000000000000000014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.GymRankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GymRank.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GymRank";
+			};
+			name = Debug;
+		};
+		BB0000000000000000000015 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.GymRankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GymRank.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GymRank";
+			};
+			name = Release;
+		};
+		BB000000000000000000001F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.GymRankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GymRank;
+			};
+			name = Debug;
+		};
+		BB0000000000000000000020 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.GymRankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GymRank;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB0000000000000000000007 /* Build configuration list for PBXProject "GymRank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0000000000000000000008 /* Debug */,
+				BB0000000000000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB000000000000000000000A /* Build configuration list for PBXNativeTarget "GymRank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB000000000000000000000B /* Debug */,
+				BB000000000000000000000C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB0000000000000000000013 /* Build configuration list for PBXNativeTarget "GymRankTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0000000000000000000014 /* Debug */,
+				BB0000000000000000000015 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB000000000000000000001E /* Build configuration list for PBXNativeTarget "GymRankUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB000000000000000000001F /* Debug */,
+				BB0000000000000000000020 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BB0000000000000000000001 /* Project object */;
+}
