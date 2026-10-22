@@ -11,7 +11,6 @@ Móveis** (MEI, ESTG/IPLeiria, 2026/2027).
 - **Perfil** com nome, idade, peso, altura e sexo. **Idade e peso são obrigatórios** — sem eles não há
   cálculo de rank, porque os limites são relativos ao peso corporal e ajustados à faixa de idade.
 - **Catálogo de exercícios** (23 com standards de força, agrupados em 7 partes do corpo) e sincronização
-  opcional do catálogo completo do **wger** (860 exercícios) pela API pública.
 - **Registar treino**: peso, repetições e séries, com **1RM estimado ao vivo** pela fórmula de Epley.
 - **Ranks**: um por exercício, um por parte do corpo e um **rank geral do corpo**.
 
@@ -53,7 +52,6 @@ GymRank/
     RankComputation.swift     agregação exercício → parte → corpo
     StandardsData.swift       limiares gerados de Tools/standards.json (não editar à mão)
   Models/Models.swift         UserProfile, Exercise, WorkoutSet (@Model)
-  Networking/WgerClient.swift cliente da API wger (async/await)
   Views/                      SwiftUI: onboarding, painel, parte, exercício, registo, histórico, progresso, ranks
 GymRankTests/                 testes do motor contra valores reais publicados
 GymRankUITests/               testes de interface no simulador
@@ -77,7 +75,7 @@ No Mac (ou no CI): `xcodebuild test -project GymRank.xcodeproj -scheme GymRank -
 - **Standards de força**: [Strength Level](https://strengthlevel.com/strength-standards) — edição 2026,
   287 exercícios, 195 513 376 levantamentos de 27 893 268 utilizadores. Os valores usados estão em
   `Tools/standards.json` (kg, por sexo, com o expoente de escala por peso corporal ajustado por regressão).
-- **Catálogo de exercícios**: [wger](https://wger.de) REST API v2, licença **CC-BY-SA 4.0**.
+- **Catálogo de exercícios**: 23 exercícios com limiares publicados em [Strength Level](https://strengthlevel.com) (2026); incluído na app, sem API externa.
 - **1RM**: fórmula de Epley (1985).
 
 ### Limites honestos desta versão

@@ -19,7 +19,7 @@ struct ExerciseDetailView: View {
         RankSummary.compute(profile: profile, sets: sets, exercises: exercises)
     }
 
-    private var chave: String { exercise.standardID ?? "wger-\(exercise.wgerID ?? 0)" }
+    private var chave: String { exercise.standardID }
 
     private var meu: ExerciseRank? { summary.exercises.first { $0.id == chave } }
 

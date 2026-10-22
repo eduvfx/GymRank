@@ -26,7 +26,7 @@ struct LogWorkoutView: View {
     }
 
     private var exercicio: Exercise? {
-        comStandard.first { ($0.standardID ?? "") == selecionado }
+        comStandard.first { $0.standardID == selecionado }
     }
 
     private var umRM: Double { RankEngine.oneRepMax(pesoKg: peso, reps: reps) }
@@ -57,7 +57,7 @@ struct LogWorkoutView: View {
                             SectionTitle(text: "Exercício")
                             Picker("Exercício", selection: $selecionado) {
                                 ForEach(comStandard) { ex in
-                                    Text(ex.nome).tag(ex.standardID ?? "")
+                                    Text(ex.nome).tag(ex.standardID)
                                 }
                             }
                             .pickerStyle(.menu)

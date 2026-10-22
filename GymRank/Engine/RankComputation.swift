@@ -69,7 +69,7 @@ struct RankSummary {
         var ranks: [ExerciseRank] = []
 
         for exercise in exercises {
-            let key = exercise.standardID ?? "wger-\(exercise.wgerID ?? 0)"
+            let key = exercise.standardID
             let mine = sets.filter { $0.exercicioID == key }
             guard let best = mine.map({ $0.umRM }).max(), let standard = exercise.standard else { continue }
             let thresholds = RankEngine.thresholds(entry: standard,

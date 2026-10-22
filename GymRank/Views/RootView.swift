@@ -27,19 +27,11 @@ struct RootView: View {
         .task { seedExercisesIfNeeded() }
     }
 
-    /// Semeia o catálogo a partir do pacote de standards (offline, arranque imediato).
+    /// Semeia o catálogo com os exercícios que têm rank publicado (pacote incluído, offline).
     private func seedExercisesIfNeeded() {
         guard exercises.isEmpty else { return }
         for entry in StandardsData.all {
             context.insert(Exercise(nome: entry.nome, parte: entry.parte, standardID: entry.id))
-        }
-        // exercícios de peso corporal, sem standard em kg (rank por repetições, fase seguinte)
-        let bodyweight: [(String, BodyPart)] = [
-            ("Push Ups", .chest), ("Dips", .chest), ("Pull Ups", .back),
-            ("Chin Ups", .back), ("Crunches", .core), ("Sit Ups", .core)
-        ]
-        for (nome, parte) in bodyweight {
-            context.insert(Exercise(nome: nome, parte: parte))
         }
         try? context.save()
     }
