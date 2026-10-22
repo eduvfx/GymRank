@@ -63,7 +63,7 @@ struct RanksView: View {
                             SectionTitle(text: "Fontes")
                             Text("Standards de força: Strength Level (edição 2026).")
                                 .font(.caption2).foregroundStyle(Color.gymMuted)
-                            Text("Catálogo de exercícios: wger (wger.de), licença CC-BY-SA 4.0.")
+                            Text("Catálogo: 23 exercícios com limiares de força publicados (Strength Level, 2026).")
                                 .font(.caption2).foregroundStyle(Color.gymMuted)
                             Text("1RM estimado pela fórmula de Epley.")
                                 .font(.caption2).foregroundStyle(Color.gymMuted)

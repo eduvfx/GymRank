@@ -2,7 +2,7 @@
 //  ProfileView.swift
 //  GymRank
 //
-//  Perfil: dados que alimentam o cálculo, sincronização do catálogo e créditos.
+//  Perfil: dados que alimentam o cálculo, estado do catálogo e créditos.
 //
 
 import SwiftUI
@@ -11,10 +11,7 @@ import SwiftData
 struct ProfileView: View {
     let profile: UserProfile
 
-    @Environment(\.modelContext) private var context
     @Query private var exercises: [Exercise]
-    @State private var mensagem: String?
-    @State private var aSincronizar = false
 
     var body: some View {
         ZStack {
@@ -56,28 +53,14 @@ struct ProfileView: View {
                     }
 
                     GymCard {
-                        VStack(alignment: .leading, spacing: 8) {
-                            SectionTitle(text: "Catálogo de exercícios (wger)")
-                            Text("\(exercises.count) exercícios na base local.")
-                                .font(.caption).foregroundStyle(Color.gymMuted)
-                            Button {
-                                Task { await sincronizar() }
-                            } label: {
-                                HStack {
-                                    if aSincronizar { SwiftUI.ProgressView().tint(.white) }
-                                    Text(aSincronizar ? "A sincronizar…" : "Sincronizar com o wger")
-                                        .font(.system(size: 14, weight: .semibold))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 11)
-                                .background(RoundedRectangle(cornerRadius: 12).fill(Color.gymAccent))
+                        VStack(alignment: .leading, spacing: 6) {
+                            SectionTitle(text: "Catálogo")
+                            Text("\(exercises.count) exercícios, todos com rank publicado.")
+                                .font(.system(size: 13, weight: .semibold))
                                 .foregroundStyle(.white)
-                            }
-                            .disabled(aSincronizar)
-                            .accessibilityIdentifier("sincronizarWger")
-                            if let mensagem {
-                                Text(mensagem).font(.caption2).foregroundStyle(Color.gymMuted)
-                            }
+                            Text("O catálogo vem incluído na app: sem API externa e sem rede. Só entram exercícios com limiares de força publicados, para que todos tenham rank.")
+                                .font(.caption)
+                                .foregroundStyle(Color.gymMuted)
                         }
                     }
 
@@ -86,7 +69,7 @@ struct ProfileView: View {
                             SectionTitle(text: "Sobre")
                             Text("GymRank · projecto individual de Desenvolvimento para Dispositivos Móveis (MEI, ESTG/IPLeiria, 2026/2027).")
                                 .font(.caption2).foregroundStyle(Color.gymMuted)
-                            Text("Standards: Strength Level (2026). Catálogo: wger, CC-BY-SA 4.0. 1RM: Epley.")
+                            Text("Ranks: Strength Level (2026). 1RM: Epley.")
                                 .font(.caption2).foregroundStyle(Color.gymMuted)
                         }
                     }
@@ -103,32 +86,6 @@ struct ProfileView: View {
             Text(titulo).font(.caption).foregroundStyle(Color.gymMuted)
             Spacer()
             Text(valor).font(.system(size: 13, weight: .semibold)).foregroundStyle(.white)
-        }
-    }
-
-    /// Sincroniza o catálogo do wger; em falha mantém a base local (modo offline).
-    private func sincronizar() async {
-        aSincronizar = true
-        mensagem = nil
-        defer { aSincronizar = false }
-        do {
-            let remotos = try await WgerClient().fetchExercises()
-            var novos = 0
-            for remoto in remotos {
-                if exercises.contains(where: { $0.wgerID == remoto.id }) { continue }
-                let parte = WgerClient.bodyPart(for: remoto.category?.name)
-                context.insert(Exercise(nome: remoto.nome,
-                                        parte: parte,
-                                        standardID: nil,
-                                        wgerID: remoto.id,
-                                        equipamento: remoto.equipamento,
-                                        musculoPrincipal: remoto.musculoPrincipal))
-                novos += 1
-            }
-            try? context.save()
-            mensagem = "Sincronizados \(remotos.count) exercícios do wger (\(novos) novos)."
-        } catch {
-            mensagem = "Sem ligação ao wger — a usar a base local (\(error.localizedDescription))."
         }
     }
 }

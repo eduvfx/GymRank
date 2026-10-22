@@ -37,24 +37,16 @@ final class UserProfile {
 
 @Model
 final class Exercise {
-    /// Identificador do standard no pacote de dados (ex.: "bench-press"); nil quando vem só do wger.
-    var standardID: String?
-    /// Identificador do exercício na API wger, quando sincronizado.
-    var wgerID: Int?
+    /// Identificador do standard no pacote de dados (ex.: "bench-press"). Todo o catálogo tem rank.
+    var standardID: String
     var nome: String
     var parteRaw: String
-    var equipamento: String?
-    var musculoPrincipal: String?
     var atualizadoEm: Date
 
-    init(nome: String, parte: BodyPart, standardID: String? = nil, wgerID: Int? = nil,
-         equipamento: String? = nil, musculoPrincipal: String? = nil, atualizadoEm: Date = .now) {
+    init(nome: String, parte: BodyPart, standardID: String, atualizadoEm: Date = .now) {
         self.nome = nome
         self.parteRaw = parte.rawValue
         self.standardID = standardID
-        self.wgerID = wgerID
-        self.equipamento = equipamento
-        self.musculoPrincipal = musculoPrincipal
         self.atualizadoEm = atualizadoEm
     }
 
@@ -63,10 +55,7 @@ final class Exercise {
         set { parteRaw = newValue.rawValue }
     }
 
-    var standard: StandardEntry? {
-        guard let standardID else { return nil }
-        return StandardsData.entry(id: standardID)
-    }
+    var standard: StandardEntry? { StandardsData.entry(id: standardID) }
 }
 
 @Model

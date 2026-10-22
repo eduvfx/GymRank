@@ -87,7 +87,7 @@ struct BodyPartView: View {
     }
 
     private func linha(_ exercise: Exercise) -> some View {
-        let posicao = summary.rank(for: exercise.standardID ?? "")
+        let posicao = summary.rank(for: exercise.standardID)
         return HStack(spacing: 8) {
             VStack(alignment: .leading, spacing: 3) {
                 Text(exercise.nome)

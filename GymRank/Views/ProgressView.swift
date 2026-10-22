@@ -17,7 +17,7 @@ struct ProgressTabView: View {
 
     private var comDados: [Exercise] {
         let ids = Set(sets.compactMap { $0.standardID })
-        return exercises.filter { ids.contains($0.standardID ?? "") }.sorted { $0.nome < $1.nome }
+        return exercises.filter { ids.contains($0.standardID) }.sorted { $0.nome < $1.nome }
     }
 
     private var pontos: [(Date, Double)] {
@@ -45,7 +45,7 @@ struct ProgressTabView: View {
                             } else {
                                 Picker("Exercício", selection: $selecionado) {
                                     ForEach(comDados) { ex in
-                                        Text(ex.nome).tag(ex.standardID ?? "")
+                                        Text(ex.nome).tag(ex.standardID)
                                     }
                                 }
                                 .pickerStyle(.menu)

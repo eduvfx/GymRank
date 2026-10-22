@@ -12,21 +12,20 @@
 		BB000000000000000000002B /* RankComputation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000002A /* RankComputation.swift */; };
 		BB000000000000000000002D /* StandardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000002C /* StandardsData.swift */; };
 		BB000000000000000000002F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000002E /* Models.swift */; };
-		BB0000000000000000000031 /* WgerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000030 /* WgerClient.swift */; };
-		BB0000000000000000000033 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000032 /* Theme.swift */; };
-		BB0000000000000000000035 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000034 /* RootView.swift */; };
-		BB0000000000000000000037 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000036 /* OnboardingView.swift */; };
-		BB0000000000000000000039 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000038 /* DashboardView.swift */; };
-		BB000000000000000000003B /* BodyPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000003A /* BodyPartView.swift */; };
-		BB000000000000000000003D /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000003C /* ExerciseDetailView.swift */; };
-		BB000000000000000000003F /* LogWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000003E /* LogWorkoutView.swift */; };
-		BB0000000000000000000041 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000040 /* HistoryView.swift */; };
-		BB0000000000000000000043 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000042 /* ProgressView.swift */; };
-		BB0000000000000000000045 /* RanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000044 /* RanksView.swift */; };
-		BB0000000000000000000047 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000046 /* ProfileView.swift */; };
-		BB000000000000000000004B /* RankEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000004A /* RankEngineTests.swift */; };
-		BB000000000000000000004D /* GymRankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000004C /* GymRankUITests.swift */; };
-		BB0000000000000000000049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000048 /* Assets.xcassets */; };
+		BB0000000000000000000031 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000030 /* Theme.swift */; };
+		BB0000000000000000000033 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000032 /* RootView.swift */; };
+		BB0000000000000000000035 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000034 /* OnboardingView.swift */; };
+		BB0000000000000000000037 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000036 /* DashboardView.swift */; };
+		BB0000000000000000000039 /* BodyPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000038 /* BodyPartView.swift */; };
+		BB000000000000000000003B /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000003A /* ExerciseDetailView.swift */; };
+		BB000000000000000000003D /* LogWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000003C /* LogWorkoutView.swift */; };
+		BB000000000000000000003F /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000003E /* HistoryView.swift */; };
+		BB0000000000000000000041 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000040 /* ProgressView.swift */; };
+		BB0000000000000000000043 /* RanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000042 /* RanksView.swift */; };
+		BB0000000000000000000045 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000044 /* ProfileView.swift */; };
+		BB0000000000000000000049 /* RankEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000048 /* RankEngineTests.swift */; };
+		BB000000000000000000004B /* GymRankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000004A /* GymRankUITests.swift */; };
+		BB0000000000000000000047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000046 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,24 +34,23 @@
 		BB000000000000000000002A /* RankComputation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankComputation.swift; sourceTree = "<group>"; };
 		BB000000000000000000002C /* StandardsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardsData.swift; sourceTree = "<group>"; };
 		BB000000000000000000002E /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		BB0000000000000000000030 /* WgerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WgerClient.swift; sourceTree = "<group>"; };
-		BB0000000000000000000032 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		BB0000000000000000000034 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000036 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000038 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		BB000000000000000000003A /* BodyPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartView.swift; sourceTree = "<group>"; };
-		BB000000000000000000003C /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
-		BB000000000000000000003E /* LogWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWorkoutView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000040 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000042 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000044 /* RanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RanksView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000046 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		BB0000000000000000000048 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BB000000000000000000004A /* RankEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankEngineTests.swift; sourceTree = "<group>"; };
-		BB000000000000000000004C /* GymRankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymRankUITests.swift; sourceTree = "<group>"; };
+		BB0000000000000000000030 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		BB0000000000000000000032 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000034 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000036 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000038 /* BodyPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPartView.swift; sourceTree = "<group>"; };
+		BB000000000000000000003A /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		BB000000000000000000003C /* LogWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWorkoutView.swift; sourceTree = "<group>"; };
+		BB000000000000000000003E /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000040 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000042 /* RanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RanksView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000044 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB0000000000000000000048 /* RankEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankEngineTests.swift; sourceTree = "<group>"; };
+		BB000000000000000000004A /* GymRankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymRankUITests.swift; sourceTree = "<group>"; };
 		BB0000000000000000000006 /* GymRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB000000000000000000004E /* GymRankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GymRankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB000000000000000000004F /* GymRankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GymRankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB000000000000000000004C /* GymRankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GymRankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB000000000000000000004D /* GymRankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GymRankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				BB0000000000000000000006 /* GymRank.app */,
-				BB000000000000000000004E /* GymRankTests.xctest */,
-				BB000000000000000000004F /* GymRankUITests.xctest */,
+				BB000000000000000000004C /* GymRankTests.xctest */,
+				BB000000000000000000004D /* GymRankUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,16 +102,16 @@
 			isa = PBXGroup;
 			children = (
 				BB0000000000000000000026 /* GymRankApp.swift */,
-				BB0000000000000000000051 /* Engine */,
-				BB0000000000000000000052 /* Models */,
-				BB0000000000000000000053 /* Networking */,
-				BB0000000000000000000054 /* Views */,
-				BB0000000000000000000048 /* Assets.xcassets */,
+				BB000000000000000000004F /* Engine */,
+				BB0000000000000000000050 /* Models */,
+				BB0000000000000000000051 /* Networking */,
+				BB0000000000000000000052 /* Views */,
+				BB0000000000000000000046 /* Assets.xcassets */,
 			);
 			path = GymRank;
 			sourceTree = "<group>";
 		};
-		BB0000000000000000000051 /* Engine */ = {
+		BB000000000000000000004F /* Engine */ = {
 			isa = PBXGroup;
 			children = (
 				BB0000000000000000000028 /* RankEngine.swift */,
@@ -123,7 +121,7 @@
 			path = Engine;
 			sourceTree = "<group>";
 		};
-		BB0000000000000000000052 /* Models */ = {
+		BB0000000000000000000050 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				BB000000000000000000002E /* Models.swift */,
@@ -131,28 +129,28 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		BB0000000000000000000053 /* Networking */ = {
+		BB0000000000000000000051 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				BB0000000000000000000030 /* WgerClient.swift */,
+
 			);
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		BB0000000000000000000054 /* Views */ = {
+		BB0000000000000000000052 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BB0000000000000000000032 /* Theme.swift */,
-				BB0000000000000000000034 /* RootView.swift */,
-				BB0000000000000000000036 /* OnboardingView.swift */,
-				BB0000000000000000000038 /* DashboardView.swift */,
-				BB000000000000000000003A /* BodyPartView.swift */,
-				BB000000000000000000003C /* ExerciseDetailView.swift */,
-				BB000000000000000000003E /* LogWorkoutView.swift */,
-				BB0000000000000000000040 /* HistoryView.swift */,
-				BB0000000000000000000042 /* ProgressView.swift */,
-				BB0000000000000000000044 /* RanksView.swift */,
-				BB0000000000000000000046 /* ProfileView.swift */,
+				BB0000000000000000000030 /* Theme.swift */,
+				BB0000000000000000000032 /* RootView.swift */,
+				BB0000000000000000000034 /* OnboardingView.swift */,
+				BB0000000000000000000036 /* DashboardView.swift */,
+				BB0000000000000000000038 /* BodyPartView.swift */,
+				BB000000000000000000003A /* ExerciseDetailView.swift */,
+				BB000000000000000000003C /* LogWorkoutView.swift */,
+				BB000000000000000000003E /* HistoryView.swift */,
+				BB0000000000000000000040 /* ProgressView.swift */,
+				BB0000000000000000000042 /* RanksView.swift */,
+				BB0000000000000000000044 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,7 +158,7 @@
 		BB0000000000000000000010 /* GymRankTests */ = {
 			isa = PBXGroup;
 			children = (
-				BB000000000000000000004A /* RankEngineTests.swift */,
+				BB0000000000000000000048 /* RankEngineTests.swift */,
 			);
 			path = GymRankTests;
 			sourceTree = "<group>";
@@ -168,7 +166,7 @@
 		BB000000000000000000001B /* GymRankUITests */ = {
 			isa = PBXGroup;
 			children = (
-				BB000000000000000000004C /* GymRankUITests.swift */,
+				BB000000000000000000004A /* GymRankUITests.swift */,
 			);
 			path = GymRankUITests;
 			sourceTree = "<group>";
@@ -208,7 +206,7 @@
 			);
 			name = GymRankTests;
 			productName = GymRankTests;
-			productReference = BB000000000000000000004E /* GymRankTests.xctest */;
+			productReference = BB000000000000000000004C /* GymRankTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		BB000000000000000000001C /* GymRankUITests */ = {
@@ -226,7 +224,7 @@
 			);
 			name = GymRankUITests;
 			productName = GymRankUITests;
-			productReference = BB000000000000000000004F /* GymRankUITests.xctest */;
+			productReference = BB000000000000000000004D /* GymRankUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -275,7 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB0000000000000000000049 /* Assets.xcassets in Resources */,
+				BB0000000000000000000047 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,18 +303,17 @@
 				BB000000000000000000002B /* RankComputation.swift in Sources */,
 				BB000000000000000000002D /* StandardsData.swift in Sources */,
 				BB000000000000000000002F /* Models.swift in Sources */,
-				BB0000000000000000000031 /* WgerClient.swift in Sources */,
-				BB0000000000000000000033 /* Theme.swift in Sources */,
-				BB0000000000000000000035 /* RootView.swift in Sources */,
-				BB0000000000000000000037 /* OnboardingView.swift in Sources */,
-				BB0000000000000000000039 /* DashboardView.swift in Sources */,
-				BB000000000000000000003B /* BodyPartView.swift in Sources */,
-				BB000000000000000000003D /* ExerciseDetailView.swift in Sources */,
-				BB000000000000000000003F /* LogWorkoutView.swift in Sources */,
-				BB0000000000000000000041 /* HistoryView.swift in Sources */,
-				BB0000000000000000000043 /* ProgressView.swift in Sources */,
-				BB0000000000000000000045 /* RanksView.swift in Sources */,
-				BB0000000000000000000047 /* ProfileView.swift in Sources */,
+				BB0000000000000000000031 /* Theme.swift in Sources */,
+				BB0000000000000000000033 /* RootView.swift in Sources */,
+				BB0000000000000000000035 /* OnboardingView.swift in Sources */,
+				BB0000000000000000000037 /* DashboardView.swift in Sources */,
+				BB0000000000000000000039 /* BodyPartView.swift in Sources */,
+				BB000000000000000000003B /* ExerciseDetailView.swift in Sources */,
+				BB000000000000000000003D /* LogWorkoutView.swift in Sources */,
+				BB000000000000000000003F /* HistoryView.swift in Sources */,
+				BB0000000000000000000041 /* ProgressView.swift in Sources */,
+				BB0000000000000000000043 /* RanksView.swift in Sources */,
+				BB0000000000000000000045 /* ProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB000000000000000000004B /* RankEngineTests.swift in Sources */,
+				BB0000000000000000000049 /* RankEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB000000000000000000004D /* GymRankUITests.swift in Sources */,
+				BB000000000000000000004B /* GymRankUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

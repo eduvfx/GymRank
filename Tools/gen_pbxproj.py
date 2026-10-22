@@ -16,7 +16,6 @@ SOURCES = [
     'Engine/RankComputation.swift',
     'Engine/StandardsData.swift',
     'Models/Models.swift',
-    'Networking/WgerClient.swift',
     'Views/Theme.swift',
     'Views/RootView.swift',
     'Views/OnboardingView.swift',

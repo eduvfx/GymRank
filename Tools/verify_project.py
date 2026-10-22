@@ -34,7 +34,6 @@ APP_SOURCES = [
     'GymRankApp.swift',
     'Engine/RankEngine.swift', 'Engine/RankComputation.swift', 'Engine/StandardsData.swift',
     'Models/Models.swift',
-    'Networking/WgerClient.swift',
     'Views/Theme.swift', 'Views/RootView.swift', 'Views/OnboardingView.swift',
     'Views/DashboardView.swift', 'Views/BodyPartView.swift', 'Views/ExerciseDetailView.swift',
     'Views/LogWorkoutView.swift', 'Views/HistoryView.swift', 'Views/ProgressView.swift',
@@ -79,6 +78,7 @@ for rel in APP_SOURCES:
 check('Assets.xcassets in Resources' in pbx, 'Assets.xcassets na fase Resources')
 
 print('== 3. motor de ranks (22 niveis) ==')
+models = read(os.path.join(ROOT, 'GymRank', 'Models', 'Models.swift'))
 engine = read(os.path.join(ROOT, 'GymRank', 'Engine', 'RankEngine.swift'))
 check('static let total = 22' in engine, 'RankPosition.total = 22')
 check('case olympia' in engine, 'rank Olympia existe')
@@ -126,7 +126,9 @@ check('olympiaPoints' in views['Views/ExerciseDetailView.swift'], 'o detalhe mos
 check('RankEngine.thresholds' in views['Views/LogWorkoutView.swift'], 'registo calcula o rank ao vivo')
 check('@Query' in views['Views/HistoryView.swift'] and 'onDelete' in views['Views/HistoryView.swift'],
       'historico permite apagar (CRUD)')
-check('WgerClient().fetchExercises()' in views['Views/ProfileView.swift'], 'sincronizacao com a API wger')
+check('WgerClient' not in views['Views/ProfileView.swift'], 'sem cliente wger (catalogo so com exercicios com rank)')
+check(not os.path.exists(os.path.join(ROOT, 'GymRank', 'Networking', 'WgerClient.swift')), 'WgerClient.swift removido')
+check('standardID: String' in models, 'Exercise.standardID obrigatorio')
 check('idade' in views['Views/OnboardingView.swift'].lower() and 'peso' in views['Views/OnboardingView.swift'].lower(),
       'onboarding pede idade e peso')
 check('guardarPerfil' in views['Views/OnboardingView.swift'], 'botao de guardar perfil identificado para UI test')
