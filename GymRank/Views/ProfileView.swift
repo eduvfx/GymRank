@@ -51,6 +51,7 @@ struct ProfileView: View {
                             .background(RoundedRectangle(cornerRadius: 13).fill(Color.gymCard))
                             .foregroundStyle(.white)
                     }
+                    .accessibilityIdentifier("abrirRanks")
 
                     GymCard {
                         VStack(alignment: .leading, spacing: 6) {
