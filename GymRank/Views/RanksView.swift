@@ -27,6 +27,7 @@ struct RanksView: View {
                                     Text("∞ pontos")
                                         .font(.system(size: 10, weight: .bold))
                                         .foregroundStyle(rank.color)
+                                        .accessibilityIdentifier("pontosInfinitos")
                                 } else {
                                     HStack(spacing: 4) {
                                         ForEach(1...3, id: \.self) { d in
