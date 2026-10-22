@@ -50,11 +50,11 @@ struct RanksView: View {
                         VStack(alignment: .leading, spacing: 6) {
                             SectionTitle(text: "Como funciona")
                             Text("• Cada um dos sete primeiros ranks divide-se em três divisões: Bronze 1 a 3, Prata 1 a 3, e assim por diante até Titã 3 (21 níveis).")
-                                .font(.caption).foregroundStyle(.gymMuted)
+                                .font(.caption).foregroundStyle(Color.gymMuted)
                             Text("• O Olympia é um nível único, sem divisões: a partir do limiar de Elite os pontos sobem sem tecto (1000 pontos na entrada, +1000 por cada duplicação do levantamento).")
-                                .font(.caption).foregroundStyle(.gymMuted)
+                                .font(.caption).foregroundStyle(Color.gymMuted)
                             Text("• Os limites vêm dos standards de força por peso corporal do Strength Level; as divisões e as posições intermédias dividem o intervalo publicado em três partes iguais.")
-                                .font(.caption).foregroundStyle(.gymMuted)
+                                .font(.caption).foregroundStyle(Color.gymMuted)
                         }
                     }
 
@@ -62,11 +62,11 @@ struct RanksView: View {
                         VStack(alignment: .leading, spacing: 5) {
                             SectionTitle(text: "Fontes")
                             Text("Standards de força: Strength Level (edição 2026).")
-                                .font(.caption2).foregroundStyle(.gymMuted)
+                                .font(.caption2).foregroundStyle(Color.gymMuted)
                             Text("Catálogo de exercícios: wger (wger.de), licença CC-BY-SA 4.0.")
-                                .font(.caption2).foregroundStyle(.gymMuted)
+                                .font(.caption2).foregroundStyle(Color.gymMuted)
                             Text("1RM estimado pela fórmula de Epley.")
-                                .font(.caption2).foregroundStyle(.gymMuted)
+                                .font(.caption2).foregroundStyle(Color.gymMuted)
                         }
                     }
                 }

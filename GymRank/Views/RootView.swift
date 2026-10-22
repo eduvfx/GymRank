@@ -23,7 +23,7 @@ struct RootView: View {
             }
         }
         .preferredColorScheme(.dark)
-        .tint(.gymAccent)
+        .tint(Color.gymAccent)
         .task { seedExercisesIfNeeded() }
     }
 

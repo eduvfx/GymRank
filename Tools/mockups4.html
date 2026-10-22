@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt"><head><meta charset="utf-8"><title>GymRank — ecrãs</title>
+<style>
+:root{--bg:#0B0E14;--card:#161B26;--line:#2A3345;--mut:#93A0B5;--accent:#4C8DFF;
+--bronze:#CD7F32;--prata:#BFC7CE;--ouro:#F5C518;--platina:#8FE3E8;--diamante:#7FD1FF;--campeao:#A46BFF;--tita:#FF6B4A;--olympia:#FFD84D}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;padding:8px}
+.fila{display:flex;gap:18px;justify-content:center}
+.tela{width:250px;height:540px;border-radius:26px;background:var(--bg);border:7px solid #0d1117;
+box-shadow:0 8px 18px rgba(15,23,42,.22);position:relative;overflow:hidden;display:flex;flex-direction:column;color:#F2F5FA}
+.status{display:flex;justify-content:space-between;padding:8px 14px 2px;font-size:8px;color:var(--mut)}
+.nav{padding:1px 11px 7px;display:flex;align-items:center;gap:5px;border-bottom:1px solid var(--line);font-size:11px;font-weight:700}
+.body{flex:1;padding:10px 11px 0;overflow:hidden}
+.lbl{font-size:7.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin:6px 0 3px}
+.badge{display:inline-flex;padding:2px 6px;border-radius:99px;font-size:7.5px;font-weight:800;text-transform:uppercase}
+.bronze{background:rgba(205,127,50,.16);color:var(--bronze);border:1px solid rgba(205,127,50,.45)}
+.prata{background:rgba(191,199,206,.14);color:var(--prata);border:1px solid rgba(191,199,206,.4)}
+.ouro{background:rgba(245,197,24,.14);color:var(--ouro);border:1px solid rgba(245,197,24,.42)}
+.platina{background:rgba(143,227,232,.14);color:var(--platina);border:1px solid rgba(143,227,232,.42)}
+.diamante{background:rgba(127,209,255,.14);color:var(--diamante);border:1px solid rgba(127,209,255,.42)}
+.campeao{background:rgba(164,107,255,.16);color:var(--campeao);border:1px solid rgba(164,107,255,.45)}
+.tita{background:rgba(255,107,74,.16);color:var(--tita);border:1px solid rgba(255,107,74,.45)}
+.olympia{background:rgba(255,216,77,.18);color:var(--olympia);border:1px solid rgba(255,216,77,.5)}
+.ring{width:96px;height:96px;border-radius:50%;margin:8px auto;display:grid;place-items:center;
+background:conic-gradient(var(--platina) 0 62%,#232C3D 62% 100%);position:relative}
+.ring:after{content:'';position:absolute;inset:8px;border-radius:50%;background:var(--bg)}
+.ring .in{position:relative;z-index:2;text-align:center;line-height:1.12}
+.ring b{font-size:14px;display:block}.ring em{font-size:8px;font-style:normal;font-weight:700;color:var(--platina)}
+.ring span{font-size:6.5px;color:var(--mut)}
+.part{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:4px}
+.part .nm{font-size:9.5px;font-weight:600}
+.btn{margin:6px 11px 12px;background:var(--accent);border-radius:10px;text-align:center;padding:8px;font-weight:700;font-size:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}
+.rankline{display:flex;align-items:center;gap:5px;padding:4px 7px;border-radius:7px;background:var(--card);border:1px solid var(--line);margin-bottom:3px}
+.rankline .nm{font-size:8.5px;font-weight:700}
+.chips{margin-left:auto;display:flex;gap:2px}
+.chips i{font-style:normal;font-size:7px;font-weight:800;width:12px;height:12px;display:grid;place-items:center;border-radius:99px;background:#232C3D;color:var(--mut)}
+.rankline.cur{border-color:rgba(127,209,255,.55);background:rgba(127,209,255,.08)}
+.rankline.cur .chips i.on{background:rgba(127,209,255,.3);color:#06121c}
+.legend{font-size:7.5px;color:var(--mut);line-height:1.4;margin-top:5px}
+.cap{text-align:center;font-size:9px;color:#374151;font-weight:600;margin-top:6px}
+</style></head><body>
+<div class="fila">
+
+  <div><div class="tela"><div class="status"><span>9:41</span><span>▮ 100%</span></div>
+    <div class="body" style="text-align:center;padding-top:60px">
+      <div style="font-size:40px">🏋️</div>
+      <div style="font-size:20px;font-weight:900;margin-top:8px">GymRank</div>
+      <div style="font-size:9px;color:var(--mut);margin-top:6px;line-height:1.5">Regista os treinos e sobe de rank.<br>22 níveis, do Bronze 1 ao Olympia.</div>
+      <div style="margin-top:14px;display:flex;gap:4px;flex-wrap:wrap;justify-content:center">
+        <span class="badge bronze">Bronze 1-3</span><span class="badge prata">Prata 1-3</span><span class="badge ouro">Ouro 1-3</span>
+        <span class="badge platina">Platina 1-3</span><span class="badge diamante">Diamante 1-3</span><span class="badge campeao">Campeão 1-3</span>
+        <span class="badge tita">Titã 1-3</span><span class="badge olympia">Olympia ∞</span>
+      </div>
+    </div>
+    <div class="btn">Começar — criar perfil</div>
+  </div><div class="cap">1 · Boas-vindas</div></div>
+
+  <div><div class="tela"><div class="status"><span>9:41</span><span>▮ 100%</span></div>
+    <div class="nav">Olá, Eduardo</div>
+    <div class="body">
+      <div class="ring"><div class="in"><b>Platina</b><em>divisão 2</em><span>rank geral</span></div></div>
+      <div class="legend" style="text-align:center">Faltam 4,1 kg no supino para Diamante 1</div>
+      <div class="lbl">Rank por parte do corpo</div>
+      <div class="part"><div class="nm">Peito</div><span class="badge diamante">Diamante 2</span></div>
+      <div class="part"><div class="nm">Costas</div><span class="badge ouro">Ouro 3</span></div>
+      <div class="part"><div class="nm">Pernas</div><span class="badge platina">Platina 1</span></div>
+      <div class="part"><div class="nm">Ombros</div><span class="badge ouro">Ouro 1</span></div>
+    </div>
+    <div class="btn">＋ Registar treino</div>
+  </div><div class="cap">2 · Painel (rank geral e por parte)</div></div>
+
+  <div><div class="tela"><div class="status"><span>9:41</span><span>▮ 100%</span></div>
+    <div class="nav">‹ Peito · Bench Press</div>
+    <div class="body">
+      <div class="card" style="text-align:center;padding:7px">
+        <div class="lbl">A tua posição</div>
+        <div style="font-size:17px;font-weight:900;color:var(--diamante)">Diamante 3</div>
+        <div class="legend" style="margin-top:2px">1RM 105 kg · faltam 3,4 kg para Campeão 1</div>
+      </div>
+      <div class="lbl">Escada de 22 níveis (80 kg)</div>
+      <div class="rankline"><span class="nm" style="color:var(--bronze)">Bronze</span><span class="chips"><i>1</i><i>2</i><i>3</i></span></div>
+      <div class="rankline"><span class="nm" style="color:var(--prata)">Prata</span><span class="chips"><i>1</i><i>2</i><i>3</i></span></div>
+      <div class="rankline"><span class="nm" style="color:var(--ouro)">Ouro</span><span class="chips"><i>1</i><i>2</i><i>3</i></span></div>
+      <div class="rankline"><span class="nm" style="color:var(--platina)">Platina</span><span class="chips"><i>1</i><i>2</i><i>3</i></span></div>
+      <div class="rankline cur"><span class="nm" style="color:var(--diamante)">Diamante</span><span class="chips"><i>1</i><i>2</i><i class="on">3</i></span></div>
+      <div class="rankline"><span class="nm" style="color:var(--campeao)">Campeão</span><span class="chips"><i>1</i><i>2</i><i>3</i></span></div>
+      <div class="rankline"><span class="nm" style="color:var(--tita)">Titã</span><span class="chips"><i>1</i><i>2</i><i>3</i></span></div>
+      <div class="rankline"><span class="nm" style="color:var(--olympia)">Olympia</span><span class="chips"><i style="width:26px;background:rgba(255,216,77,.18);color:var(--olympia)">∞</i></span></div>
+    </div>
+    <div class="btn">Registar série</div>
+  </div><div class="cap">3 · Exercício com a escada de níveis</div></div>
+
+  <div><div class="tela"><div class="status"><span>9:41</span><span>▮ 100%</span></div>
+    <div class="nav">Registar treino</div>
+    <div class="body">
+      <div class="card" style="margin-bottom:6px"><div class="lbl">Exercício</div><div style="font-size:11px;font-weight:700">Bench Press</div></div>
+      <div class="card" style="margin-bottom:6px"><div class="lbl">Peso · reps · séries</div><div style="font-size:11px;font-weight:700">105 kg · 5 · 5</div></div>
+      <div class="card" style="border-color:rgba(127,209,255,.5)">
+        <div class="lbl" style="color:var(--diamante)">1RM ao vivo (Epley)</div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:16px;font-weight:900">122,5 kg</div><span class="badge campeao">Campeão 3</span></div>
+        <div class="legend">1RM = peso × (1 + reps/30)</div>
+      </div>
+      <div class="lbl">Histórico</div>
+      <div class="legend">12/10 · 100 kg × 6 · Diamante 2<br>08/10 · 95 kg × 6 · Diamante 1</div>
+    </div>
+    <div class="btn">Guardar treino</div>
+  </div><div class="cap">4 · Registo com 1RM ao vivo</div></div>
+</div>
+</body></html>

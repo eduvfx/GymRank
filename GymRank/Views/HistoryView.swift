@@ -34,7 +34,7 @@ struct HistoryView: View {
                 VStack(spacing: 8) {
                     Text("Ainda não há treinos").font(.headline).foregroundStyle(.white)
                     Text("Regista a primeira série no separador Painel.")
-                        .font(.caption).foregroundStyle(.gymMuted)
+                        .font(.caption).foregroundStyle(Color.gymMuted)
                 }
             } else {
                 List {
@@ -46,9 +46,9 @@ struct HistoryView: View {
                                     .foregroundStyle(.white)
                                 Text("\(String(format: "%.1f", item.pesoKg)) kg × \(item.reps) × \(item.series) · "
                                      + item.data.formatted(date: .abbreviated, time: .omitted))
-                                    .font(.caption2).foregroundStyle(.gymMuted)
+                                    .font(.caption2).foregroundStyle(Color.gymMuted)
                                 Text("1RM \(String(format: "%.1f", item.umRM)) kg")
-                                    .font(.caption2).foregroundStyle(.gymMuted)
+                                    .font(.caption2).foregroundStyle(Color.gymMuted)
                             }
                             Spacer()
                             if let p = posicao(de: item) { RankBadge(position: p, compact: true) }

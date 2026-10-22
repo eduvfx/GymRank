@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt"><head><meta charset="utf-8"><title>GymRank — rotinas e treino em tempo real</title>
+<style>
+:root{--bg:#0B0E14;--card:#161B26;--line:#2A3345;--mut:#93A0B5;--accent:#4C8DFF;--ok:#34D399;
+--ouro:#F5C518;--diamante:#7FD1FF;--campeao:#A46BFF;--tita:#FF6B4A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;padding:6px}
+.fila{display:flex;gap:22px;justify-content:center}
+.tela{width:250px;height:540px;border-radius:26px;background:var(--bg);border:7px solid #0d1117;
+box-shadow:0 8px 18px rgba(15,23,42,.22);overflow:hidden;display:flex;flex-direction:column;color:#F2F5FA;position:relative}
+.status{display:flex;justify-content:space-between;padding:8px 14px 2px;font-size:8px;color:var(--mut)}
+.nav{padding:1px 11px 7px;display:flex;align-items:center;gap:5px;border-bottom:1px solid var(--line);font-size:11px;font-weight:700}
+.body{flex:1;padding:9px 11px 0;overflow:hidden}
+.lbl{font-size:7.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin:5px 0 3px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 8px;margin-bottom:5px}
+.row{display:flex;align-items:center;gap:6px}
+.nm{font-size:9.5px;font-weight:700}
+.sub{font-size:8px;color:var(--mut)}
+.badge{display:inline-flex;padding:2px 6px;border-radius:99px;font-size:7.5px;font-weight:800;text-transform:uppercase;border:1px solid}
+.diamante{background:rgba(127,209,255,.14);color:var(--diamante);border-color:rgba(127,209,255,.42)}
+.ouro{background:rgba(245,197,24,.14);color:var(--ouro);border-color:rgba(245,197,24,.42)}
+.campeao{background:rgba(164,107,255,.16);color:var(--campeao);border-color:rgba(164,107,255,.45)}
+.tita{background:rgba(255,107,74,.16);color:var(--tita);border-color:rgba(255,107,74,.45)}
+.btn{margin:5px 11px 11px;background:var(--accent);border-radius:10px;text-align:center;padding:8px;font-weight:700;font-size:10px}
+.btn.ghost{background:var(--card);border:1px solid var(--line);color:#DCE3EE;font-size:9px;padding:6px;margin-bottom:4px}
+.serie{display:flex;align-items:center;gap:5px;padding:3px 0}
+.serie i{font-style:normal;font-size:7.5px;color:var(--mut);width:9px}
+.campo{background:#0F141D;border:1px solid var(--line);border-radius:6px;font-size:8.5px;padding:3px 5px;color:#EAF0F8;min-width:38px;text-align:center}
+.campo.on{border-color:rgba(52,211,153,.55);color:var(--ok)}
+.check{width:13px;height:13px;border-radius:99px;border:1.5px solid var(--line);margin-left:auto}
+.check.ok{background:rgba(52,211,153,.2);border-color:var(--ok);position:relative}
+.check.ok:after{content:'✓';position:absolute;inset:0;font-size:8px;color:var(--ok);text-align:center;line-height:11px;font-weight:800}
+.timer{display:flex;align-items:center;gap:8px;background:rgba(76,141,255,.10);border:1px solid rgba(76,141,255,.4);border-radius:10px;padding:6px 8px;margin:5px 0}
+.anel{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) 0 62%,#1B2331 62% 100%);position:relative;flex:0 0 auto}
+.anel:after{content:'';position:absolute;inset:4px;border-radius:50%;background:var(--bg)}
+.anel b{position:relative;z-index:2;font-size:9px}
+.chip{font-size:7px;font-weight:800;border-radius:99px;padding:2px 5px;background:#1B2331;color:var(--mut)}
+.nota{font-size:7px;color:var(--mut);line-height:1.45}
+.cap{text-align:center;font-size:9px;color:#374151;font-weight:600;margin-top:5px}
+</style></head><body>
+<div class="fila">
+
+  <div><div class="tela"><div class="status"><span>9:41</span><span>▮ 100%</span></div>
+    <div class="nav">‹ Rotinas</div>
+    <div class="body">
+      <div class="card">
+        <div class="row"><div><div class="nm" style="font-size:12px">Peito e tríceps</div>
+          <div class="sub">4 exercícios · 12 séries · descanso 1:30</div></div></div>
+      </div>
+      <div class="lbl">Exercícios da rotina</div>
+      <div class="card"><div class="row"><span class="sub" style="width:9px">1</span><div style="flex:1"><div class="nm">Bench Press</div><div class="sub">Peito · 3 × 8</div></div><span class="badge diamante">Diam. 3</span></div></div>
+      <div class="card"><div class="row"><span class="sub" style="width:9px">2</span><div style="flex:1"><div class="nm">Incline Bench Press</div><div class="sub">Peito · 3 × 10</div></div><span class="badge ouro">Ouro 2</span></div></div>
+      <div class="card"><div class="row"><span class="sub" style="width:9px">3</span><div style="flex:1"><div class="nm">Tricep Pushdown</div><div class="sub">Tríceps · 3 × 12</div></div><span class="badge campeao">Camp. 1</span></div></div>
+      <div class="card"><div class="row"><span class="sub" style="width:9px">4</span><div style="flex:1"><div class="nm">Lateral Raise</div><div class="sub">Ombros · 3 × 15</div></div><span class="badge ouro">Ouro 1</span></div></div>
+      <div class="nota">Cada exercício mostra o rank actual, para se ver o que está a puxar a rotina para cima.</div>
+    </div>
+    <div class="btn">Começar treino</div>
+  </div><div class="cap">A · Rotina com exercícios e séries-alvo</div></div>
+
+  <div><div class="tela"><div class="status"><span>9:41</span><span>▮ 100%</span></div>
+    <div class="nav"><span style="flex:1">Treino · 12:38</span><span class="chip">3/12</span></div>
+    <div class="body">
+      <div class="timer">
+        <div class="anel"><b>1:12</b></div>
+        <div style="flex:1"><div style="font-size:8.5px;font-weight:700">Descanso entre séries</div>
+          <div class="nota">+15 s · saltar · configurável no perfil</div></div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="nm" style="flex:1">Bench Press</div><span class="badge diamante">Diam. 3</span></div>
+        <div class="serie"><i>1</i><span class="campo">100</span><span class="campo">8</span><span class="sub">1RM 127</span><span class="check ok"></span></div>
+        <div class="serie"><i>2</i><span class="campo">105</span><span class="campo">6</span><span class="sub">1RM 126</span><span class="check ok"></span></div>
+        <div class="serie"><i>3</i><span class="campo on">110</span><span class="campo on">5</span><span class="sub">1RM 128</span><span class="check"></span></div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="nm" style="flex:1">Incline Bench Press</div><span class="badge ouro">Ouro 2</span></div>
+        <div class="serie"><i>1</i><span class="campo">70</span><span class="campo">10</span><span class="sub">1RM 93</span><span class="check ok"></span></div>
+        <div class="serie"><i>2</i><span class="campo"></span><span class="campo"></span><span class="sub">—</span><span class="check"></span></div>
+      </div>
+      <div class="btn ghost">＋ Exercício a meio do treino</div>
+      <div class="btn ghost">📷 Adicionar por foto (supino detetado)</div>
+    </div>
+    <div class="btn">Submeter treino</div>
+  </div><div class="cap">B · Treino em tempo real, descanso e foto</div></div>
+</div>
+</body></html>
