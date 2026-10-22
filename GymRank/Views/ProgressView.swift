@@ -41,7 +41,7 @@ struct ProgressTabView: View {
                             SectionTitle(text: "1RM estimado por exercício")
                             if comDados.isEmpty {
                                 Text("Sem registos ainda. Regista um treino para veres a evolução.")
-                                    .font(.caption).foregroundStyle(.gymMuted)
+                                    .font(.caption).foregroundStyle(Color.gymMuted)
                             } else {
                                 Picker("Exercício", selection: $selecionado) {
                                     ForEach(comDados) { ex in
@@ -53,12 +53,12 @@ struct ProgressTabView: View {
 
                                 if pontos.isEmpty {
                                     Text("Sem dados para este exercício.")
-                                        .font(.caption).foregroundStyle(.gymMuted)
+                                        .font(.caption).foregroundStyle(Color.gymMuted)
                                 } else {
                                     GraficoBarras(pontos: pontos)
                                     if let ultimo = pontos.last, let primeiro = pontos.first {
                                         Text("\(pontos.count) registos · \(String(format: "%.1f", ultimo.1 - primeiro.1)) kg de evolução")
-                                            .font(.caption2).foregroundStyle(.gymMuted)
+                                            .font(.caption2).foregroundStyle(Color.gymMuted)
                                     }
                                 }
                             }
@@ -76,7 +76,7 @@ struct ProgressTabView: View {
                             if let p = part.position {
                                 RankBadge(position: p, compact: true)
                             } else {
-                                Text("—").font(.caption2).foregroundStyle(.gymMuted)
+                                Text("—").font(.caption2).foregroundStyle(Color.gymMuted)
                             }
                         }
                         .padding(.vertical, 2)
@@ -87,13 +87,13 @@ struct ProgressTabView: View {
                             SectionTitle(text: "Rank geral do corpo")
                             Text(summary.overallPosition?.nome ?? "Sem dados")
                                 .font(.system(size: 24, weight: .heavy, design: .rounded))
-                                .foregroundStyle(summary.overallPosition?.rank.color ?? .gymMuted)
+                                .foregroundStyle(summary.overallPosition?.rank.color ?? Color.gymMuted)
                             if let pts = summary.overallPoints {
                                 Text("\(pts) pontos no Olympia").font(.caption2)
-                                    .foregroundStyle(summary.overallPosition?.rank.color ?? .gymMuted)
+                                    .foregroundStyle(summary.overallPosition?.rank.color ?? Color.gymMuted)
                             }
                             Text("Média das oito partes do corpo com registos.")
-                                .font(.caption2).foregroundStyle(.gymMuted)
+                                .font(.caption2).foregroundStyle(Color.gymMuted)
                         }
                     }
                 }
@@ -120,14 +120,14 @@ struct GraficoBarras: View {
                 VStack(spacing: 4) {
                     Text(String(format: "%.0f", ponto.1))
                         .font(.system(size: 8))
-                        .foregroundStyle(.gymMuted)
+                        .foregroundStyle(Color.gymMuted)
                     RoundedRectangle(cornerRadius: 4)
                         .fill(LinearGradient(colors: [Color(hex: "7FD1FF"), Color(hex: "7FD1FF").opacity(0.25)],
                                              startPoint: .top, endPoint: .bottom))
                         .frame(height: max(6, 90 * ponto.1 / maximo))
                     Text(ponto.0.formatted(.dateTime.day().month(.twoDigits)))
                         .font(.system(size: 7))
-                        .foregroundStyle(.gymMuted)
+                        .foregroundStyle(Color.gymMuted)
                 }
                 .frame(maxWidth: .infinity)
             }

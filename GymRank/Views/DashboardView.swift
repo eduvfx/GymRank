@@ -38,7 +38,7 @@ struct DashboardView: View {
                                 .font(.system(size: 22, weight: .heavy, design: .rounded))
                                 .foregroundStyle(.white)
                             Text("\(profile.idade) anos · \(String(format: "%.1f", profile.pesoKg)) kg")
-                                .font(.caption).foregroundStyle(.gymMuted)
+                                .font(.caption).foregroundStyle(Color.gymMuted)
                         }
                         Spacer()
                         if let p = summary.overallPosition { RankBadge(position: p, compact: true) }
@@ -53,17 +53,17 @@ struct DashboardView: View {
                                 Text(objetivo)
                                     .font(.caption)
                                     .multilineTextAlignment(.center)
-                                    .foregroundStyle(.gymMuted)
+                                    .foregroundStyle(Color.gymMuted)
                             } else if summary.overallPosition?.isOlympia == true {
                                 Text("Estás no Olympia: os pontos continuam a subir sem tecto.")
                                     .font(.caption)
                                     .multilineTextAlignment(.center)
-                                    .foregroundStyle(.gymMuted)
+                                    .foregroundStyle(Color.gymMuted)
                             } else {
                                 Text("Regista um treino para começares a subir de rank")
                                     .font(.caption)
                                     .multilineTextAlignment(.center)
-                                    .foregroundStyle(.gymMuted)
+                                    .foregroundStyle(Color.gymMuted)
                             }
                         }
                         .frame(maxWidth: .infinity)
@@ -78,7 +78,7 @@ struct DashboardView: View {
                             HStack(spacing: 12) {
                                 Image(systemName: part.part.icon)
                                     .font(.system(size: 16))
-                                    .foregroundStyle(part.position?.rank.color ?? .gymMuted)
+                                    .foregroundStyle(part.position?.rank.color ?? Color.gymMuted)
                                     .frame(width: 26)
                                 VStack(alignment: .leading, spacing: 3) {
                                     Text(part.part.nome)
@@ -87,13 +87,13 @@ struct DashboardView: View {
                                     Text(part.hasData
                                          ? "\(summary.exerciseRanks(for: part.part).count) exercício(s) com registos"
                                          : "sem dados")
-                                        .font(.caption2).foregroundStyle(.gymMuted)
+                                        .font(.caption2).foregroundStyle(Color.gymMuted)
                                 }
                                 Spacer()
                                 if let p = part.position {
                                     RankBadge(position: p, compact: true)
                                 } else {
-                                    Text("—").foregroundStyle(.gymMuted)
+                                    Text("—").foregroundStyle(Color.gymMuted)
                                 }
                             }
                             .padding(12)

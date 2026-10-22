@@ -33,7 +33,7 @@ struct OnboardingView: View {
                             .foregroundStyle(.white)
                         Text("Regista os teus treinos e sobe de rank. Do Bronze ao Olympia — como num videojogo.")
                             .font(.subheadline)
-                            .foregroundStyle(.gymMuted)
+                            .foregroundStyle(Color.gymMuted)
                     }
                     .padding(.bottom, 6)
 
@@ -43,7 +43,7 @@ struct OnboardingView: View {
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Nome (opcional)")
                                 .font(.system(size: 10, weight: .semibold)).kerning(0.8)
-                                .foregroundStyle(.gymMuted)
+                                .foregroundStyle(Color.gymMuted)
                             TextField("O teu nome", text: $nome)
                                 .textFieldStyle(.plain)
                                 .font(.system(size: 16, weight: .semibold))
@@ -53,7 +53,7 @@ struct OnboardingView: View {
 
                     GymCard {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Idade").font(.system(size: 10, weight: .semibold)).kerning(0.8).foregroundStyle(.gymMuted)
+                            Text("Idade").font(.system(size: 10, weight: .semibold)).kerning(0.8).foregroundStyle(Color.gymMuted)
                             Stepper(value: $idade, in: 14...99) {
                                 Text("\(idade) anos")
                                     .font(.system(size: 18, weight: .bold))
@@ -65,7 +65,7 @@ struct OnboardingView: View {
 
                     GymCard {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Peso corporal").font(.system(size: 10, weight: .semibold)).kerning(0.8).foregroundStyle(.gymMuted)
+                            Text("Peso corporal").font(.system(size: 10, weight: .semibold)).kerning(0.8).foregroundStyle(Color.gymMuted)
                             Stepper(value: $peso, in: 30...250, step: 0.5) {
                                 Text(String(format: "%.1f kg", peso))
                                     .font(.system(size: 18, weight: .bold))
@@ -77,7 +77,7 @@ struct OnboardingView: View {
 
                     GymCard {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Altura").font(.system(size: 10, weight: .semibold)).kerning(0.8).foregroundStyle(.gymMuted)
+                            Text("Altura").font(.system(size: 10, weight: .semibold)).kerning(0.8).foregroundStyle(Color.gymMuted)
                             Stepper(value: $altura, in: 120...230, step: 1) {
                                 Text(String(format: "%.0f cm", altura))
                                     .font(.system(size: 18, weight: .bold))
@@ -90,7 +90,7 @@ struct OnboardingView: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Sexo (muda as tabelas de referência)")
                                 .font(.system(size: 10, weight: .semibold)).kerning(0.8)
-                                .foregroundStyle(.gymMuted)
+                                .foregroundStyle(Color.gymMuted)
                             Picker("Sexo", selection: $sexo) {
                                 ForEach(Sex.allCases) { Text($0.nome).tag($0) }
                             }
@@ -101,7 +101,7 @@ struct OnboardingView: View {
 
                     Text("A idade e o peso definem contra que população te comparas: os limites de cada rank são relativos ao teu peso corporal e ajustados à tua faixa de idade.")
                         .font(.caption)
-                        .foregroundStyle(.gymMuted)
+                        .foregroundStyle(Color.gymMuted)
 
                     Button {
                         guardar()

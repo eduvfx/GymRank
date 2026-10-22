@@ -65,7 +65,7 @@ struct RankRing: View {
             VStack(spacing: 1) {
                 Text(position?.rank.nome ?? "—")
                     .font(.system(size: 19, weight: .heavy, design: .rounded))
-                    .foregroundStyle(position?.rank.color ?? .gymMuted)
+                    .foregroundStyle(position?.rank.color ?? Color.gymMuted)
                 if let position, !position.isOlympia {
                     Text("divisão \(position.division)")
                         .font(.system(size: 11, weight: .bold, design: .rounded))
@@ -74,11 +74,11 @@ struct RankRing: View {
                 if let points, position?.isOlympia == true {
                     Text("\(points) pts")
                         .font(.system(size: 12, weight: .bold, design: .rounded))
-                        .foregroundStyle(position?.rank.color ?? .gymMuted)
+                        .foregroundStyle(position?.rank.color ?? Color.gymMuted)
                 }
                 Text(caption)
                     .font(.system(size: 8.5))
-                    .foregroundStyle(.gymMuted)
+                    .foregroundStyle(Color.gymMuted)
             }
         }
         .frame(width: 150, height: 150)
@@ -127,7 +127,7 @@ struct SectionTitle: View {
         Text(text.uppercased())
             .font(.system(size: 10, weight: .semibold))
             .kerning(0.9)
-            .foregroundStyle(.gymMuted)
+            .foregroundStyle(Color.gymMuted)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

@@ -108,14 +108,14 @@ struct LogWorkoutView: View {
                             }
                             if let pontosPrevistos {
                                 Text("\(pontosPrevistos) pontos no Olympia — os pontos sobem sem tecto.")
-                                    .font(.caption2).foregroundStyle(.gymMuted)
+                                    .font(.caption2).foregroundStyle(Color.gymMuted)
                             } else if let limiares, let posicaoPrevista,
                                       let next = limiares.kilosToNext(value: umRM) {
                                 Text("Faltam \(String(format: "%.1f", next.falta)) kg para \(next.next.nome).")
-                                    .font(.caption2).foregroundStyle(.gymMuted)
+                                    .font(.caption2).foregroundStyle(Color.gymMuted)
                             }
                             Text("1RM = peso × (1 + reps/30). Guardar actualiza o exercício, a parte do corpo e o rank geral.")
-                                .font(.caption2).foregroundStyle(.gymMuted)
+                                .font(.caption2).foregroundStyle(Color.gymMuted)
                         }
                     }
 

@@ -32,56 +32,13 @@ struct BodyPartView: View {
             Color.gymBackground.ignoresSafeArea()
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
-                    GymCard {
-                        VStack(alignment: .leading, spacing: 8) {
-                            SectionTitle(text: "Rank da parte do corpo")
-                            HStack {
-                                Text(rankDaParte?.position?.nome ?? "Sem dados")
-                                    .font(.system(size: 24, weight: .heavy, design: .rounded))
-                                    .foregroundStyle(rankDaParte?.position?.rank.color ?? .gymMuted)
-                                Spacer()
-                                if let points = rankDaParte?.olympiaPoints {
-                                    Text("\(points) pts").font(.system(size: 12, weight: .bold))
-                                        .foregroundStyle(rankDaParte?.position?.rank.color ?? .gymMuted)
-                                } else if let progress = rankDaParte?.progress {
-                                    Text("\(Int(progress * 100))% para o próximo")
-                                        .font(.caption2).foregroundStyle(.gymMuted)
-                                }
-                            }
-                            RankProgressBar(position: rankDaParte?.position, progress: rankDaParte?.progress ?? 0)
-                        }
-                    }
-
+                    cabecalho
                     SectionTitle(text: "Exercícios (\(daParte.count))")
-
                     ForEach(daParte) { exercise in
                         NavigationLink {
                             ExerciseDetailView(profile: profile, exercise: exercise)
                         } label: {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text(exercise.nome)
-                                        .font(.system(size: 14, weight: .semibold))
-                                        .foregroundStyle(.white)
-                                    if let r = summary.rank(for: exercise.standardID ?? "") {
-                                        Text("melhor 1RM \(String(format: "%.1f", r.bestUMRM)) kg"
-                                             + (r.lastDate.map { " · \(Self.formatter.string(from: $0))" } ?? ""))
-                                            .font(.caption2).foregroundStyle(.gymMuted)
-                                    } else {
-                                        Text(exercise.standard == nil ? "peso corporal" : "sem registos")
-                                            .font(.caption2).foregroundStyle(.gymMuted)
-                                    }
-                                }
-                                Spacer()
-                                if let r = summary.rank(for: exercise.standardID ?? "") {
-                                    RankBadge(position: r.position, compact: true)
-                                } else {
-                                    Text("—").foregroundStyle(.gymMuted)
-                                }
-                            }
-                            .padding(12)
-                            .background(RoundedRectangle(cornerRadius: 13).fill(Color.gymCard))
-                            .overlay(RoundedRectangle(cornerRadius: 13).stroke(Color.gymLine, lineWidth: 1))
+                            linha(exercise)
                         }
                         .buttonStyle(.plain)
                     }
@@ -91,6 +48,76 @@ struct BodyPartView: View {
         }
         .navigationTitle(part.nome)
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    // MARK: - Blocos separados (uma expressão enorme rebenta o type-checker)
+
+    private var cabecalho: some View {
+        GymCard {
+            VStack(alignment: .leading, spacing: 8) {
+                SectionTitle(text: "Rank da parte do corpo")
+                HStack(spacing: 8) {
+                    Text(rankDaParte?.position?.nome ?? "Sem dados")
+                        .font(.system(size: 24, weight: .heavy, design: .rounded))
+                        .foregroundStyle(cor)
+                    Spacer()
+                    subtitulo
+                }
+                RankProgressBar(position: rankDaParte?.position,
+                                progress: rankDaParte?.progress ?? 0)
+            }
+        }
+    }
+
+    private var cor: Color {
+        rankDaParte?.position?.rank.color ?? Color.gymMuted
+    }
+
+    @ViewBuilder
+    private var subtitulo: some View {
+        if let pontos = rankDaParte?.olympiaPoints {
+            Text("\(pontos) pts")
+                .font(.system(size: 12, weight: .bold))
+                .foregroundStyle(cor)
+        } else if let progresso = rankDaParte?.progress {
+            Text("\(Int(progresso * 100))% para o próximo")
+                .font(.caption2)
+                .foregroundStyle(Color.gymMuted)
+        }
+    }
+
+    private func linha(_ exercise: Exercise) -> some View {
+        let posicao = summary.rank(for: exercise.standardID ?? "")
+        return HStack(spacing: 8) {
+            VStack(alignment: .leading, spacing: 3) {
+                Text(exercise.nome)
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(.white)
+                Text(textoDetalhe(exercise, posicao))
+                    .font(.caption2)
+                    .foregroundStyle(Color.gymMuted)
+            }
+            Spacer()
+            if let posicao {
+                RankBadge(position: posicao.position, compact: true)
+            } else {
+                Text("—").foregroundStyle(Color.gymMuted)
+            }
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 13).fill(Color.gymCard))
+        .overlay(RoundedRectangle(cornerRadius: 13).stroke(Color.gymLine, lineWidth: 1))
+    }
+
+    private func textoDetalhe(_ exercise: Exercise, _ posicao: ExerciseRank?) -> String {
+        guard let posicao else {
+            return exercise.standard == nil ? "peso corporal" : "sem registos"
+        }
+        let kg = String(format: "%.1f", posicao.bestUMRM)
+        if let data = posicao.lastDate {
+            return "melhor 1RM \(kg) kg · \(Self.formatter.string(from: data))"
+        }
+        return "melhor 1RM \(kg) kg"
     }
 
     static let formatter: DateFormatter = {

@@ -59,7 +59,7 @@ struct ProfileView: View {
                         VStack(alignment: .leading, spacing: 8) {
                             SectionTitle(text: "Catálogo de exercícios (wger)")
                             Text("\(exercises.count) exercícios na base local.")
-                                .font(.caption).foregroundStyle(.gymMuted)
+                                .font(.caption).foregroundStyle(Color.gymMuted)
                             Button {
                                 Task { await sincronizar() }
                             } label: {
@@ -76,7 +76,7 @@ struct ProfileView: View {
                             .disabled(aSincronizar)
                             .accessibilityIdentifier("sincronizarWger")
                             if let mensagem {
-                                Text(mensagem).font(.caption2).foregroundStyle(.gymMuted)
+                                Text(mensagem).font(.caption2).foregroundStyle(Color.gymMuted)
                             }
                         }
                     }
@@ -85,9 +85,9 @@ struct ProfileView: View {
                         VStack(alignment: .leading, spacing: 5) {
                             SectionTitle(text: "Sobre")
                             Text("GymRank · projecto individual de Desenvolvimento para Dispositivos Móveis (MEI, ESTG/IPLeiria, 2026/2027).")
-                                .font(.caption2).foregroundStyle(.gymMuted)
+                                .font(.caption2).foregroundStyle(Color.gymMuted)
                             Text("Standards: Strength Level (2026). Catálogo: wger, CC-BY-SA 4.0. 1RM: Epley.")
-                                .font(.caption2).foregroundStyle(.gymMuted)
+                                .font(.caption2).foregroundStyle(Color.gymMuted)
                         }
                     }
                 }
@@ -100,7 +100,7 @@ struct ProfileView: View {
 
     private func linha(_ titulo: String, _ valor: String) -> some View {
         HStack {
-            Text(titulo).font(.caption).foregroundStyle(.gymMuted)
+            Text(titulo).font(.caption).foregroundStyle(Color.gymMuted)
             Spacer()
             Text(valor).font(.system(size: 13, weight: .semibold)).foregroundStyle(.white)
         }
