@@ -96,9 +96,14 @@ final class GymRankUITests: XCTestCase {
         XCTAssertTrue(ranks.waitForExistence(timeout: 8))
         ranks.tap()
         XCTAssertTrue(app.navigationBars["Ranks"].waitForExistence(timeout: 8))
-        let pontos = app.staticTexts["pontosInfinitos"]
-        if !pontos.waitForExistence(timeout: 3) { app.swipeUp() }
-        XCTAssertTrue(pontos.waitForExistence(timeout: 5),
+        // a SwiftUI pode juntar os Text da linha num só elemento ("Olympia, ∞ pontos"),
+        // por isso procura-se pelo conteúdo e não pelo identificador
+        let infinitos = app.staticTexts.containing(
+            NSPredicate(format: "label CONTAINS %@", "∞")).firstMatch
+        if !infinitos.waitForExistence(timeout: 3) { app.swipeUp() }
+        let explicacao = app.staticTexts.containing(
+            NSPredicate(format: "label CONTAINS[c] %@", "sem tecto")).firstMatch
+        XCTAssertTrue(infinitos.waitForExistence(timeout: 4) || explicacao.waitForExistence(timeout: 4),
                       "o ecrã devia explicar os pontos infinitos do Olympia")
         shot("06-ranks")
     }
