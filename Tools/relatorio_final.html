@@ -3,13 +3,13 @@
 <style>
 @page { size:A4; margin:13mm 14mm 12mm 14mm }
 *{box-sizing:border-box}
-body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#14213D;font-size:9.8pt;line-height:1.34;margin:0}
+body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#14213D;font-size:9.6pt;line-height:1.30;margin:0}
 h1{font-size:17.5pt;line-height:1.1;margin:0 0 3px;letter-spacing:-.3px}
-h2{font-size:11.4pt;margin:11px 0 4px;padding-bottom:2px;border-bottom:1.5px solid #14213D;page-break-after:avoid}
+h2{font-size:11.2pt;margin:9px 0 3px;padding-bottom:2px;border-bottom:1.5px solid #14213D;page-break-after:avoid}
 p{margin:0 0 5px;text-align:justify}
 ul{margin:0 0 5px 14px;padding:0}li{margin-bottom:1px}
 code{font-family:Consolas,monospace;font-size:8.6pt;background:#EEF2F7;padding:1px 3px;border-radius:3px}
-table{width:100%;border-collapse:collapse;margin:4px 0 6px;font-size:8.8pt}
+table{width:100%;border-collapse:collapse;margin:4px 0 6px;font-size:8.4pt}
 th,td{border:1px solid #C9D3E0;padding:3px 5px;vertical-align:top;text-align:left}
 th{background:#14213D;color:#fff}tbody tr:nth-child(even){background:#F6F8FB}
 .kicker{font-size:8pt;letter-spacing:1px;text-transform:uppercase;color:#5B6672;margin-bottom:3px}
@@ -23,6 +23,8 @@ figcaption{font-size:8pt;color:#475569;margin-top:3px}
 .ouro{color:#8A6D0B;border-color:#F5C518;background:#FEFBEA}.platina{color:#1F6E73;border-color:#8FE3E8;background:#EDFBFC}
 .diamante{color:#0B6389;border-color:#7FD1FF;background:#EDF8FF}.campeao{color:#5A34A8;border-color:#A46BFF;background:#F3EEFF}
 .tita{color:#A33721;border-color:#FF6B4A;background:#FFF0EC}.olympia{color:#8A6A00;border-color:#FFD84D;background:#FFFBEA}
+.cols{display:flex;gap:8px;align-items:flex-start}.cols>table{flex:1;margin:2px 0 4px}
+.legenda-tab{font-size:7.6pt;color:#475569;margin:-2px 0 6px}
 .finais{font-size:7.8pt;color:#475569;border-top:1px solid #C9D3E0;margin-top:7px;padding-top:3px}
 </style></head><body>
 
@@ -34,7 +36,7 @@ figcaption{font-size:8pt;color:#475569;margin-top:3px}
 <p>A <b>GymRank</b> é uma app iOS para treinar no ginásio com <b>ranks de videojogo</b>: <span class="rank bronze">Bronze</span> <span class="rank prata">Prata</span> <span class="rank ouro">Ouro</span> <span class="rank platina">Platina</span> <span class="rank diamante">Diamante</span> <span class="rank campeao">Campeão</span> <span class="rank tita">Titã</span> <span class="rank olympia">Olympia</span>. O treino organiza-se em <b>rotinas</b> (conjuntos de exercícios com séries e repetições-alvo) que se iniciam e acompanham em tempo real, série a série. Cada exercício, cada parte do corpo e o corpo inteiro têm um rank relativo ao peso do utilizador, com 1RM estimado ao vivo e o próximo objectivo em kg — o que responde à perda de aderência das apps de registo, que devolvem números sem significado. A app <b>pede obrigatoriamente idade e peso</b> no primeiro arranque: o peso define a população de comparação e a idade ajusta os limites.</p>
 
 <h2>2. Abordagem</h2>
-<p><b>Nativo em iOS (Swift/SwiftUI)</b>, plataforma diferente da do projecto de grupo (Android/Kotlin+Compose), como o enunciado exige. <b>SwiftUI</b> para a interface declarativa, <b>SwiftData</b> para persistência local (perfil, catálogo, rotinas, sessões), motor de ranks isolado e testável, cliente <b>wger</b> com <code>async/await</code> e cache offline. A identificação de máquinas por fotografia usa o <b>classificador de imagens do sistema (Vision, <code>VNClassifyImageRequest</code>)</b>: corre no dispositivo, sem modelo treinado à parte. Verificação por XCTest (motor, temporizador, mapeamento de etiquetas) e XCUITest dos fluxos num simulador de iPhone por CI macOS, porque o desenvolvimento é em Windows.</p>
+<p><b>Nativo em iOS (Swift/SwiftUI)</b>, plataforma diferente da do projecto de grupo (Android/Kotlin+Compose), como o enunciado exige. <b>SwiftUI</b> para a interface declarativa, <b>SwiftData</b> para persistência local (perfil, catálogo, rotinas, sessões) e motor de ranks isolado e testável. O catálogo é <b>fechado</b>: só entram os 23 exercícios com limiares de força publicados, para que nenhum exercício fique sem rank — não há dependência de uma API de exercícios. A identificação de máquinas por fotografia usa o <b>classificador de imagens do sistema (Vision, <code>VNClassifyImageRequest</code>)</b>: corre no dispositivo, sem modelo treinado à parte. Verificação por XCTest (motor, temporizador, mapeamento de etiquetas) e XCUITest dos fluxos num simulador de iPhone por CI macOS, porque o desenvolvimento é em Windows.</p>
 
 <h2>3. Fluxo de navegação</h2>
 <figure>
@@ -85,7 +87,7 @@ figcaption{font-size:8pt;color:#475569;margin-top:3px}
 <table>
 <thead><tr><th style="width:11%">Prior.</th><th>Funcionalidades</th></tr></thead>
 <tbody>
-<tr><td><b>P0</b></td><td>Perfil (idade, peso e descanso padrão) · catálogo wger com cache offline · <b>rotinas</b> com exercícios, séries e repetições-alvo (CRUD completo) · <b>treino em tempo real</b> a partir da rotina, com peso e repetições por série, 1RM ao vivo, adicionar exercícios a meio e submeter · <b>timer de descanso</b> configurável · rank por exercício, por parte e geral.</td></tr>
+<tr><td><b>P0</b></td><td>Perfil (idade, peso e descanso padrão) · catálogo incluído de 23 exercícios, todos com rank · <b>rotinas</b> com exercícios, séries e repetições-alvo (CRUD completo) · <b>treino em tempo real</b> a partir da rotina, com peso e repetições por série, 1RM ao vivo, adicionar exercícios a meio e submeter · <b>timer de descanso</b> configurável · rank por exercício, por parte e geral.</td></tr>
 <tr><td><b>P1</b></td><td><b>Adicionar exercício por fotografia</b> da máquina, com sugestão a confirmar · histórico de sessões com volume e duração · gráficos de progresso · percentil («mais forte que X%») · acessibilidade (Dynamic Type, VoiceOver, tema claro/escuro).</td></tr>
 <tr><td><b>P2</b></td><td>Exportação CSV/JSON e cartão de rank partilhável · notificações locais.</td></tr>
 </tbody>
@@ -110,19 +112,62 @@ figcaption{font-size:8pt;color:#475569;margin-top:3px}
 <table>
 <thead><tr><th style="width:17%">Fonte</th><th>Uso</th></tr></thead>
 <tbody>
-<tr><td><b>wger</b> REST v2</td><td>Catálogo de exercícios (nome, categoria, músculos, equipamento). API pública sem chave; consulta real: <b>860 exercícios</b>, 8 categorias, 15 músculos. Licença <b>CC-BY-SA 4.0</b> com atribuição na app.</td></tr>
-<tr><td><b>Strength Level</b></td><td>Limiares de rank por exercício, sexo e peso corporal. Sem API pública: dados de referência convertidos num pacote de limiares empacotado. Edição 2026: <b>287 exercícios</b>, 195,5 M levantamentos de 27,9 M utilizadores.</td></tr>
+<tr><td><b>Strength Level</b></td><td>Única fonte de exercícios e de limiares: 23 exercícios com limiares publicados por sexo e peso corporal, empacotados na app (sem pedidos em tempo de execução). Edição 2026 do sítio: <b>287 exercícios</b>, 195,5 M levantamentos de 27,9 M utilizadores.</td></tr>
 <tr><td><b>Vision</b> (iOS)</td><td>Classificação de imagens no dispositivo para identificar a máquina; sem chave e sem enviar fotografias para fora.</td></tr>
 </tbody>
 </table>
 
 <h2>8. Modelo de ranks (22 níveis)</h2>
-<p>Os cinco limiares publicados (Beginner…Elite = mais forte que 5/20/50/80/95%) são as âncoras: dois pontos intermédios dão os oito ranks e cada um dos primeiros sete é dividido em <b>três divisões iguais</b> (Bronze 1 a Titã 3 = 21 níveis). O <b>Olympia é nível único e pontuado</b>: entra-se com <b>1000 pontos</b> no limiar de Elite e ganha-se +1000 por cada duplicação do 1RM, sem tecto. Os limites escalam com o peso (<code>limiar_ref × (peso/72)^b</code>, 68 kg nas mulheres, <code>b</code> ajustado por regressão) e com a idade (18–24: 0,95 · 25–34: 1,00 · 35–44: 0,95 · 45–54: 0,88 · 55–64: 0,78 · 65+: 0,65). Agregação: cada posição vale 0–21 mais a fracção na divisão; a parte é a média dos seus exercícios e o rank geral a média das partes com dados.</p>
-<p><b>Exemplo</b> (homem, 80 kg, 24 anos, supino): limites <b>47,7 · 68,1 · 80,7 · 93,4 · 108,4 · 123,5 · 155,6 kg</b> → 105 kg = <b>Diamante 3</b> (faltam 3,4 kg para Campeão 1); 155,6 kg abre o <b>Olympia</b> com 1000 pontos.</p>
+<p>Um rank não é um número absoluto: é a <b>posição do atleta dentro da população que tem o mesmo peso corporal</b> — 80 kg contra 80 kg, não 80 kg contra 60 kg. Os limiares publicados já são tabelados por peso, por isso a app transporta-os para o peso e a idade do utilizador. A escada constrói-se em quatro passos, do limiar publicado ao nível que o atleta vê no ecrã.</p>
+
+<p><b>1. Âncoras.</b> A fonte publica cinco limiares por exercício e sexo — Beginner, Novice, Intermediate, Advanced, Elite — que valem, respectivamente, ser mais forte que <b>5%, 20%, 50%, 80% e 95%</b> de quem faz aquele exercício.</p>
+
+<p><b>2. De cinco limiares a oito ranks.</b> Mantêm-se os cinco publicados e acrescentam-se dois pontos médios — cada rank novo nasce de dois valores reais, sem números inventados.</p>
+
+<div class="cols">
+<table>
+<thead><tr><th>Rank</th><th>Percentil</th><th>Origem</th></tr></thead>
+<tbody>
+<tr><td><span class="rank bronze">Bronze</span></td><td>&lt; 5%</td><td>abaixo de Beginner, a três partes</td></tr>
+<tr><td><span class="rank prata">Prata</span></td><td>5%</td><td>limiar Beginner</td></tr>
+<tr><td><span class="rank ouro">Ouro</span></td><td>20%</td><td>limiar Novice</td></tr>
+<tr><td><span class="rank platina">Platina</span></td><td>35%</td><td>média Novice/Intermediate</td></tr>
+<tr><td><span class="rank diamante">Diamante</span></td><td>50%</td><td>limiar Intermediate</td></tr>
+<tr><td><span class="rank campeao">Campeão</span></td><td>65%</td><td>média Intermediate/Advanced</td></tr>
+<tr><td><span class="rank tita">Titã</span></td><td>80%</td><td>limiar Advanced</td></tr>
+<tr><td><span class="rank olympia">Olympia</span></td><td>95%</td><td>limiar Elite, nível único</td></tr>
+</tbody>
+</table>
+<table>
+<thead><tr><th>Início de cada rank</th><th>kg</th></tr></thead>
+<tbody>
+<tr><td>Bronze 1</td><td>0</td></tr>
+<tr><td>Prata 1</td><td>47,7</td></tr>
+<tr><td>Ouro 1</td><td>68,1</td></tr>
+<tr><td>Platina 1</td><td>80,7</td></tr>
+<tr><td>Diamante 1</td><td>93,4</td></tr>
+<tr><td>Campeão 1</td><td>108,4</td></tr>
+<tr><td>Titã 1</td><td>123,5</td></tr>
+<tr><td>Olympia</td><td>155,6</td></tr>
+</tbody>
+</table>
+</div>
+<p class="legenda-tab">À esquerda, como nasce cada rank; à direita, o resultado para <b>homem, 80 kg, 24 anos, supino</b>.</p>
+
+<p><b>3. De oito ranks a 22 níveis.</b> Cada um dos sete primeiros ranks é dividido em <b>três divisões iguais</b> (Bronze 1 a Titã 3 = 21 níveis); o Olympia fica como nível único. No exemplo do supino, Diamante cobre 93,4–108,4 kg, ou seja três divisões de 5 kg: Diamante 1 até 98,4, Diamante 2 até 103,4 e Diamante 3 até 108,4. É esta divisão que faz o rank subir muitas vezes ao longo dos meses, em vez de sete vezes na vida.</p>
+
+<p><b>4. Pontuação e Olympia.</b> Cada nível vale um inteiro (Bronze 1 = 0 … Titã 3 = 20) e a posição dentro do nível vale uma fracção entre 0 e 1, pelo que o total vai de <b>0 a 21</b>. O <b>Olympia não tem tecto</b>: entra-se com <b>1000 pontos</b> no limiar de Elite e ganha-se mais 1000 por cada duplicação do 1RM — um número que nunca pára, para o topo da escada continuar a ter objectivo.</p>
+
+<p><b>5. Ajuste ao atleta.</b> Os limiares publicados são tabelados por peso; a app escala-os com <code>limiar(peso) = limiar_ref × (peso/72)^b</code> (68 kg nas mulheres), com <code>b</code> ajustado por regressão log-log às tabelas publicadas, e aplica depois um coeficiente de idade: 18–24 = 0,95 · 25–34 = 1,00 · 35–44 = 0,95 · 45–54 = 0,88 · 55–64 = 0,78 · 65+ = 0,65.</p>
+
+<p><b>6. Agregação em três níveis.</b> O rank do <b>exercício</b> é o da melhor série registada (1RM de Epley). O da <b>parte do corpo</b> é a média dos seus exercícios com registos. O <b>geral</b> é a média das partes com registos, para que treinar só peito não dispare o rank geral.</p>
+
+<p><b>Exemplo.</b> Com <b>105 kg</b> o atleta vê <b>Diamante 3</b> (faltam 3,4 kg para Campeão 1); aos <b>155,6 kg</b> entra no <b>Olympia</b> com 1000 pontos.</p>
+
 <div class="nota"><b>Limite honesto.</b> As tabelas por peso e idade da fonte são geradas em JavaScript: obtiveram-se as femininas de 12 dos 23 exercícios e, nos restantes, os limiares femininos são estimados (masculino × 0,556) e marcados no código. Contra o calculador de referência (homem, supino, 72 kg) o desvio médio é 10,5 kg. As tabelas completas são capturadas na implementação e o pacote é reprodutível por script. Na detecção por foto as etiquetas do classificador são genéricas: a sugestão é sempre confirmada pelo utilizador e as máquinas de cardio não têm rank.</div>
 
 <h2>9. Plano e avaliação</h2>
-<p><b>22–31 Out:</b> projecto SwiftUI, SwiftData e perfil. <b>1–14 Nov:</b> cliente wger, catálogo offline, navegação e ranks por exercício. <b>15–30 Nov:</b> rotinas, treino em tempo real, timer de descanso e submeter, com CRUD completo. <b>1–8 Dez:</b> detecção por fotografia (Vision), histórico, gráficos, acessibilidade e testes. <b>9–10 Dez:</b> submissão (código, README, slides, vídeo de 2–3 min). Verificação: testes do motor com valores-limite, do temporizador e do mapeamento de etiquetas, XCUITest dos fluxos e catálogo com/sem rede; riscos mitigados por pacote versionado, cache local e CI macOS. Critérios: funcionalidade 30%, UI/UX 20%, qualidade de código 20%, inovação 15%, documentação 15%.</p>
+<p><b>22–31 Out:</b> projecto SwiftUI, SwiftData e perfil. <b>1–14 Nov:</b> catálogo, navegação e ranks por exercício. <b>15–30 Nov:</b> rotinas, treino em tempo real, timer de descanso e submeter, com CRUD completo. <b>1–8 Dez:</b> detecção por fotografia (Vision), histórico, gráficos, acessibilidade e testes. <b>9–10 Dez:</b> submissão (código, README, slides, vídeo de 2–3 min). Verificação: testes do motor com valores-limite, do temporizador e do mapeamento de etiquetas, XCUITest dos fluxos; riscos mitigados por pacote versionado, cache local e CI macOS. Critérios: funcionalidade 30%, UI/UX 20%, qualidade de código 20%, inovação 15%, documentação 15%.</p>
 
-<p class="finais"><b>Referências:</b> Strength Level, <i>Strength Standards 2026</i> (strengthlevel.com) · wger, <i>REST API v2</i> (CC-BY-SA 4.0) · Apple, <i>SwiftUI / SwiftData / Vision / XCTest</i> (2026) · Epley, B. (1985), <i>Poundage Chart</i>. — GymRank · Eduardo Gomes, 2026165029 · DDM/MEI, ESTG/IPLeiria · 21/10/2026</p>
+<p class="finais"><b>Referências:</b> Strength Level, <i>Strength Standards 2026</i> (strengthlevel.com) · Apple, <i>SwiftUI / SwiftData / Vision / XCTest</i> (2026) · Epley, B. (1985), <i>Poundage Chart</i>. — GymRank · Eduardo Gomes, 2026165029 · DDM/MEI, ESTG/IPLeiria · 21/10/2026</p>
 </body></html>

@@ -96,7 +96,9 @@ final class GymRankUITests: XCTestCase {
         XCTAssertTrue(ranks.waitForExistence(timeout: 8))
         ranks.tap()
         XCTAssertTrue(app.navigationBars["Ranks"].waitForExistence(timeout: 8))
-        XCTAssertTrue(app.staticTexts["∞ pontos"].exists || app.staticTexts["∞ PONTOS"].exists,
+        let pontos = app.staticTexts["pontosInfinitos"]
+        if !pontos.waitForExistence(timeout: 3) { app.swipeUp() }
+        XCTAssertTrue(pontos.waitForExistence(timeout: 5),
                       "o ecrã devia explicar os pontos infinitos do Olympia")
         shot("06-ranks")
     }

@@ -75,7 +75,8 @@ final class RankEngineTests: XCTestCase {
         XCTAssertEqual(t.position(forUMRM: 75).nome, "Ouro 2")
         XCTAssertEqual(t.position(forUMRM: 100).nome, "Diamante 2")
         XCTAssertEqual(t.position(forUMRM: 110).nome, "Campeão 1")
-        XCTAssertEqual(t.position(forUMRM: 130).nome, "Titã 2")
+        XCTAssertEqual(t.position(forUMRM: 130).nome, "Titã 1")
+        XCTAssertEqual(t.position(forUMRM: 140).nome, "Titã 2")
         XCTAssertEqual(t.position(forUMRM: 156).nome, "Olympia")
         XCTAssertEqual(t.position(forUMRM: 250).nome, "Olympia")
     }

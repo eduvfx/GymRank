@@ -138,8 +138,8 @@ struct LogWorkoutView: View {
         .navigationTitle("Registar treino")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            if let preselect, let id = preselect.standardID {
-                selecionado = id
+            if let preselect {
+                selecionado = preselect.standardID
             } else if selecionado.isEmpty, let first = comStandard.first?.standardID {
                 selecionado = first
             }
@@ -147,7 +147,8 @@ struct LogWorkoutView: View {
     }
 
     private func guardar() {
-        guard let exercicio, let standardID = exercicio.standardID else { return }
+        guard let exercicio else { return }
+        let standardID = exercicio.standardID
         context.insert(WorkoutSet(exercicioID: standardID,
                                   standardID: standardID,
                                   pesoKg: peso,
