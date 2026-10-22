@@ -92,9 +92,14 @@ final class GymRankUITests: XCTestCase {
     func test04_RanksScreenExplainsDivisionsAndInfinitePoints() {
         garantirPerfil()
         app.tabBars.buttons["Perfil"].tap()
-        let ranks = app.staticTexts["Ranks e conquistas"]
-        XCTAssertTrue(ranks.waitForExistence(timeout: 8))
-        ranks.tap()
+        // o NavigationLink expõe-se como botão, não como texto
+        let ranks = app.buttons["abrirRanks"]
+        if !ranks.waitForExistence(timeout: 6) {
+            if !app.buttons["Ranks e conquistas"].exists { app.swipeUp() }
+        }
+        XCTAssertTrue(ranks.waitForExistence(timeout: 8) || app.buttons["Ranks e conquistas"].waitForExistence(timeout: 3),
+                      "o Perfil devia ter a entrada para os ranks")
+        if ranks.exists { ranks.tap() } else { app.buttons["Ranks e conquistas"].tap() }
         XCTAssertTrue(app.navigationBars["Ranks"].waitForExistence(timeout: 8))
         // a SwiftUI pode juntar os Text da linha num só elemento ("Olympia, ∞ pontos"),
         // por isso procura-se pelo conteúdo e não pelo identificador
