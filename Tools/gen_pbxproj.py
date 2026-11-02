@@ -15,6 +15,8 @@ SOURCES = [
     'Engine/RankEngine.swift',
     'Engine/RankComputation.swift',
     'Engine/StandardsData.swift',
+    'Engine/SessionEngine.swift',
+    'Engine/MachineDetector.swift',
     'Models/Models.swift',
     'Views/Theme.swift',
     'Views/RootView.swift',
@@ -27,9 +29,13 @@ SOURCES = [
     'Views/ProgressView.swift',
     'Views/RanksView.swift',
     'Views/ProfileView.swift',
+    'Views/RoutinesView.swift',
+    'Views/RoutineDetailView.swift',
+    'Views/ActiveWorkoutView.swift',
+    'Views/PhotoExerciseView.swift',
 ]
 RESOURCES = ['Assets.xcassets']
-UNIT_TESTS = ['RankEngineTests.swift']
+UNIT_TESTS = ['RankEngineTests.swift', 'SessionTests.swift']
 UI_TESTS = ['GymRankUITests.swift']
 
 for rel in SOURCES + RESOURCES:
@@ -112,10 +118,13 @@ asset_ref = new('ref:assets')
 asset_bf = new('bf:assets')
 file_refs.append((asset_ref, 'Assets.xcassets', 'Assets.xcassets'))
 
-unit_ref = new('ref:unit')
-unit_bf = new('bf:unit')
-file_refs.append((unit_ref, 'RankEngineTests.swift', 'RankEngineTests.swift'))
-build_files.append((unit_bf, unit_ref, 'RankEngineTests.swift'))
+unit_itens = []
+for nome in UNIT_TESTS:
+    ref = new('ref:unit:' + nome)
+    bf = new('bf:unit:' + nome)
+    file_refs.append((ref, nome, nome))
+    build_files.append((bf, ref, nome))
+    unit_itens.append((bf, ref, nome))
 
 ui_ref = new('ref:ui')
 ui_bf = new('bf:ui')
@@ -177,7 +186,8 @@ w(f'\t\t{APP_GROUP} /* GymRank */ = {{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = 
 for folder in ['Engine', 'Models', 'Networking', 'Views']:
     kids = '\n'.join(f'\t\t\t\t{ref} /* {name} */,' for ref, name in groups[folder])
     w(f'\t\t{group_dirs[folder]} /* {folder} */ = {{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n{kids}\n\t\t\t);\n\t\t\tpath = {folder};\n\t\t\tsourceTree = "<group>";\n\t\t}};')
-w(f'\t\t{TESTS_GROUP} /* GymRankTests */ = {{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n\t\t\t\t{unit_ref} /* RankEngineTests.swift */,\n\t\t\t);\n\t\t\tpath = GymRankTests;\n\t\t\tsourceTree = "<group>";\n\t\t}};')
+kids_unit = '\n'.join(f'\t\t\t\t{ref} /* {nome} */,' for bf, ref, nome in unit_itens)
+w(f'\t\t{TESTS_GROUP} /* GymRankTests */ = {{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n{kids_unit}\n\t\t\t);\n\t\t\tpath = GymRankTests;\n\t\t\tsourceTree = \"<group>\";\n\t\t}};')
 w(f'\t\t{UITESTS_GROUP} /* GymRankUITests */ = {{\n\t\t\tisa = PBXGroup;\n\t\t\tchildren = (\n\t\t\t\t{ui_ref} /* GymRankUITests.swift */,\n\t\t\t);\n\t\t\tpath = GymRankUITests;\n\t\t\tsourceTree = "<group>";\n\t\t}};')
 w('/* End PBXGroup section */')
 w('')
@@ -283,9 +293,10 @@ for phase in (TESTS_RESOURCES, UITESTS_RESOURCES):
 w('/* End PBXResourcesBuildPhase section */')
 w('')
 w('/* Begin PBXSourcesBuildPhase section */')
-app_bfs = '\n'.join(f'\t\t\t\t{bf} /* {name} in Sources */,' for bf, ref, name in build_files if name not in ('RankEngineTests.swift', 'GymRankUITests.swift'))
+app_bfs = '\n'.join(f'\t\t\t\t{bf} /* {name} in Sources */,' for bf, ref, name in build_files if name not in set(UNIT_TESTS) | set(UI_TESTS))
 w(f'\t\t{APP_SOURCES} /* Sources */ = {{\n\t\t\tisa = PBXSourcesBuildPhase;\n\t\t\tbuildActionMask = 2147483647;\n\t\t\tfiles = (\n{app_bfs}\n\t\t\t);\n\t\t\trunOnlyForDeploymentPostprocessing = 0;\n\t\t}};')
-w(f'\t\t{TESTS_SOURCES} /* Sources */ = {{\n\t\t\tisa = PBXSourcesBuildPhase;\n\t\t\tbuildActionMask = 2147483647;\n\t\t\tfiles = (\n\t\t\t\t{unit_bf} /* RankEngineTests.swift in Sources */,\n\t\t\t);\n\t\t\trunOnlyForDeploymentPostprocessing = 0;\n\t\t}};')
+kids_unit_bfs = '\n'.join(f'\t\t\t\t{bf} /* {nome} in Sources */,' for bf, ref, nome in unit_itens)
+w(f'\t\t{TESTS_SOURCES} /* Sources */ = {{\n\t\t\tisa = PBXSourcesBuildPhase;\n\t\t\tbuildActionMask = 2147483647;\n\t\t\tfiles = (\n{kids_unit_bfs}\n\t\t\t);\n\t\t\trunOnlyForDeploymentPostprocessing = 0;\n\t\t}};')
 w(f'\t\t{UITESTS_SOURCES} /* Sources */ = {{\n\t\t\tisa = PBXSourcesBuildPhase;\n\t\t\tbuildActionMask = 2147483647;\n\t\t\tfiles = (\n\t\t\t\t{ui_bf} /* GymRankUITests.swift in Sources */,\n\t\t\t);\n\t\t\trunOnlyForDeploymentPostprocessing = 0;\n\t\t}};')
 w('/* End PBXSourcesBuildPhase section */')
 w('')

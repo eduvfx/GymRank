@@ -33,11 +33,14 @@ def read(path, limit=None):
 APP_SOURCES = [
     'GymRankApp.swift',
     'Engine/RankEngine.swift', 'Engine/RankComputation.swift', 'Engine/StandardsData.swift',
+    'Engine/SessionEngine.swift', 'Engine/MachineDetector.swift',
     'Models/Models.swift',
     'Views/Theme.swift', 'Views/RootView.swift', 'Views/OnboardingView.swift',
     'Views/DashboardView.swift', 'Views/BodyPartView.swift', 'Views/ExerciseDetailView.swift',
     'Views/LogWorkoutView.swift', 'Views/HistoryView.swift', 'Views/ProgressView.swift',
     'Views/RanksView.swift', 'Views/ProfileView.swift',
+    'Views/RoutinesView.swift', 'Views/RoutineDetailView.swift',
+    'Views/ActiveWorkoutView.swift', 'Views/PhotoExerciseView.swift',
 ]
 
 print('== 1. ficheiros ==')
@@ -45,6 +48,7 @@ for rel in APP_SOURCES:
     p = os.path.join(ROOT, 'GymRank', rel)
     check(os.path.isfile(p), f'existe GymRank/{rel}')
 check(os.path.isfile(os.path.join(ROOT, 'GymRankTests', 'RankEngineTests.swift')), 'existe GymRankTests/RankEngineTests.swift')
+check(os.path.isfile(os.path.join(ROOT, 'GymRankTests', 'SessionTests.swift')), 'existe GymRankTests/SessionTests.swift')
 check(os.path.isfile(os.path.join(ROOT, 'GymRankUITests', 'GymRankUITests.swift')), 'existe GymRankUITests/GymRankUITests.swift')
 for asset in ['Contents.json', 'AppIcon.appiconset/Contents.json', 'AccentColor.colorset/Contents.json']:
     check(os.path.isfile(os.path.join(ROOT, 'GymRank', 'Assets.xcassets', asset)), f'asset {asset}')

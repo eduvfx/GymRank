@@ -59,8 +59,8 @@ final class GymRankUITests: XCTestCase {
         XCTAssertTrue(guardar.waitForExistence(timeout: 5))
         guardar.tap()
 
-        app.tabBars.buttons["Treinos"].tap()
-        XCTAssertTrue(app.navigationBars["Treinos"].waitForExistence(timeout: 8))
+        app.tabBars.buttons["Histórico"].tap()
+        XCTAssertTrue(app.navigationBars["Histórico"].waitForExistence(timeout: 8))
         XCTAssertGreaterThanOrEqual(app.cells.count, 1, "o treino devia aparecer no histórico")
         shot("04-historico")
     }

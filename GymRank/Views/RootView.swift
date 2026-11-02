@@ -48,9 +48,14 @@ struct MainTabView: View {
             .tabItem { Label("Painel", systemImage: "circle.hexagongrid.fill") }
 
             NavigationStack {
+                RoutinesView()
+            }
+            .tabItem { Label("Rotinas", systemImage: "list.bullet.rectangle") }
+
+            NavigationStack {
                 HistoryView(profile: profile)
             }
-            .tabItem { Label("Treinos", systemImage: "dumbbell.fill") }
+            .tabItem { Label("Histórico", systemImage: "clock.arrow.circlepath") }
 
             NavigationStack {
                 ProgressTabView(profile: profile)

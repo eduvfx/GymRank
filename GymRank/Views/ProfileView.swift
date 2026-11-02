@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ProfileView: View {
-    let profile: UserProfile
+    @Bindable var profile: UserProfile
 
     @Query private var exercises: [Exercise]
 
@@ -26,6 +26,18 @@ struct ProfileView: View {
                             linha("Peso", String(format: "%.1f kg", profile.pesoKg))
                             linha("Altura", String(format: "%.0f cm", profile.alturaCm))
                             linha("Sexo", profile.sexo.nome)
+                            Divider().overlay(Color.gymLine)
+                            Stepper(value: $profile.descansoSegundos, in: 30...180, step: 15) {
+                                HStack {
+                                    Text("Descanso entre séries")
+                                        .font(.caption).foregroundStyle(Color.gymMuted)
+                                    Spacer()
+                                    Text(SessionEngine.formato(profile.descansoSegundos))
+                                        .font(.system(size: 13, weight: .semibold))
+                                        .foregroundStyle(.white)
+                                }
+                            }
+                            .accessibilityIdentifier("descansoPerfil")
                         }
                     }
 

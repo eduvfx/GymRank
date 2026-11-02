@@ -16,6 +16,8 @@ final class UserProfile {
     var alturaCm: Double
     var sexoRaw: String
     var criadoEm: Date
+    /// Descanso entre séries, configurável no perfil (segundos).
+    var descansoSegundos: Int
 
     init(nome: String, idade: Int, pesoKg: Double, alturaCm: Double, sexo: Sex, criadoEm: Date = .now) {
         self.nome = nome
@@ -24,6 +26,7 @@ final class UserProfile {
         self.alturaCm = alturaCm
         self.sexoRaw = sexo.rawValue
         self.criadoEm = criadoEm
+        self.descansoSegundos = descansoSegundos
     }
 
     var sexo: Sex {
@@ -81,4 +84,107 @@ final class WorkoutSet {
     }
 
     var volume: Double { pesoKg * Double(reps) * Double(series) }
+}
+
+
+// MARK: - Rotinas e treino em tempo real
+
+@Model
+final class Routine {
+    var uid: UUID
+    var nome: String
+    var notas: String
+    var ordem: Int
+    var criadoEm: Date
+
+    init(nome: String, notas: String = "", ordem: Int = 0, criadoEm: Date = .now) {
+        self.uid = UUID()
+        self.nome = nome
+        self.notas = notas
+        self.ordem = ordem
+        self.criadoEm = criadoEm
+    }
+}
+
+@Model
+final class RoutineItem {
+    var rotinaUID: UUID
+    var standardID: String
+    var exercicioNome: String
+    var parteRaw: String
+    var ordem: Int
+    var seriesAlvo: Int
+    var repsAlvo: Int
+
+    init(rotinaUID: UUID, standardID: String, exercicioNome: String, parte: BodyPart,
+         ordem: Int, seriesAlvo: Int = 3, repsAlvo: Int = 8) {
+        self.rotinaUID = rotinaUID
+        self.standardID = standardID
+        self.exercicioNome = exercicioNome
+        self.parteRaw = parte.rawValue
+        self.ordem = ordem
+        self.seriesAlvo = seriesAlvo
+        self.repsAlvo = repsAlvo
+    }
+
+    var parte: BodyPart {
+        get { BodyPart(rawValue: parteRaw) ?? .chest }
+        set { parteRaw = newValue.rawValue }
+    }
+}
+
+@Model
+final class TrainingSession {
+    var uid: UUID
+    var rotinaNome: String
+    var inicio: Date
+    var fim: Date?
+    var concluida: Bool
+
+    init(rotinaNome: String, inicio: Date = .now) {
+        self.uid = UUID()
+        self.rotinaNome = rotinaNome
+        self.inicio = inicio
+        self.fim = nil
+        self.concluida = false
+    }
+
+    var duracao: TimeInterval { (fim ?? .now).timeIntervalSince(inicio) }
+}
+
+@Model
+final class SerieSessao {
+    var sessaoUID: UUID
+    var standardID: String
+    var exercicioNome: String
+    var parteRaw: String
+    var ordem: Int
+    var numero: Int
+    var pesoKg: Double
+    var reps: Int
+    var concluida: Bool
+    var umRM: Double
+
+    init(sessaoUID: UUID, standardID: String, exercicioNome: String, parte: BodyPart,
+         ordem: Int, numero: Int, pesoKg: Double = 0, reps: Int = 0) {
+        self.sessaoUID = sessaoUID
+        self.standardID = standardID
+        self.exercicioNome = exercicioNome
+        self.parteRaw = parte.rawValue
+        self.ordem = ordem
+        self.numero = numero
+        self.pesoKg = pesoKg
+        self.reps = reps
+        self.concluida = false
+        self.umRM = 0
+    }
+
+    var parte: BodyPart {
+        get { BodyPart(rawValue: parteRaw) ?? .chest }
+        set { parteRaw = newValue.rawValue }
+    }
+
+    func recalcular1RM() {
+        umRM = RankEngine.oneRepMax(pesoKg: pesoKg, reps: reps)
+    }
 }

@@ -64,7 +64,7 @@ struct HistoryView: View {
                 .background(Color.gymBackground)
             }
         }
-        .navigationTitle("Treinos")
+        .navigationTitle("Histórico")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

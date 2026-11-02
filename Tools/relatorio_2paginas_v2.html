@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt"><head><meta charset="utf-8"><title>GymRank — Relatório Inicial</title>
+<style>
+@page { size:A4; margin:13mm 14mm 12mm 14mm }
+*{box-sizing:border-box}
+body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#14213D;font-size:9.8pt;line-height:1.34;margin:0}
+h1{font-size:17pt;line-height:1.1;margin:0 0 3px;letter-spacing:-.3px}
+h2{font-size:11.4pt;margin:11px 0 4px;padding-bottom:2px;border-bottom:1.4px solid #14213D;page-break-after:avoid}
+p{margin:0 0 5px;text-align:justify}
+code{font-family:Consolas,monospace;font-size:8.4pt;background:#EEF2F7;padding:0 3px;border-radius:3px}
+table{width:100%;border-collapse:collapse;margin:4px 0 6px;font-size:8.8pt}
+th,td{border:1px solid #C9D3E0;padding:3px 5px;vertical-align:top;text-align:left}
+th{background:#14213D;color:#fff}tbody tr:nth-child(even){background:#F6F8FB}
+.kicker{font-size:7.8pt;letter-spacing:1px;text-transform:uppercase;color:#5B6672;margin-bottom:3px}
+.meta{font-size:8.6pt;color:#334155;border-bottom:1px solid #C9D3E0;padding-bottom:4px;margin-bottom:2px}
+figure{margin:6px 0 7px;page-break-inside:avoid}
+figure img,figure svg{width:100%;height:auto;display:block;margin:0 auto;border:1px solid #C9D3E0;border-radius:6px}
+figcaption{font-size:7.8pt;color:#475569;margin-top:2px}
+.nota{border-left:3px solid #D97706;background:#FFFBEB;padding:5px 8px;margin:5px 0 6px;font-size:8.6pt;page-break-inside:avoid}
+.rank{display:inline-block;padding:0 4px;border-radius:99px;font-size:7.8pt;font-weight:700;border:1px solid}
+.bronze{color:#8A5A22;border-color:#CD7F32;background:#FBF1E6}.prata{color:#5B6672;border-color:#BFC7CE;background:#F4F6F8}
+.ouro{color:#8A6D0B;border-color:#F5C518;background:#FEFBEA}.platina{color:#1F6E73;border-color:#8FE3E8;background:#EDFBFC}
+.diamante{color:#0B6389;border-color:#7FD1FF;background:#EDF8FF}.campeao{color:#5A34A8;border-color:#A46BFF;background:#F3EEFF}
+.tita{color:#A33721;border-color:#FF6B4A;background:#FFF0EC}.olympia{color:#8A6A00;border-color:#FFD84D;background:#FFFBEA}
+.finais{font-size:7.6pt;color:#475569;border-top:1px solid #C9D3E0;margin-top:6px;padding-top:3px}
+</style></head><body>
+
+<div class="kicker">Projecto individual · relatório inicial</div>
+<h1>GymRank — registo de treinos com ranks de videojogo</h1>
+<div class="meta">Eduardo Gomes, n.º 2026165029 · MEI, ESTG/IPLeiria · Desenvolvimento para Dispositivos Móveis · 21 de Outubro de 2026 · iOS nativo (Swift/SwiftUI)</div>
+
+<h2>1. Tema</h2>
+<p>A <b>GymRank</b> é uma app iOS para treinar no ginásio com <b>ranks de videojogo</b>: <span class="rank bronze">Bronze</span> <span class="rank prata">Prata</span> <span class="rank ouro">Ouro</span> <span class="rank platina">Platina</span> <span class="rank diamante">Diamante</span> <span class="rank campeao">Campeão</span> <span class="rank tita">Titã</span> <span class="rank olympia">Olympia</span>. O treino organiza-se em <b>rotinas</b> — conjuntos de exercícios com séries e repetições-alvo — que se iniciam e acompanham em tempo real, série a série. Cada exercício, cada parte do corpo e o corpo inteiro têm um rank relativo ao peso, com 1RM estimado ao vivo e o próximo objectivo em kg, o que responde à perda de aderência das apps de registo. A app <b>pede obrigatoriamente idade e peso</b> no arranque: definem a população de comparação e o ajuste dos limites.</p>
+
+<h2>2. Abordagem</h2>
+<p><b>Nativo em iOS (Swift/SwiftUI)</b>, plataforma diferente da do projecto de grupo (Android/Kotlin+Compose), como o enunciado exige. <b>SwiftUI</b> para a interface declarativa, <b>SwiftData</b> para persistência local (perfil, catálogo, rotinas, sessões) e motor de ranks isolado e testável. O catálogo é <b>fechado</b>: só entram os 23 exercícios com limiares de força publicados, para que nenhum exercício fique sem rank — não há dependência de uma API de exercícios e a app funciona offline. A identificação de máquinas por fotografia usa o <b>classificador de imagens do sistema</b> (Vision, <code>VNClassifyImageRequest</code>), que corre no dispositivo sem modelo treinado. Verificação por XCTest e XCUITest num simulador de iPhone por CI macOS, porque o desenvolvimento é em Windows.</p>
+
+<h2>3. Fluxo de navegação</h2>
+<figure>
+<svg viewBox="0 0 1240 150" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Arial" font-size="10.5">
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#64748B"/></marker></defs>
+  <g fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.3">
+    <rect x="6" y="10" width="150" height="38" rx="8"/><rect x="182" y="10" width="164" height="38" rx="8"/>
+    <rect x="372" y="10" width="146" height="38" rx="8"/><rect x="544" y="10" width="156" height="38" rx="8"/>
+    <rect x="726" y="10" width="146" height="38" rx="8"/>
+  </g>
+  <g fill="#0F172A" text-anchor="middle" font-weight="600">
+    <text x="81" y="26">1 · Boas-vindas</text><text x="81" y="40" font-weight="400" font-size="9" fill="#475569">1.º arranque</text>
+    <text x="264" y="26">2 · Perfil</text><text x="264" y="40" font-weight="400" font-size="9" fill="#475569">idade · peso · descanso</text>
+    <text x="445" y="26">3 · Painel</text><text x="445" y="40" font-weight="400" font-size="9" fill="#475569">rank geral + 8 partes</text>
+    <text x="622" y="26">4 · Parte do corpo</text><text x="622" y="40" font-weight="400" font-size="9" fill="#475569">lista com ranks</text>
+    <text x="799" y="26">5 · Exercício</text><text x="799" y="40" font-weight="400" font-size="9" fill="#475569">escada de 22 níveis</text>
+  </g>
+  <g stroke="#64748B" stroke-width="1.3" fill="none" marker-end="url(#a)">
+    <line x1="156" y1="29" x2="178" y2="29"/><line x1="346" y1="29" x2="368" y2="29"/>
+    <line x1="518" y1="29" x2="540" y2="29"/><line x1="700" y1="29" x2="722" y2="29"/>
+  </g>
+  <g fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.3">
+    <rect x="6" y="94" width="150" height="40" rx="8"/><rect x="182" y="94" width="164" height="40" rx="8"/>
+    <rect x="372" y="94" width="176" height="40" rx="8"/><rect x="574" y="94" width="146" height="40" rx="8"/>
+    <rect x="746" y="94" width="182" height="40" rx="8"/>
+  </g>
+  <g fill="#0F172A" text-anchor="middle" font-weight="600">
+    <text x="81" y="110">6 · Rotinas</text><text x="81" y="124" font-weight="400" font-size="9" fill="#475569">separador</text>
+    <text x="264" y="110">7 · Rotina</text><text x="264" y="124" font-weight="400" font-size="9" fill="#475569">exercícios · séries-alvo</text>
+    <text x="460" y="110">8 · Treino em tempo real</text><text x="460" y="124" font-weight="400" font-size="9" fill="#475569">kg · reps · descanso · foto</text>
+    <text x="647" y="110">9 · Submeter</text><text x="647" y="124" font-weight="400" font-size="9" fill="#475569">grava as séries</text>
+    <text x="837" y="110">10 · Painel actualizado</text><text x="837" y="124" font-weight="400" font-size="9" fill="#475569">rank recalculado</text>
+  </g>
+  <g stroke="#64748B" stroke-width="1.3" fill="none" marker-end="url(#a)">
+    <line x1="156" y1="114" x2="178" y2="114"/><line x1="346" y1="114" x2="368" y2="114"/>
+    <line x1="548" y1="114" x2="570" y2="114"/><line x1="720" y1="114" x2="742" y2="114"/>
+    <path d="M445 48 L445 70 L81 70 L81 90" stroke-dasharray="4 3"/>
+  </g>
+  <text x="452" y="66" font-size="8" fill="#475569">a qualquer momento</text>
+</svg>
+<figcaption><b>Figura 1.</b> Cinco separadores (Painel, Rotinas, Histórico, Progresso, Perfil) com <code>NavigationStack</code>: consulta (1–5) e treino (6–10), que grava cada série e devolve o rank actualizado.</figcaption>
+</figure>
+
+<h2>4. Funcionalidades</h2>
+<table>
+<thead><tr><th style="width:9%">Prior.</th><th>Funcionalidades</th></tr></thead>
+<tbody>
+<tr><td><b>P0</b></td><td>Perfil (idade, peso e descanso padrão) · catálogo incluído de 23 exercícios, todos com rank · <b>rotinas</b> com exercícios, séries e repetições-alvo (CRUD) · <b>treino em tempo real</b> com peso e repetições por série, 1RM ao vivo, adicionar exercícios a meio e submeter · <b>descanso</b> configurável · rank por exercício, parte e geral.</td></tr>
+<tr><td><b>P1</b></td><td><b>Exercício por fotografia</b> da máquina, com sugestão a confirmar · histórico com volume e duração · gráficos · percentil · acessibilidade · exportação CSV/JSON e cartão partilhável (P2).</td></tr>
+</tbody>
+</table>
+
+<h2>5. Treino em tempo real</h2>
+<p><b>Rotina.</b> Guarda nome e uma lista ordenada de exercícios, cada um com séries, repetições-alvo e descanso. Ao tocar em <b>Começar treino</b> a app cria uma <b>sessão</b> com uma linha por série-alvo, já no modelo persistente: o ecrã de treino edita essas linhas directamente, por isso o valor fica gravado à medida que é escrito, mesmo que a app seja fechada a meio.</p>
+<p><b>Durante o treino.</b> Cada série tem peso e repetições; ao marcá-la como concluída o 1RM é recalculado e arranca o <b>descanso</b> (30–180 s, com <b>+15 s</b> e <b>saltar</b>). <b>+ Exercício</b> abre o catálogo e acrescenta séries sem perder o registado; <b>Submeter</b> converte as séries em registos e recalcula os três ranks. Na <b>foto</b>, o classificador do sistema devolve etiquetas (<i>barbell</i>, <i>lat pulldown</i>) que são mapeadas para o catálogo em até três sugestões a confirmar; a câmara só existe em dispositivo real, no simulador usa-se a fototeca com o mesmo código.</p>
+
+<h2>6. Serviços externos</h2>
+<table>
+<thead><tr><th style="width:16%">Fonte</th><th>Uso</th></tr></thead>
+<tbody>
+<tr><td><b>Strength Level</b></td><td>Única fonte de exercícios e limiares: 23 exercícios com limiares publicados por sexo e peso, empacotados na app (sem pedidos em execução). Edição 2026: <b>287 exercícios</b>, 195,5 M levantamentos de 27,9 M utilizadores.</td></tr>
+<tr><td><b>Vision</b> (iOS)</td><td>Classificação de imagens no dispositivo para identificar a máquina; sem chave e sem enviar fotografias para fora.</td></tr>
+</tbody>
+</table>
+
+<h2>7. Mockups</h2>
+<figure>
+<img style="width:74%" src="figuras/mockups_final.png" alt="Quatro ecrãs da GymRank">
+<figcaption><b>Figura 2.</b> Painel com o rank geral e por parte · exercício com a escada de 22 níveis e o limite em kg de cada divisão · rotina com séries × repetições e o rank de cada exercício · treino em tempo real com peso, repetições, 1RM ao vivo, descanso com anel de contagem, adicionar exercício, adicionar por foto e submeter (105 kg × 5 = 122,5 kg → Campeão 3).</figcaption>
+</figure>
+
+<h2>8. Modelo de ranks (22 níveis)</h2>
+<p>Um rank é a <b>posição do atleta entre quem tem o mesmo peso corporal</b>, não um número absoluto. Os cinco limiares publicados valem ser mais forte que <b>5 / 20 / 50 / 80 / 95%</b>; a app mantém-nos, acrescenta dois pontos médios para obter os oito ranks e divide cada um dos sete primeiros em <b>três divisões iguais</b> (Bronze 1 a Titã 3 = 21 níveis, mais o Olympia).</p>
+<table>
+<thead><tr><th style="width:15%">Rank</th><th style="width:11%">Percentil</th><th>Origem</th></tr></thead>
+<tbody>
+<tr><td><span class="rank bronze">Bronze</span></td><td>&lt; 5%</td><td>abaixo de Beginner, em três partes</td></tr>
+<tr><td><span class="rank prata">Prata</span></td><td>5%</td><td>Beginner</td></tr>
+<tr><td><span class="rank ouro">Ouro</span></td><td>20%</td><td>Novice</td></tr>
+<tr><td><span class="rank platina">Platina</span></td><td>35%</td><td>média Novice/Intermediate</td></tr>
+<tr><td><span class="rank diamante">Diamante</span></td><td>50%</td><td>Intermediate</td></tr>
+<tr><td><span class="rank campeao">Campeão</span></td><td>65%</td><td>média Intermediate/Advanced</td></tr>
+<tr><td><span class="rank tita">Titã</span></td><td>80%</td><td>Advanced</td></tr>
+<tr><td><span class="rank olympia">Olympia</span></td><td>95%</td><td>Elite, nível único</td></tr>
+</tbody>
+</table>
+<p>Cada nível vale um inteiro (Bronze 1 = 0 … Titã 3 = 20) mais a fracção dentro da divisão: <b>0 a 21</b>. O <b>Olympia não tem tecto</b> — 1000 pontos à entrada e +1000 por cada duplicação do 1RM. Os limiares escalam com o peso (<code>limiar_ref × (peso/72)^b</code>, 68 kg nas mulheres) e com a idade (0,95 · 1,00 · 0,95 · 0,88 · 0,78 · 0,65 nos seis escalões). O rank do exercício é o da melhor série (Epley), o da parte é a média dos seus exercícios e o geral a média das partes.</p>
+<p><b>Exemplo</b> (homem, 80 kg, 24 anos, supino): limites <b>47,7 · 68,1 · 80,7 · 93,4 · 108,4 · 123,5 · 155,6 kg</b> — Diamante são três faixas de 5 kg, logo 105 kg é <b>Diamante 3</b>; 155,6 kg abre o <b>Olympia</b>.</p>
+
+<div class="nota"><b>Limite honesto.</b> As tabelas por peso e idade da fonte são geradas em JavaScript: obtiveram-se as femininas de 12 dos 23 exercícios e, nos restantes, os limiares femininos são estimados (masculino × 0,556) e marcados no código. Contra o calculador de referência (homem, supino, 72 kg) o desvio médio é 10,5 kg. As tabelas completas são capturadas na implementação e o pacote é reprodutível por script. Na foto, as etiquetas do classificador são genéricas: a sugestão é sempre confirmada e as máquinas de cardio não têm rank.</div>
+
+<h2>9. Plano e avaliação</h2>
+<p><b>22–31 Out:</b> projecto SwiftUI, SwiftData e perfil. <b>1–14 Nov:</b> catálogo, navegação e ranks por exercício. <b>15–30 Nov:</b> rotinas, treino em tempo real, descanso e submeter, com CRUD completo. <b>1–8 Dez:</b> detecção por fotografia (Vision), histórico, gráficos, acessibilidade e testes. <b>9–10 Dez:</b> submissão (código, README, slides, vídeo de 2–3 min). Verificação: testes do motor, do temporizador e das etiquetas, XCUITest dos fluxos, em CI macOS. Critérios: funcionalidade 30%, UI/UX 20%, código 20%, inovação 15%, documentação 15%.</p>
+
+<p class="finais"><b>Referências:</b> Strength Level, <i>Strength Standards 2026</i> (strengthlevel.com) · Apple, <i>SwiftUI / SwiftData / Vision / XCTest</i> (2026) · Epley, B. (1985), <i>Poundage Chart</i>. — GymRank · Eduardo Gomes, 2026165029 · DDM/MEI, ESTG/IPLeiria · 21/10/2026</p>
+</body></html>
