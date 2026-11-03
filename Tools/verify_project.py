@@ -159,11 +159,11 @@ for frag, label in [('runs-on: macos', 'CI num runner macOS'),
                     ('-scheme GymRank', 'CI usa o scheme GymRank'),
                     ('xcodebuild build', 'CI compila'),
                     ('xcodebuild test', 'CI corre os testes'),
-check('recordVideo' not in read(WF), 'CI sem gravacao de video (so capturas e zip)')
                     ('GymRank-app.zip', 'CI empacota o .app'),
                     ('appetize.io', 'CI publica no Appetize'),
                     ('upload-artifact', 'CI publica artefactos')]:
     check(frag in wf, label)
+check('recordVideo' not in wf, 'CI sem gravacao de video (so capturas e zip)')
 
 print()
 print(f'verificacoes: {checks}   falhas: {len(fails)}')
