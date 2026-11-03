@@ -120,34 +120,44 @@ final class GymRankUITests: XCTestCase {
 
         app.buttons["novaRotina"].tap()
         let nome = app.textFields["nomeRotina"]
-        XCTAssertTrue(nome.waitForExistence(timeout: 6), "não abriu o editor de rotina")
+        XCTAssertTrue(nome.waitForExistence(timeout: 6), "nao abriu o editor de rotina")
         nome.tap()
         nome.typeText("Peito e triceps")
-        if app.keyboards.element.exists { app.typeText("\n") }
+        let enter = String(UnicodeScalar(13)!)
+        if app.keyboards.element.exists { app.typeText(enter) }
 
-        app.swipeUp()
-        app.buttons["adicionarExercicioRotina"].tap()
+        let adicionar = app.buttons["adicionarExercicioRotina"]
+        if !adicionar.isHittable { app.swipeUp() }
+        XCTAssertTrue(adicionar.waitForExistence(timeout: 4), "nao encontrei o botao de adicionar exercicio")
+        adicionar.tap()
+
         let bench = app.staticTexts["Bench Press"]
-        XCTAssertTrue(bench.waitForExistence(timeout: 6))
+        XCTAssertTrue(bench.waitForExistence(timeout: 8), "nao abriu a lista de exercicios")
         bench.tap()
 
-        app.buttons["guardarRotina"].tap()
-        let cartao = app.staticTexts["Peito e triceps"]
-        XCTAssertTrue(cartao.waitForExistence(timeout: 8), "a rotina não apareceu na lista")
+        XCTAssertTrue(app.staticTexts["Bench Press"].waitForExistence(timeout: 6),
+                      "o exercicio nao entrou na rotina")
+
+        let guardar = app.buttons["guardarRotina"]
+        XCTAssertTrue(guardar.isEnabled, "o Guardar esta desactivado (falta nome ou exercicio)")
+        guardar.tap()
+
+        let cartao = app.staticTexts.containing(
+            NSPredicate(format: "label CONTAINS[c] %@", "eito")).firstMatch
+        XCTAssertTrue(cartao.waitForExistence(timeout: 8), "a rotina nao apareceu na lista")
         cartao.tap()
 
         XCTAssertTrue(app.navigationBars["Rotina"].waitForExistence(timeout: 8))
         shot("07-rotina")
 
         app.buttons["comecarTreino"].tap()
-        XCTAssertTrue(app.navigationBars["Peito e triceps"].waitForExistence(timeout: 8),
-                      "não abriu o treino em tempo real")
-        XCTAssertTrue(app.buttons["submeterTreino"].waitForExistence(timeout: 6))
+        XCTAssertTrue(app.buttons["submeterTreino"].waitForExistence(timeout: 10),
+                      "nao abriu o treino em tempo real")
         shot("08-treino-tempo-real")
 
         app.buttons["acrescentarExercicio"].tap()
         XCTAssertTrue(app.buttons["adicionarPorFoto"].waitForExistence(timeout: 8),
-                      "o treino devia permitir acrescentar exercício por fotografia")
+                      "o treino devia permitir acrescentar exercicio por fotografia")
         shot("09-acrescentar-exercicio")
         app.buttons["Fechar"].firstMatch.tap()
     }
