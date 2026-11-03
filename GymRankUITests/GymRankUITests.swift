@@ -112,4 +112,43 @@ final class GymRankUITests: XCTestCase {
                       "o ecrã devia explicar os pontos infinitos do Olympia")
         shot("06-ranks")
     }
+
+    func test05_RoutineWorkoutFlowWithRestTimerAndPhoto() {
+        garantirPerfil()
+        app.tabBars.buttons["Rotinas"].tap()
+        XCTAssertTrue(app.navigationBars["Rotinas"].waitForExistence(timeout: 8))
+
+        app.buttons["novaRotina"].tap()
+        let nome = app.textFields["nomeRotina"]
+        XCTAssertTrue(nome.waitForExistence(timeout: 6), "não abriu o editor de rotina")
+        nome.tap()
+        nome.typeText("Peito e triceps
+")
+
+        app.swipeUp()
+        app.buttons["adicionarExercicioRotina"].tap()
+        let bench = app.staticTexts["Bench Press"]
+        XCTAssertTrue(bench.waitForExistence(timeout: 6))
+        bench.tap()
+
+        app.buttons["guardarRotina"].tap()
+        let cartao = app.staticTexts["Peito e triceps"]
+        XCTAssertTrue(cartao.waitForExistence(timeout: 8), "a rotina não apareceu na lista")
+        cartao.tap()
+
+        XCTAssertTrue(app.navigationBars["Rotina"].waitForExistence(timeout: 8))
+        shot("07-rotina")
+
+        app.buttons["comecarTreino"].tap()
+        XCTAssertTrue(app.navigationBars["Peito e triceps"].waitForExistence(timeout: 8),
+                      "não abriu o treino em tempo real")
+        XCTAssertTrue(app.buttons["submeterTreino"].waitForExistence(timeout: 6))
+        shot("08-treino-tempo-real")
+
+        app.buttons["acrescentarExercicio"].tap()
+        XCTAssertTrue(app.buttons["adicionarPorFoto"].waitForExistence(timeout: 8),
+                      "o treino devia permitir acrescentar exercício por fotografia")
+        shot("09-acrescentar-exercicio")
+        app.buttons["Fechar"].firstMatch.tap()
+    }
 }
