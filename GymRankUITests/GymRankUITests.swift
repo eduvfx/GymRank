@@ -122,8 +122,8 @@ final class GymRankUITests: XCTestCase {
         let nome = app.textFields["nomeRotina"]
         XCTAssertTrue(nome.waitForExistence(timeout: 6), "não abriu o editor de rotina")
         nome.tap()
-        nome.typeText("Peito e triceps
-")
+        nome.typeText("Peito e triceps")
+        if app.keyboards.element.exists { app.typeText("\n") }
 
         app.swipeUp()
         app.buttons["adicionarExercicioRotina"].tap()
