@@ -32,7 +32,7 @@ struct RoutinesView: View {
                             VStack(alignment: .leading, spacing: 6) {
                                 SectionTitle(text: "Ainda sem rotinas")
                                 Text("Uma rotina é um conjunto de exercícios com séries e repetições-alvo. Cria a primeira e treina a partir dela.")
-                                    .font(.caption).foregroundStyle(.gymMuted)
+                                    .font(.caption).foregroundStyle(Color.gymMuted)
                             }
                         }
                     }
@@ -70,13 +70,13 @@ struct RoutinesView: View {
                     Text(rotina.nome)
                         .font(.system(size: 16, weight: .bold)).foregroundStyle(.white)
                     Text(meus.isEmpty ? "sem exercícios" : "\(meus.count) exercícios · \(series) séries")
-                        .font(.caption).foregroundStyle(.gymMuted)
+                        .font(.caption).foregroundStyle(Color.gymMuted)
                     if !rotina.notas.isEmpty {
-                        Text(rotina.notas).font(.caption2).foregroundStyle(.gymMuted).lineLimit(1)
+                        Text(rotina.notas).font(.caption2).foregroundStyle(Color.gymMuted).lineLimit(1)
                     }
                 }
                 Spacer()
-                Image(systemName: "chevron.right").foregroundStyle(.gymMuted)
+                Image(systemName: "chevron.right").foregroundStyle(Color.gymMuted)
             }
         }
     }

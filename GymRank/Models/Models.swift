@@ -19,7 +19,8 @@ final class UserProfile {
     /// Descanso entre séries, configurável no perfil (segundos).
     var descansoSegundos: Int
 
-    init(nome: String, idade: Int, pesoKg: Double, alturaCm: Double, sexo: Sex, criadoEm: Date = .now) {
+    init(nome: String, idade: Int, pesoKg: Double, alturaCm: Double, sexo: Sex,
+         criadoEm: Date = .now, descansoSegundos: Int = 90) {
         self.nome = nome
         self.idade = idade
         self.pesoKg = pesoKg

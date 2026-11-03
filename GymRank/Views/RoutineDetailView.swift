@@ -30,9 +30,9 @@ struct RoutineDetailView: View {
                         VStack(alignment: .leading, spacing: 5) {
                             SectionTitle(text: rotina.nome)
                             Text("\(itens.count) exercícios · \(totalSeries) séries · descanso \(SessionEngine.formato(descanso))")
-                                .font(.caption).foregroundStyle(.gymMuted)
+                                .font(.caption).foregroundStyle(Color.gymMuted)
                             if !rotina.notas.isEmpty {
-                                Text(rotina.notas).font(.caption2).foregroundStyle(.gymMuted)
+                                Text(rotina.notas).font(.caption2).foregroundStyle(Color.gymMuted)
                             }
                         }
                     }
@@ -41,13 +41,13 @@ struct RoutineDetailView: View {
                         GymCard {
                             HStack(spacing: 10) {
                                 Text("\(indice + 1)")
-                                    .font(.caption.bold()).foregroundStyle(.gymMuted)
+                                    .font(.caption.bold()).foregroundStyle(Color.gymMuted)
                                     .frame(width: 18)
                                 VStack(alignment: .leading, spacing: 3) {
                                     Text(item.exercicioNome)
                                         .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
                                     Text("\(item.parte.nome) · \(item.seriesAlvo) × \(item.repsAlvo)")
-                                        .font(.caption2).foregroundStyle(.gymMuted)
+                                        .font(.caption2).foregroundStyle(Color.gymMuted)
                                 }
                                 Spacer()
                             }
