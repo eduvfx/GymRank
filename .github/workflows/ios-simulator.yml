@@ -1,6 +1,6 @@
 name: iOS Simulator (GymRank)
 
-# Compila a app, corre-a num simulador de iPhone, grava video, corre os testes
+# Compila a app, corre-a num simulador de iPhone e corre os testes
 # unitarios e de interface e publica o .app (tambem no Appetize.io, se existir token).
 
 on:
@@ -59,13 +59,10 @@ jobs:
           sleep 8
           xcrun simctl io "$UDID" screenshot artifacts/01-arranque.png
 
-      - name: Testes (unitarios + interface) no simulador, com video
+      - name: Testes (unitarios + interface) no simulador
         run: |
           set -o pipefail
           UDID="${{ steps.sim.outputs.udid }}"
-          xcrun simctl io "$UDID" recordVideo --codec=h264 --force artifacts/app-em-uso.mp4 &
-          REC=$!
-          set +e
           xcodebuild test \
             -project GymRank.xcodeproj \
             -scheme GymRank \
@@ -73,12 +70,6 @@ jobs:
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             -resultBundlePath artifacts/testes.xcresult
-          RC=$?
-          set -e
-          kill -INT $REC 2>/dev/null || true
-          sleep 5
-          echo "xcodebuild test rc=$RC"
-          exit $RC
 
       - name: Extrair screenshots dos testes
         if: always()
